@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "Restricted Data"
+AuthUserFile /etc/phpmyadmin/.htpasswd
+Require valid-user

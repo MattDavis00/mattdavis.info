@@ -1,0 +1,59 @@
+body,
+html {
+  height: 100%;
+}
+
+#original_chart {
+  position: relative;
+  height: 50%;
+  width: 50%;
+}
+
+.bg {
+  background-image: url("/img/gradient.jpg");
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.custom-restricted-width {
+  position: fixed;
+  width: 50px;
+  top: 50px;
+  bottom: 0;
+}
+
+.pure-menu {
+  height: 100%;
+}
+
+.pure-menu-heading{
+  background-color: #212A39;
+}
+
+.pure-menu-link:hover {
+  background-color: #212A39;
+}
+
+.top-bar ul{
+  background: #00a0df
+}
+
+#title{
+  color: #FFFFFF
+}
+
+.top-bar{
+  padding: 5px
+}
+
+/* Colour Palette*/
+
+.color-1 { background: #00a0df }
+.color-2 { background: #11181c }
+.color-3 { background: #a9afb1 }
+.color-4 { background: #FFFFFF }
+
+.text-1 { color: #FFFFFF }
+.text-2 { color: #a9afb1 }
