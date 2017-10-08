@@ -21,14 +21,6 @@
 	right: 0px
 }
 
-.uk-navbar-nav>li>a {
-	color: rgba(255, 255, 255, 0.8)
-}
-
-.uk-navbar-nav>li>a:hover, .uk-navbar-nav>li.uk-active>a, .uk-logo:hover {
-	color: rgba(255, 255, 255, 1)
-}
-
 #nav-logo{
 	width: 45px;
 	height: 45px;
@@ -41,6 +33,16 @@
 	margin-top: 0px;
 	font-size: 20px;
 	text-transform: uppercase
+}
+
+.uk-navbar-nav>li>a {
+	color: rgba(255, 255, 255, 0.8);
+	padding-left: 10px;
+	padding-right: 10px
+}
+
+.uk-navbar-nav>li>a:hover, .uk-navbar-nav>li.uk-active>a, .uk-logo:hover {
+	color: rgba(255, 255, 255, 1)
 }
 
 /* Colour Palette*/
