@@ -13,6 +13,14 @@
 	background: #11181c
 }
 
+#dynamic-canvas{
+	position: absolute;
+	top: 50px;
+	bottom: 0px;
+	left: 50px;
+	right: 0px
+}
+
 /* Colour Palette*/
 
 .color-1 { background: #00a0df }
