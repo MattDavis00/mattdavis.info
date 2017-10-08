@@ -1,3 +1,9 @@
+#top-nav{
+	background: #00a0df;
+	box-shadow: none;
+	height: 50px
+}
+
 /* Colour Palette*/
 
 .color-1 { background: #00a0df }
