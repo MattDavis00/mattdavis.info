@@ -36,6 +36,13 @@
 	padding-right: 0px
 }
 
+#nav-name{
+	line-height: 1;
+	margin-top: 0px;
+	font-size: 20px;
+	text-transform: uppercase
+}
+
 /* Colour Palette*/
 
 .color-1 { background: #00a0df }
