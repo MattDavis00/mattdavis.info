@@ -4,6 +4,15 @@
 	height: 50px
 }
 
+#side-nav{
+	box-shadow: none;
+	position: fixed;
+	top: 50px;
+	bottom: 0;
+	width: 50px;
+	background: #11181c
+}
+
 /* Colour Palette*/
 
 .color-1 { background: #00a0df }
