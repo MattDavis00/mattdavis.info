@@ -25,7 +25,7 @@
 	color: rgba(255, 255, 255, 0.8)
 }
 
-.uk-navbar-nav>li>a:hover{
+.uk-navbar-nav>li>a:hover, .uk-navbar-nav>li.uk-active>a, .uk-logo:hover {
 	color: rgba(255, 255, 255, 1)
 }
 
