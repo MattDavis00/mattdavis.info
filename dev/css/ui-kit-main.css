@@ -25,6 +25,10 @@
 	color: rgba(255, 255, 255, 0.8)
 }
 
+.uk-navbar-nav>li>a:hover{
+	color: rgba(255, 255, 255, 1)
+}
+
 /* Colour Palette*/
 
 .color-1 { background: #00a0df }
