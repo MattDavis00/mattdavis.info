@@ -29,6 +29,13 @@
 	color: rgba(255, 255, 255, 1)
 }
 
+#nav-logo{
+	width: 45px;
+	height: 45px;
+	padding-left: 5px;
+	padding-right: 0px
+}
+
 /* Colour Palette*/
 
 .color-1 { background: #00a0df }
