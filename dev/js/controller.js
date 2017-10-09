@@ -1,5 +1,4 @@
-function Cntrl ($scope, $location) {
-  $scope.changeView = function(view) {
-    $location.path(view);
-  }
-}
+var app = angular.module("my-app", ["ngRoute"]);
+app.controller("my-controller", function($scope, $http) {
+	}
+});
