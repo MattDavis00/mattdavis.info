@@ -32,7 +32,8 @@
 	line-height: 1;
 	margin-top: 0px;
 	font-size: 20px;
-	text-transform: uppercase
+	text-transform: uppercase;
+	padding-left: 10px
 }
 
 .uk-navbar-nav>li>a {
@@ -43,6 +44,12 @@
 
 .uk-navbar-nav>li>a:hover, .uk-navbar-nav>li.uk-active>a, .uk-logo:hover {
 	color: rgba(255, 255, 255, 1)
+}
+
+.nav-divider{
+	padding-left: 5px;
+	padding-right: 0px;
+	height: 40px
 }
 
 /* Colour Palette*/
