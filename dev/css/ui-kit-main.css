@@ -36,6 +36,10 @@
   padding-left: 10px
 }
 
+#side-nav-icon-top {
+  padding-top: 5px
+}
+
 .uk-navbar-nav>li>a {
   color: rgba(255, 255, 255, 0.8);
   padding-left: 10px;
@@ -52,8 +56,8 @@
   height: 40px
 }
 
-.side-nav-icon{
-	padding-left: 4px
+.side-nav-icon {
+  padding-left: 9px
 }
 
 /* Colour Palette*/
