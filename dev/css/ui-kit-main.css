@@ -41,17 +41,27 @@
 }
 
 #top-nav-logout {
-  font-family: 'Material Icons';
-  text-transform: none;
+  margin-top: 25px;
+  margin-right: 9px;
+  margin-left: 10px;
+  padding-right: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+#top-nav-logout:hover {
+  border: 1px solid rgba(255, 255, 255, 1);
 }
 
 .uk-navbar-nav>li>a {
-  color: rgba(255, 255, 255, 0.8);
   padding-left: 10px;
   padding-right: 10px;
 }
 
-.uk-navbar-nav>li>a:hover, .uk-navbar-nav>li.uk-active>a, .uk-logo:hover, .uk-nav>li>a:hover, .uk-nav>li.uk-active>a {
+.uk-navbar-nav>li>button, .uk-navbar-nav>li>a{
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.uk-navbar-nav>li>a:hover, .uk-navbar-nav>li.uk-active>a, .uk-logo:hover, .uk-nav>li>a:hover, .uk-nav>li.uk-active>a, .uk-navbar-nav>li>button:hover{
   color: rgba(255, 255, 255, 1);
 }
 
@@ -63,24 +73,7 @@
 
 .side-nav-icon {
   padding-left: 7px;
-}
-
-.material-icons .material-icons.md-18 {
-  font-size: 18px;
-}
-
-.material-icons.md-24 {
-  font-size: 24px;
-}
-
-/* Default */
-
-.material-icons.md-36 {
-  font-size: 36px;
-}
-
-.material-icons.md-48 {
-  font-size: 48px;
+  padding-bottom: 10px;
 }
 
 /* Colour Palette*/
