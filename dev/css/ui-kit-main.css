@@ -1,7 +1,7 @@
 #top-nav {
   background: #00a0df;
   box-shadow: none;
-  height: 50px
+  height: 50px;
 }
 
 #side-nav {
@@ -10,7 +10,7 @@
   top: 50px;
   bottom: 0;
   width: 50px;
-  background: #11181c
+  background: #11181c;
 }
 
 #dynamic-canvas {
@@ -18,14 +18,14 @@
   top: 50px;
   bottom: 0px;
   left: 50px;
-  right: 0px
+  right: 0px;
 }
 
 #nav-logo {
   width: 45px;
   height: 45px;
   padding-left: 3px;
-  padding-right: 0px
+  padding-right: 0px;
 }
 
 #nav-name {
@@ -33,55 +33,78 @@
   margin-top: 0px;
   font-size: 20px;
   text-transform: uppercase;
-  padding-left: 10px
+  padding-left: 10px;
 }
 
 #side-nav-icon-top {
-  padding-top: 5px
+  padding-top: 5px;
+}
+
+#top-nav-logout {
+  font-family: 'Material Icons';
+  text-transform: none;
 }
 
 .uk-navbar-nav>li>a {
   color: rgba(255, 255, 255, 0.8);
   padding-left: 10px;
-  padding-right: 10px
+  padding-right: 10px;
 }
 
 .uk-navbar-nav>li>a:hover, .uk-navbar-nav>li.uk-active>a, .uk-logo:hover, .uk-nav>li>a:hover, .uk-nav>li.uk-active>a {
-  color: rgba(255, 255, 255, 1)
+  color: rgba(255, 255, 255, 1);
 }
 
 .nav-divider {
   padding-left: 4px;
   padding-right: 0px;
-  height: 40px
+  height: 40px;
 }
 
 .side-nav-icon {
-  padding-left: 9px
+  padding-left: 7px;
+}
+
+.material-icons .material-icons.md-18 {
+  font-size: 18px;
+}
+
+.material-icons.md-24 {
+  font-size: 24px;
+}
+
+/* Default */
+
+.material-icons.md-36 {
+  font-size: 36px;
+}
+
+.material-icons.md-48 {
+  font-size: 48px;
 }
 
 /* Colour Palette*/
 
 .color-1 {
-  background: #00a0df
+  background: #00a0df;
 }
 
 .color-2 {
-  background: #11181c
+  background: #11181c;
 }
 
 .color-3 {
-  background: #a9afb1
+  background: #a9afb1;
 }
 
 .color-4 {
-  background: #FFFFFF
+  background: #FFFFFF;
 }
 
 .text-1 {
-  color: #FFFFFF
+  color: #FFFFFF;
 }
 
 .text-2 {
-  color: #a9afb1
+  color: #a9afb1;
 }
