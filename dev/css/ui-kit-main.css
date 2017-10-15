@@ -57,11 +57,11 @@
   padding-right: 10px;
 }
 
-.uk-navbar-nav>li>button, .uk-navbar-nav>li>a{
+.uk-navbar-nav>li>button, .uk-navbar-nav>li>a {
   color: rgba(255, 255, 255, 0.8);
 }
 
-.uk-navbar-nav>li>a:hover, .uk-navbar-nav>li.uk-active>a, .uk-logo:hover, .uk-nav>li>a:hover, .uk-nav>li.uk-active>a, .uk-navbar-nav>li>button:hover{
+.uk-navbar-nav>li>a:hover, .uk-navbar-nav>li.uk-active>a, .uk-logo:hover, .uk-nav>li>a:hover, .uk-nav>li.uk-active>a, .uk-navbar-nav>li>button:hover {
   color: rgba(255, 255, 255, 1);
 }
 
