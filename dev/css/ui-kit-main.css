@@ -87,6 +87,11 @@
   margin: 0 auto;
 }
 
+.card-slim{
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
 /* Colour Palette*/
 
 .color-1 {
