@@ -1,7 +1,7 @@
 var app = angular.module("my-app", ["ngRoute"]);
 app.config(function($routeProvider) {
   $routeProvider
-    .when("/login", {
+    .when("/", {
       templateUrl: "js/views/login.html"
     })
     .when("/query", {
@@ -19,7 +19,4 @@ app.config(function($routeProvider) {
     .when("/permissions", {
       template: "<p>Permissions Placeholder</p>"
     })
-    .when("/", {
-      template: "<p>Nothing has been selected</p>"
-    });
 });
