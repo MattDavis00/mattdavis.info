@@ -1,25 +1,38 @@
-<div class="uk-card uk-card-default uk-card-body uk-position-center uk-flex-center uk-text-center card-slim">
-	<form id="login-form">
+<div ng-controller="loginCtrl">
 
-		<div class="center-div">
-			<div class="uk-margin">
-				<div class="uk-inline">
-					<span class="uk-form-icon" uk-icon="icon: user"></span>
-					<input class="uk-input" placeholder="ID" type="text">
-				</div>
-			</div>
+  <div class="uk-card uk-card-default uk-card-body uk-position-center uk-flex-center uk-text-center card-slim">
 
-			<div class="uk-margin">
-				<div class="uk-inline">
-					<span class="uk-form-icon" uk-icon="icon: lock"></span>
-					<input class="uk-input" placeholder="Password" type="password">
-				</div>
-			</div>
+    <form id="login-form" ng-submit="processLogin()">
 
-			<div class="uk-inline">
-				<button class="uk-button uk-button-primary uk-button-small">Login</button>
-			</div>
-		</div>
+      <div class="center-div">
+        <div class="uk-margin">
+          <div class="uk-inline">
+            <span class="uk-form-icon" uk-icon="icon: user"></span>
+            <input class="uk-input" ng-model="loginData.id" placeholder="ID" type="text" required>
+          </div>
+        </div>
 
-	</form>
+        <div class="uk-margin">
+          <div class="uk-inline">
+            <span class="uk-form-icon" uk-icon="icon: lock"></span>
+            <input class="uk-input" ng-model="loginData.password" placeholder="Password" type="password" required>
+          </div>
+        </div>
+
+        <div class="uk-inline">
+          <button type="submit" class="uk-button uk-button-primary uk-button-small">Login</button>
+        </div>
+      </div>
+
+    </form>
+
+    <pre>
+			<div id="messages" ng-show="message">{{ message }}</div>
+
+      {{ loginData }}
+			{{5*5}}
+    </pre>
+
+  </div>
+
 </div>
