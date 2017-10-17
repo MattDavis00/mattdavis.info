@@ -5,12 +5,22 @@ angular.module("my-app").controller("loginCtrl", ["$scope", "$http", function($s
   $scope.url = "php/login.php";
 
   $scope.processLogin = function() {
-    $http({
-     method: "post",
-     url: "php/login.php"
-    }).then(function successCallback(response) {
-     // Store response data
-     $scope.users = response.data;
+
+    var request = $http({
+      method: "post",
+      url: "php/login.php",
+      data: {
+        id: $scope.loginData.id,
+        password: $scope.loginData.password
+      },
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      }
     });
+
+    request.then(function(data) {
+      $scope.info = "You have login successfully with email " + data;
+    });
+  }
 
 }]);
