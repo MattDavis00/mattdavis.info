@@ -4,6 +4,7 @@ $postdata = file_get_contents("php://input");
 $request = json_decode($postdata);
 $userid = $request->id;
 $userpass = $request->password;
+echo $id;
 
 $servername = "localhost";
 $username = "root";
@@ -19,8 +20,6 @@ if ($conn->connect_error) {
 
 $sql = "INSERT INTO administrator (Email, Org_ID, Hashed_Pass, Name, Last_Login, Creation_UNIX)
 VALUES ('$userid', 127836, '$userpass', 'Matt Davis', 1786873927, 2783636)";
-
-$sql = "SELECT Hashed_Pass FROM user WHERE User_ID=$userid";
 
 if ($conn->query($sql) === TRUE) {
     echo "New record created successfully";

@@ -60,7 +60,11 @@ html {
 
 #login-form {
   margin: 0 auto;
-  width: 250px;
+  width: 300px;
+}
+
+#login-button{
+  width: 150px;
 }
 
 .uk-navbar-nav>li>a {
@@ -94,6 +98,14 @@ html {
 .card-slim {
   padding-top: 20px;
   padding-bottom: 20px;
+}
+
+.form-footer{
+  margin-top: 10px;
+}
+
+.input-field{
+  width: 300px;
 }
 
 /* Colour Palette*/

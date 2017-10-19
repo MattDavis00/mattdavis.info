@@ -4,6 +4,9 @@ app.config(function($routeProvider) {
     .when("/", {
       templateUrl: "js/views/login.html"
     })
+    .when("/register", {
+      templateUrl: "js/views/register.html"
+    })
     .when("/query", {
       template: "<p>Query Placeholder</p>"
     })
