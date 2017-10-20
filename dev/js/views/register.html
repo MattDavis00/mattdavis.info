@@ -8,7 +8,7 @@
         <div class="uk-margin">
           <div class="uk-inline">
             <span class="uk-form-icon" uk-icon="icon: user"></span>
-            <input class="uk-input input-field" ng-model="registerData.id" placeholder="Email" type="email" required>
+            <input class="uk-input input-field" ng-model="registerData.email" placeholder="Email" type="email" required>
           </div>
         </div>
 
@@ -16,6 +16,27 @@
           <div class="uk-inline">
             <span class="uk-form-icon" uk-icon="icon: lock"></span>
             <input class="uk-input input-field" ng-model="registerData.password" placeholder="Password" type="password" required>
+          </div>
+        </div>
+
+        <div class="uk-margin">
+          <div class="uk-inline">
+            <span class="uk-form-icon" uk-icon="icon: lock"></span>
+            <input class="uk-input input-field" ng-model="registerData.repeatPassword" placeholder="Repeat Password" type="password" required>
+          </div>
+        </div>
+
+        <div class="uk-margin">
+          <div class="uk-inline">
+            <span class="uk-form-icon" uk-icon="icon: info"></span>
+            <input class="uk-input input-field" ng-model="registerData.firstName" placeholder="First Name" type="text" required>
+          </div>
+        </div>
+
+        <div class="uk-margin">
+          <div class="uk-inline">
+            <span class="uk-form-icon" uk-icon="icon: info"></span>
+            <input class="uk-input input-field" ng-model="registerData.lastName" placeholder="Last Name" type="text" required>
           </div>
         </div>
 
@@ -30,7 +51,7 @@
 
     </form>
 
-    <pre ng-model="info">{{5*5}} {{info}}</pre>
+    <pre ng-model="info">{{5*5}} {{info}} {{error}}</pre>
 
   </div>
 
