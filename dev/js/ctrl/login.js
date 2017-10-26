@@ -4,6 +4,8 @@ angular.module("my-app").controller("loginCtrl", ["$scope", "$http", function($s
 
   $scope.url = "php/login.php";
 
+  $scope.results = "";
+
   $scope.processLogin = function() {
 
     var request = $http({
@@ -18,8 +20,12 @@ angular.module("my-app").controller("loginCtrl", ["$scope", "$http", function($s
       }
     });
 
+    request.then(function(response) {
+      $scope.results = response.data;
+    })
+
     request.then(function(data) {
-      $scope.info = "You have login successfully with email " + data;
+      $scope.info = "Login.js script ran!";
     });
   }
 
