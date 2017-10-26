@@ -1,9 +1,11 @@
 <?php
 
 $postdata = file_get_contents("php://input");
-$request = json_decode($postdata);
-$userid = $request->id;
-$userpass = $request->password;
+
+$params = json_decode($postdata);
+
+$userid = $params->id;
+$userpass = $params->password;
 
 $servername = "localhost";
 $username = "root";
@@ -14,19 +16,44 @@ $dbname = "absolute_inventory";
 $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+  die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "INSERT INTO administrator (Email, Org_ID, Hashed_Pass, Name, Last_Login, Creation_UNIX)
-VALUES ('$userid', 127836, '$userpass', 'Matt Davis', 1786873927, 2783636)";
+$sql = "SELECT * FROM administrator WHERE Email = '" . $userid . "'";
 
-$sql = "SELECT Hashed_Pass FROM user WHERE User_ID=$userid";
+$result = $conn->query($sql);
 
-if ($conn->query($sql) === TRUE) {
-    echo "New record created successfully";
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+        echo "Email: " . $row["Email"]. " - Password: " . $row["Hashed_Pass"];
+    }
 } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+    echo "Error: " . $sql . $conn->error;
 }
 
 $conn->close();
+
+// $result = mysqli_query($conn, $sql);
+//
+// while($row = mysql_fetch_array($result)) {
+// echo $row['fieldname'];
+// }
+
+// $outp = json_encode($result);
+//
+// $conn->close();
+// echo($outp);
+
+// if ($conn->query($sql) === TRUE) {
+//   $result = $conn->query($sql);
+//   $outp ='{"record":['.$result.']}';
+//
+//   $conn->close();
+//   echo($outp);
+// } else {
+//   echo "Error: " . $sql . "<br>" . $conn->error;
+// }
+//
+// $conn->close();
 ?>
