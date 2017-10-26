@@ -23,6 +23,6 @@ app.config(function($routeProvider) {
       template: "<p>Permissions Placeholder</p>"
     })
     .otherwise({
-      template: "<p>Error! Page not found.</p>"
+      redirectTo: "/"
     })
 });
