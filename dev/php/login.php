@@ -1,11 +1,10 @@
 <?php
 
 $postdata = file_get_contents("php://input");
+$request = json_decode($postdata);
 
-$params = json_decode($postdata);
-
-$userid = $params->id;
-$userpass = $params->password;
+$clientID = $request->id;
+$clientPass = $request->password;
 
 $servername = "localhost";
 $username = "root";
@@ -19,14 +18,19 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT * FROM administrator WHERE Email = '" . $userid . "'";
+$sql = "SELECT * FROM administrator WHERE Email = '$clientID'";
 
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
-    // output data of each row
     while($row = $result->fetch_assoc()) {
-        echo "Email: " . $row["Email"]. " - Password: " . $row["Hashed_Pass"];
+
+      $hashInput = $clientPass . $row["Salt"];
+
+      if (password_verify($hashInput, $row["Hashed_Pass"])){
+        echo "User Verified!";
+      }
+        echo "Email: " . $row["Email"] . " - Password: " . $row["Hashed_Pass"];
     }
 } else {
     echo "Error: " . $sql . $conn->error;
