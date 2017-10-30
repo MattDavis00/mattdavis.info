@@ -15,7 +15,7 @@ $dbname = "absolute_inventory";
 $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
 if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
+  die(" - Connection failed: " . $conn->connect_error);
 }
 
 $sql = "SELECT * FROM administrator WHERE Email = '$clientID'";
@@ -28,12 +28,12 @@ if ($result->num_rows > 0) {
       $hashInput = $clientPass . $row["Salt"];
 
       if (password_verify($hashInput, $row["Hashed_Pass"])){
-        echo "User Verified!";
+        echo " - User Verified!";
       }
-        echo "Email: " . $row["Email"] . " - Password: " . $row["Hashed_Pass"];
+        echo " - Email: " . $row["Email"] . " - Password: " . $row["Hashed_Pass"];
     }
 } else {
-    echo "Error: " . $sql . $conn->error;
+    echo " - Error: " . $sql . $conn->error;
 }
 
 $conn->close();
