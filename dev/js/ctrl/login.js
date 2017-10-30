@@ -22,10 +22,10 @@ angular.module("my-app").controller("loginCtrl", ["$scope", "$http", function($s
 
     request.then(function(response) {
       $scope.results = response.data;
-    })
+    });
 
     request.then(function(data) {
-      $scope.info = "Login.js script ran!";
+      $scope.info = " - Login.js script ran!";
     });
   }
 
