@@ -9,7 +9,7 @@ angular.module("my-app").controller("registerCtrl", ["$scope", "$http", function
   $scope.processRegister = function() {
 
     if ($scope.registerData.password != $scope.registerData.repeatPassword) {
-      $scope.error = "Passwords do not match!";
+      $scope.error = " - Passwords do not match!";
     } else {
       var request = $http({
         method: "post",
@@ -25,8 +25,12 @@ angular.module("my-app").controller("registerCtrl", ["$scope", "$http", function
         }
       });
 
+      request.then(function(response) {
+        $scope.results = response.data;
+      });
+
       request.then(function(data) {
-        $scope.info = "You have registered successfully. Email: " + $scope.registerData.email + " Password: " + $scope.registerData.password + " Repeat Password: " + $scope.registerData.repeatPassword + " First Name: " + $scope.registerData.firstName + " Last Name: " + $scope.registerData.lastName;
+        $scope.info = " - You have registered successfully. Email: " + $scope.registerData.email + " Password: " + $scope.registerData.password + " Repeat Password: " + $scope.registerData.repeatPassword + " First Name: " + $scope.registerData.firstName + " Last Name: " + $scope.registerData.lastName;
       });
     }
   }
