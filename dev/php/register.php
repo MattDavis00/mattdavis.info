@@ -17,19 +17,22 @@ $dbname = "absolute_inventory";
 $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    die(" - Connection failed: " . $conn->connect_error);
 }
 
 $clientSalt = mcrypt_create_iv(16, MCRYPT_DEV_URANDOM);
 $clientPasswordHash = password_hash($clientPassword . $clientSalt, PASSWORD_BCRYPT);
 
+$serverUNIX = time();
+
 $sql = "INSERT INTO administrator (Email, Org_ID, Hashed_Pass, Salt, First_Name, Last_Name, Last_Login, Creation_UNIX)
-VALUES ('$clientEmail', 127836, '$clientPasswordHash', '$clientSalt', '$clientFirstName', '$clientLastName', 1786873927, 2783636)";
+VALUES ('$clientEmail', -1, '$clientPasswordHash', '$clientSalt', '$clientFirstName', '$clientLastName', -1, $serverUNIX)";
 
 if ($conn->query($sql) === TRUE) {
-    echo "New record created successfully";
+    echo " - New record created successfully";
+    echo " - This thing works?";
 } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+    echo " - Error: " . $sql . "<br>" . $conn->error;
 }
 
 $conn->close();
