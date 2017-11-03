@@ -26,7 +26,7 @@ $clientPasswordHash = password_hash($clientPassword . $clientSalt, PASSWORD_BCRY
 $serverUNIX = time();
 
 $sql = "INSERT INTO administrator (Email, Org_ID, Hashed_Pass, Salt, First_Name, Last_Name, Last_Login, Creation_UNIX)
-VALUES ('$clientEmail', -1, '$clientPasswordHash', '$clientSalt', '$clientFirstName', '$clientLastName', -1, $serverUNIX)";
+VALUES ('$clientEmail', NULL, '$clientPasswordHash', '$clientSalt', '$clientFirstName', '$clientLastName', NULL, $serverUNIX)";
 
 if ($conn->query($sql) === TRUE) {
     echo " - New record created successfully";
