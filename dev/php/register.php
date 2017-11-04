@@ -1,24 +1,12 @@
 <?php
 
-$postData = file_get_contents("php://input");
-$request = json_decode($postData);
+// Database Connection & Post data
+include 'connection.php';
 
 $clientEmail = $request->email;
 $clientPassword = $request->password;
 $clientFirstName = $request->firstName;
 $clientLastName = $request->lastName;
-
-$servername = "localhost";
-$username = "root";
-$password = "94RwMDEY*!H$!D6pRGnq";
-$dbname = "absolute_inventory";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-    die(" - Connection failed: " . $conn->connect_error);
-}
 
 $clientSalt = mcrypt_create_iv(16, MCRYPT_DEV_URANDOM);
 $clientPasswordHash = password_hash($clientPassword . $clientSalt, PASSWORD_BCRYPT);

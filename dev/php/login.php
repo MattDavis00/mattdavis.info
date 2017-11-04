@@ -1,7 +1,7 @@
 <?php
 
-$postdata = file_get_contents("php://input");
-$request = json_decode($postdata);
+// Database Connection & Post data
+include 'connection.php';
 
 $clientID = $request->id;
 $clientPass = $request->password;
