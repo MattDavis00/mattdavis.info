@@ -3,25 +3,17 @@
 // Database Connection & Post data
 include 'connection.php';
 
+// Input Variables
 $clientID = $request->id;
 $clientPass = $request->password;
 
-$servername = "localhost";
-$username = "root";
-$password = "94RwMDEY*!H$!D6pRGnq";
-$dbname = "absolute_inventory";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-  die(" - Connection failed: " . $conn->connect_error);
-}
-
+// SQL Query
 $sql = "SELECT * FROM administrator WHERE Email = '$clientID'";
 
+// Execute Query
 $result = $conn->query($sql);
 
+// Output
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
 
@@ -36,28 +28,7 @@ if ($result->num_rows > 0) {
     echo " - Error: " . $sql . $conn->error;
 }
 
+// Close Connection
 $conn->close();
 
-// $result = mysqli_query($conn, $sql);
-//
-// while($row = mysql_fetch_array($result)) {
-// echo $row['fieldname'];
-// }
-
-// $outp = json_encode($result);
-//
-// $conn->close();
-// echo($outp);
-
-// if ($conn->query($sql) === TRUE) {
-//   $result = $conn->query($sql);
-//   $outp ='{"record":['.$result.']}';
-//
-//   $conn->close();
-//   echo($outp);
-// } else {
-//   echo "Error: " . $sql . "<br>" . $conn->error;
-// }
-//
-// $conn->close();
 ?>
