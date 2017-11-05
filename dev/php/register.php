@@ -17,7 +17,7 @@ $clientPasswordHash = password_hash($clientPassword . $clientSalt, PASSWORD_BCRY
 $serverUNIX = time();
 
 // SQL Query
-$sql = "INSERT INTO administrator (Email, Org_ID, Hashed_Pass, Salt, First_Name, Last_Name, Last_Login, Creation_UNIX)
+$sql = "INSERT INTO administrator (Email, Org_ID, Hashed_Pass, Salt, First_Name, Last_Name, Last_Login_UNIX, Creation_UNIX)
 VALUES ('$clientEmail', NULL, '$clientPasswordHash', '$clientSalt', '$clientFirstName', '$clientLastName', NULL, $serverUNIX)";
 
 // Execute Query & Output
