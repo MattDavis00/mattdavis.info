@@ -14,7 +14,7 @@ $sql = "SELECT * FROM administrator WHERE Email = '$clientID'";
 $result = $conn->query($sql);
 
 // Output
-if ($result->num_rows > 0) {
+if ($result->num_rows >= 1) {
     while($row = $result->fetch_assoc()) {
 
       $hashInput = $clientPass . $row["Salt"];
