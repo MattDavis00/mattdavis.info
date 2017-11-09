@@ -18,12 +18,7 @@ $sql = "INSERT INTO administrator (Email, Org_ID, Hashed_Pass, Salt, First_Name,
 VALUES ('$clientEmail', NULL, '$clientPasswordHash', '$clientSalt', '$clientFirstName', '$clientLastName', NULL, $serverUNIX)";
 
 // Execute Query & Output
-if ($conn->query($sql) === TRUE) {
-    echo " - New record created successfully";
-    echo " - This thing works?";
-} else {
-    echo " - Error: " . $sql . "<br>" . $conn->error;
-}
+databaseInsert($sql,$conn);
 
 // Close Connection
 $conn->close();
