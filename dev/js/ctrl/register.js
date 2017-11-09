@@ -27,9 +27,6 @@ angular.module("my-app").controller("registerCtrl", ["$scope", "$http", function
 
       request.then(function(response) {
         $scope.results = response.data;
-      });
-
-      request.then(function(data) {
         $scope.info = " - You have registered successfully. Email: " + $scope.registerData.email + " Password: " + $scope.registerData.password + " Repeat Password: " + $scope.registerData.repeatPassword + " First Name: " + $scope.registerData.firstName + " Last Name: " + $scope.registerData.lastName;
       });
     }
