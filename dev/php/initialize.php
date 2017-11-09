@@ -5,7 +5,7 @@ include 'connection.php';
 
 // Variables to be passed into the checkCookie function
 $expirationUNIX = $serverUNIX + (86400 * 60); // Cookie expires in 60 days if user does not connect.
-$randomID = mcrypt_create_iv(64, MCRYPT_DEV_URANDOM);
+$randomID = bin2hex(random_bytes(32)); // Output is a 64 character string as the bytes are converted into hexidecimal, characters vary from 0-9 a-f.
 
 checkCookie("deviceID",$randomID,$expirationUNIX);
 checkCookie("deviceInitialUNIX",$serverUNIX,$expirationUNIX);
