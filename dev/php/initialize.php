@@ -3,25 +3,22 @@
 // Database Connection & Post data
 include 'connection.php';
 
-// Variables to be passed into the checkCookie function
+// Check that the cookie is set and then update expiration.
 $expirationUNIX = $serverUNIX + (86400 * 60); // Cookie expires in 60 days if user does not connect.
-$randomID = bin2hex(random_bytes(32)); // Output is a 64 character string as the bytes are converted into hexidecimal, characters vary from 0-9 a-f.
-
-checkCookie("deviceID",$randomID,$expirationUNIX);
-checkCookie("deviceInitialUNIX",$serverUNIX,$expirationUNIX);
-
-// Check cookie function
-function checkCookie($cookieName,$defaultValue,$expiration){
-  $value = $_COOKIE[$cookieName]; // $_COOKIE is only referenced once
-  if(isset($value)) {
-    setcookie($cookieName, $value, $expiration, "/");
-    echo " - Cookie '$cookieName' is set!";
-    echo " Value is: '$value'";
-  } else {
-    echo " - '$cookieName' cookie is not set!";
-    // Set the same data in the cookie
-    setcookie($cookieName, $defaultValue, $expiration, "/");
-  }
+if(isset($_COOKIE["Absolute_Inventory"])) {
+  $existingData = $_COOKIE["Absolute_Inventory"];
+  setcookie("Absolute_Inventory", $existingData, $expirationUNIX, "/"); // Updates the existing cookie with a new expiration time
+  echo " - Cookie is set!";
+  echo " Value is: '$existingData'";
+} else {
+  echo " - Cookie is empty!";
+  // New cookie data
+  $newCookieData = array(
+    "deviceID" => bin2hex(random_bytes(32)), // Output is a 64 character string as the bytes are converted into hexidecimal, characters vary from 0-9 a-f.
+    "deviceInitialUNIX" => $serverUNIX
+  );
+  $newCookieJSON = json_encode($newCookieData); // JSON encode cookie data.
+  setcookie("Absolute_Inventory", $newCookieJSON, $expirationUNIX, "/"); // Creates new cookie if one is not
 }
 
 // Create session variables and variable for MySQL
