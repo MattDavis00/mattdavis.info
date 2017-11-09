@@ -1,5 +1,8 @@
 <?php
 
+// Create session
+session_start();
+
 // Credentials
 $servername = "localhost";
 $username = "root";
@@ -13,25 +16,20 @@ if ($conn->connect_error) {
     die(" - Connection failed: " . $conn->connect_error);
 }
 
-// Post Data
+// Post data
 $postData = file_get_contents("php://input");
 $request = json_decode($postData);
 
-// UNIX Time
+// UNIX time
 $serverUNIX = time();
 
-// Check The User's Cookie
-if(!isset($_COOKIE[$cookieName])) {
-    echo "Cookie named '" . $cookie_name . "' is not set!";
-    $cookieDeviceID = "gu67g76g7h76g76f76f7t7";
-    $cookieDeviceIntialUNIX = $serverUNIX;
-    $cookieExpirationUNIX = $serverUNIX + (86400 * 365);
-    // Not Correct Format, To Fix
-    setcookie("Absolute Inventory", $cookieDeviceID, $cookieDeviceIntialUNIX, $cookieExpirationUNIX, "/");
-} else {
-    echo "Cookie '" . $cookie_name . "' is set!<br>";
-    echo "Value is: " . $_COOKIE[$cookie_name];
-
+function databaseInsert($sql,$conn){
+  // Execute Query & Output
+  if ($conn->query($sql) === TRUE) {
+      echo " - Database insert executed.";
+  } else {
+      echo " - Error: " . $sql . "<br>" . $conn->error;
+  }
 }
 
 ?>
