@@ -7,6 +7,17 @@ include 'connection.php';
 $clientID = $request->id;
 $clientPass = $request->password;
 
+$verified = authenicateLogin($clientID, $clientPass, $conn);
+
+if ($verified == TRUE){
+  $_SESSION["loggedIn"] = TRUE;
+  echo " - Logged in (User Verified)";
+} else {
+  $_SESSION["loggedIn"] = FALSE;
+  echo " - Login Unsuccessful";
+}
+
+function authenicateLogin($clientID, $clientPass, $conn){
 // SQL Query
 $sql = "SELECT * FROM administrator WHERE Email = '$clientID'";
 
@@ -20,14 +31,15 @@ if ($result->num_rows >= 1) {
       $hashInput = $clientPass . $row["Salt"];
 
       if (password_verify($hashInput, $row["Hashed_Pass"])){
-        echo " - User Verified!";
-      }
         echo " - Email: " . $row["Email"] . " - Password: " . $row["Hashed_Pass"];
+        return TRUE;
+      }
     }
 } else {
     echo " - Error: " . $sql . $conn->error;
+    return FALSE;
 }
-
+}
 // Close Connection
 $conn->close();
 
