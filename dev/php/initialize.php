@@ -21,9 +21,12 @@ if(isset($_COOKIE["Absolute_Inventory"])) {
   setcookie("Absolute_Inventory", $newCookieJSON, $expirationUNIX, "/"); // Creates new cookie if one is not
 }
 
+// Decode JSON cookie data into linked array
+$cookieData = json_decode($_COOKIE["Absolute_Inventory"], true);
+
 // Create session variables and variable for MySQL
-$deviceID = $_SESSION["deviceID"] = $_COOKIE["deviceID"];
-$deviceInitialUNIX = $_SESSION["deviceInitialUNIX"] = $_COOKIE["deviceInitialUNIX"];
+$deviceID = $_SESSION["deviceID"] = $cookieData["deviceID"];
+$deviceInitialUNIX = $_SESSION["deviceInitialUNIX"] = $cookieData["deviceInitialUNIX"];
 $storeID = $_SESSION["storeID"] = NULL;
 $orgID = $_SESSION["orgID"] = NULL;
 $userID = $_SESSION["userID"] = NULL;
