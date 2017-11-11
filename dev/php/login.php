@@ -29,11 +29,12 @@ function authenicateLogin($clientID, $clientPass, $conn)
     if ($result->num_rows >= 1) {
         while ($row = $result->fetch_assoc()) {
             $hashInput = $clientPass . $row["Salt"];
-
-            if (password_verify($hashInput, $row["Hashed_Pass"])) {
+            echo " - deviceAuth value: ".$_SESSION["deviceAuth"];
+            if (password_verify($hashInput, $row["Hashed_Pass"]) && ($_SESSION["deviceAuth"] == true)) {
                 echo " - Email: " . $row["Email"] . " - Password: " . $row["Hashed_Pass"];
                 return true;
             }
+            return false;
         }
     } else {
         echo " - Error: " . $sql . $conn->error;
