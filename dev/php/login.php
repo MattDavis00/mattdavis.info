@@ -9,38 +9,36 @@ $clientPass = $request->password;
 
 $verified = authenicateLogin($clientID, $clientPass, $conn);
 
-if ($verified == TRUE){
-  $_SESSION["loggedIn"] = TRUE;
-  echo " - Logged in (User Verified)";
+if ($verified == true) {
+    $_SESSION["loggedIn"] = true;
+    echo " - Logged in (User Verified)";
 } else {
-  $_SESSION["loggedIn"] = FALSE;
-  echo " - Login Unsuccessful";
+    $_SESSION["loggedIn"] = false;
+    echo " - Login Unsuccessful";
 }
 
-function authenicateLogin($clientID, $clientPass, $conn){
-// SQL Query
-$sql = "SELECT * FROM administrator WHERE Email = '$clientID'";
+function authenicateLogin($clientID, $clientPass, $conn)
+{
+    // SQL Query
+    $sql = "SELECT * FROM administrator WHERE Email = '$clientID'";
 
-// Execute Query
-$result = $conn->query($sql);
+    // Execute Query
+    $result = $conn->query($sql);
 
-// Output
-if ($result->num_rows >= 1) {
-    while($row = $result->fetch_assoc()) {
+    // Output
+    if ($result->num_rows >= 1) {
+        while ($row = $result->fetch_assoc()) {
+            $hashInput = $clientPass . $row["Salt"];
 
-      $hashInput = $clientPass . $row["Salt"];
-
-      if (password_verify($hashInput, $row["Hashed_Pass"])){
-        echo " - Email: " . $row["Email"] . " - Password: " . $row["Hashed_Pass"];
-        return TRUE;
-      }
+            if (password_verify($hashInput, $row["Hashed_Pass"])) {
+                echo " - Email: " . $row["Email"] . " - Password: " . $row["Hashed_Pass"];
+                return true;
+            }
+        }
+    } else {
+        echo " - Error: " . $sql . $conn->error;
+        return false;
     }
-} else {
-    echo " - Error: " . $sql . $conn->error;
-    return FALSE;
-}
 }
 // Close Connection
 $conn->close();
-
-?>

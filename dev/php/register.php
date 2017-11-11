@@ -18,9 +18,7 @@ $sql = "INSERT INTO administrator (Email, Org_ID, Hashed_Pass, Salt, First_Name,
 VALUES ('$clientEmail', NULL, '$clientPasswordHash', '$clientSalt', '$clientFirstName', '$clientLastName', NULL, $serverUNIX)";
 
 // Execute Query & Output
-databaseInsert($sql,$conn);
+databaseInsert($sql, $conn);
 
 // Close Connection
 $conn->close();
-
-?>

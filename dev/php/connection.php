@@ -23,13 +23,12 @@ $request = json_decode($postData);
 // UNIX time
 $serverUNIX = time();
 
-function databaseInsert($sql,$conn){
-  // Execute Query & Output
-  if ($conn->query($sql) === TRUE) {
-      echo " - Database insert executed.";
-  } else {
-      echo " - Error: " . $sql . "<br>" . $conn->error;
-  }
+function databaseInsert($sql, $conn)
+{
+    // Execute Query & Output
+    if ($conn->query($sql) === true) {
+        echo " - Database insert executed.";
+    } else {
+        echo " - Error: " . $sql . "<br>" . $conn->error;
+    }
 }
-
-?>
