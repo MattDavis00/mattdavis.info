@@ -1,59 +1,135 @@
-body,
 html {
-  height: 100%;
+  line-height: 1.25;
 }
 
-#original_chart {
-  position: relative;
-  height: 50%;
-  width: 50%;
+#top-nav {
+  background: #00a0df;
+  box-shadow: none;
+  height: 50px;
 }
 
-.bg {
-  background-image: url("/img/gradient.jpg");
-  height: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.custom-restricted-width {
+#side-nav {
+  box-shadow: none;
   position: fixed;
-  width: 50px;
   top: 50px;
   bottom: 0;
+  width: 50px;
+  background: #11181c;
 }
 
-.pure-menu {
-  height: 100%;
+#dynamic-canvas {
+  position: absolute;
+  top: 50px;
+  bottom: 0px;
+  left: 50px;
+  right: 0px;
+  padding: 10px;
+  background: #cdcfd4;
 }
 
-.pure-menu-heading{
-  background-color: #212A39;
+#nav-logo {
+  width: 45px;
+  height: 45px;
+  padding-left: 3px;
+  padding-right: 0px;
 }
 
-.pure-menu-link:hover {
-  background-color: #212A39;
+#nav-name {
+  line-height: 1;
+  margin-top: 0px;
+  font-size: 20px;
+  text-transform: uppercase;
+  padding-left: 10px;
 }
 
-.top-bar ul{
-  background: #00a0df
+#side-nav-icon-top {
+  padding-top: 5px;
 }
 
-#title{
-  color: #FFFFFF
+#top-nav-logout {
+  margin-top: 25px;
+  margin-right: 9px;
+  margin-left: 10px;
+  padding-right: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
 }
 
-.top-bar{
-  padding: 5px
+#top-nav-logout:hover {
+  border: 1px solid rgba(255, 255, 255, 1);
+}
+
+#login-form {
+  margin: 0 auto;
+  width: 300px;
+}
+
+#login-button{
+  width: 150px;
+}
+
+.uk-navbar-nav>li>a {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.uk-navbar-nav>li>button, .uk-navbar-nav>li>a {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.uk-navbar-nav>li>a:hover, .uk-navbar-nav>li.uk-active>a, .uk-logo:hover, .uk-nav>li>a:hover, .uk-nav>li.uk-active>a, .uk-navbar-nav>li>button:hover {
+  color: rgba(255, 255, 255, 1);
+}
+
+.nav-divider {
+  padding-left: 4px;
+  padding-right: 0px;
+  height: 40px;
+}
+
+.side-nav-icon {
+  padding-left: 7px;
+  padding-bottom: 10px;
+}
+
+.center-div {
+  margin: 0 auto;
+}
+
+.card-slim {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.form-footer{
+  margin-top: 10px;
+}
+
+.input-field{
+  width: 300px;
 }
 
 /* Colour Palette*/
 
-.color-1 { background: #00a0df }
-.color-2 { background: #11181c }
-.color-3 { background: #a9afb1 }
-.color-4 { background: #FFFFFF }
+.color-1 {
+  background: #00a0df;
+}
 
-.text-1 { color: #FFFFFF }
-.text-2 { color: #a9afb1 }
+.color-2 {
+  background: #11181c;
+}
+
+.color-3 {
+  background: #a9afb1;
+}
+
+.color-4 {
+  background: #FFFFFF;
+}
+
+.text-1 {
+  color: #FFFFFF;
+}
+
+.text-2 {
+  color: #a9afb1;
+}
