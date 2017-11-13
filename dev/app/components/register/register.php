@@ -10,7 +10,7 @@ $clientFirstName = $request->firstName;
 $clientLastName = $request->lastName;
 
 // Generate Salt & Hash
-$clientSalt = mcrypt_create_iv(16, MCRYPT_DEV_URANDOM);
+$clientSalt = bin2hex(random_bytes(8));
 $clientPasswordHash = password_hash($clientPassword . $clientSalt, PASSWORD_BCRYPT);
 
 // SQL Query
