@@ -19,8 +19,7 @@ if (isset($_COOKIE["Absolute_Inventory"])) {
   );
     $newCookieJSON = json_encode($newCookieData); // JSON encode cookie data.
     setcookie("Absolute_Inventory", $newCookieJSON, $expirationUNIX, "/"); // Creates new cookie
-    header("Location: #"); // Reload the login page forcing the cookie that has just been set to be transferred.
-    die(); // Kill the script.
+    $_COOKIE["Absolute_Inventory"] = $newCookieJSON; // Improved execution times by setting the value locally. 
 }
 
 // Decode JSON cookie data into linked array
