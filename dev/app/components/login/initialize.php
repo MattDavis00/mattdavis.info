@@ -1,7 +1,7 @@
 <?php
 
 // Database Connection & Post data
-include 'connection.php';
+include ($_SERVER["DOCUMENT_ROOT"]."/dev/app/shared/include/connection.php");
 
 // Check that the cookie is set and then update expiration.
 $expirationUNIX = $serverUNIX + (86400 * 60); // Cookie expires in 60 days if user does not connect.
@@ -18,7 +18,9 @@ if (isset($_COOKIE["Absolute_Inventory"])) {
     "deviceInitialUNIX" => $serverUNIX
   );
     $newCookieJSON = json_encode($newCookieData); // JSON encode cookie data.
-    setcookie("Absolute_Inventory", $newCookieJSON, $expirationUNIX, "/"); // Creates new cookie if one is not
+    setcookie("Absolute_Inventory", $newCookieJSON, $expirationUNIX, "/"); // Creates new cookie
+    header("Location: #"); // Reload the login page forcing the cookie that has just been set to be transferred.
+    die(); // Kill the script.
 }
 
 // Decode JSON cookie data into linked array

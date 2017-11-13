@@ -6,7 +6,7 @@ angular.module("my-app").controller("loginCtrl", ["$scope", "$http", function($s
 
   var request = $http({
     method: "post",
-    url: "php/initialize.php",
+    url: "app/components/login/initialize.php",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded"
     }
@@ -21,7 +21,7 @@ angular.module("my-app").controller("loginCtrl", ["$scope", "$http", function($s
 
     var request = $http({
       method: "post",
-      url: "php/login.php",
+      url: "app/components/login/login.php",
       data: {
         id: $scope.loginData.id,
         password: $scope.loginData.password

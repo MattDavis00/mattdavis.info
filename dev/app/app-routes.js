@@ -3,10 +3,12 @@ var app = angular.module("my-app", ["ngRoute"]);
 app.config(function($routeProvider) {
   $routeProvider
     .when("/", {
-      templateUrl: "js/views/login.html"
+      templateUrl: "app/components/login/loginView.html",
+      controller: "loginCtrl"
     })
     .when("/register", {
-      templateUrl: "js/views/register.html"
+      templateUrl: "app/components/register/registerView.html",
+      controller: "registerCtrl"
     })
     .when("/query", {
       template: "<p>Query Placeholder</p>"

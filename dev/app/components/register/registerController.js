@@ -13,7 +13,7 @@ angular.module("my-app").controller("registerCtrl", ["$scope", "$http", function
     } else {
       var request = $http({
         method: "post",
-        url: "php/register.php",
+        url: "app/components/register/register.php",
         data: {
           email: $scope.registerData.email,
           password: $scope.registerData.password,

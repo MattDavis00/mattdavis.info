@@ -1,7 +1,7 @@
 <?php
 
 // Database Connection & Post data
-include 'connection.php';
+include ($_SERVER["DOCUMENT_ROOT"]."/dev/app/shared/include/connection.php");
 
 // Input Variables
 $clientEmail = $request->email;
