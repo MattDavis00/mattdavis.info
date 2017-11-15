@@ -11,7 +11,8 @@ app.config(function($routeProvider) {
       controller: "registerCtrl"
     })
     .when("/query", {
-      template: "<p>Query Placeholder</p>"
+      templateUrl: "app/components/query/queryView.html",
+      controller: "queryCtrl"
     })
     .when("/inventory", {
       template: "<p>Inventory Placeholder</p>"
