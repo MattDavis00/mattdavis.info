@@ -1,37 +1,33 @@
-<div>
+<div class="uk-card uk-card-default uk-card-body uk-position-center uk-flex-center uk-text-center card-slim">
 
-  <div class="uk-card uk-card-default uk-card-body uk-position-center uk-flex-center uk-text-center card-slim">
+  <form id="login-form" ng-submit="processLogin()">
 
-    <form id="login-form" ng-submit="processLogin()">
-
-      <div class="center-div">
-        <div class="uk-margin">
-          <div class="uk-inline">
-            <span class="uk-form-icon" uk-icon="icon: user"></span>
-            <input class="uk-input input-field" ng-model="loginData.id" placeholder="ID" type="text" required>
-          </div>
-        </div>
-
-        <div class="uk-margin">
-          <div class="uk-inline">
-            <span class="uk-form-icon" uk-icon="icon: lock"></span>
-            <input class="uk-input input-field" ng-model="loginData.password" placeholder="Password" type="password" required>
-          </div>
-        </div>
-
+    <div class="center-div">
+      <div class="uk-margin">
         <div class="uk-inline">
-          <button id="login-button" type="submit" class="uk-button uk-button-primary uk-button-small">Login</button>
-        </div>
-
-        <div class="form-footer">
-          <a href="#!register">New organisation? Register!</a>
+          <span class="uk-form-icon" uk-icon="icon: user"></span>
+          <input class="uk-input input-field" ng-model="loginData.id" placeholder="ID" type="text" required>
         </div>
       </div>
 
-    </form>
+      <div class="uk-margin">
+        <div class="uk-inline">
+          <span class="uk-form-icon" uk-icon="icon: lock"></span>
+          <input class="uk-input input-field" ng-model="loginData.password" placeholder="Password" type="password" required>
+        </div>
+      </div>
 
-    <pre ng-model="info">{{info}}{{results}}</pre>
+      <div class="uk-inline">
+        <button id="login-button" type="submit" class="uk-button uk-button-primary uk-button-small">Login</button>
+      </div>
 
-  </div>
+      <div class="form-footer">
+        <a href="#!register">New organisation? Register!</a>
+      </div>
+    </div>
+
+  </form>
+
+  <pre ng-model="info">{{info}}{{results}}</pre>
 
 </div>
