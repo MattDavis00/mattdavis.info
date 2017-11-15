@@ -2,7 +2,6 @@ angular.module("my-app").controller("loginCtrl", ["$scope", "$http", function($s
 
   $scope.loginData = {};
   $scope.results = "";
-  $scope.url = "php/login.php";
 
   var request = $http({
     method: "post",
