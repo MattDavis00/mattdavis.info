@@ -1,10 +1,7 @@
 angular.module("my-app").controller("registerCtrl", ["$scope", "$http", function($scope, $http) {
 
   $scope.registerData = {};
-
   $scope.error = "";
-
-  $scope.url = "php/register.php";
 
   $scope.processRegister = function() {
 
