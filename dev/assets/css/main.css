@@ -67,6 +67,16 @@ html {
   width: 150px;
 }
 
+#background-card{
+  width: 98%;
+  height: 95%;
+  padding: 20px;
+}
+
+#query-search{
+  height: 31px;
+}
+
 .uk-navbar-nav>li>a {
   padding-left: 10px;
   padding-right: 10px;
