@@ -1,0 +1,19 @@
+<div id="background-card" class="uk-card uk-card-default uk-card-body uk-position-center uk-flex-center card-slim">
+
+  <form id="query-form" ng-submit="processQuery()">
+
+    <div class="center-div">
+      <div class="uk-margin">
+        <div class="uk-inline">
+          <span class="uk-form-icon" uk-icon="icon: search"></span>
+          <input id="query-search" class="uk-input input-field" ng-model="queryData.id" placeholder="ID" type="text">
+          <button id="query-button" type="submit" class="uk-button uk-button-primary uk-button-small">Login</button>
+        </div>
+      </div>
+    </div>
+
+  </form>
+
+  <pre ng-model="info">{{info}}{{results}}</pre>
+
+</div>
