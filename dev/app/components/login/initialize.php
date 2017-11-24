@@ -1,7 +1,7 @@
 <?php
 // Test commit for git over https.
 // Database Connection & Post data
-include ($_SERVER["DOCUMENT_ROOT"]."/dev/app/shared/include/connection.php");
+include($_SERVER["DOCUMENT_ROOT"]."/dev/app/shared/include/connection.php");
 
 // Check that the cookie is set and then update expiration.
 $expirationUNIX = $serverUNIX + (86400 * 60); // Cookie expires in 60 days if user does not connect.
@@ -25,18 +25,19 @@ if (isset($_COOKIE["Absolute_Inventory"])) {
 // Decode JSON cookie data into linked array
 $cookieData = json_decode($_COOKIE["Absolute_Inventory"], true);
 
-// Create session variables and variable for MySQL
-$deviceID = $_SESSION["deviceID"] = $cookieData["deviceID"];
-$deviceInitialUNIX = $_SESSION["deviceInitialUNIX"] = $cookieData["deviceInitialUNIX"];
-$storeID = $_SESSION["storeID"] = null;
-$orgID = $_SESSION["orgID"] = null;
-$userID = $_SESSION["userID"] = null;
-$deviceAuth = $_SESSION["deviceAuth"] = false;
-$loggedIn = $_SESSION["loggedIn"] = false;
+// Create session variables to store user and device data.
+$_SESSION["deviceID"] = $cookieData["deviceID"];
+$_SESSION["deviceInitialUNIX"] = $cookieData["deviceInitialUNIX"];
+$_SESSION["userID"] = null;
+$_SESSION["storeID"] = null;
+$_SESSION["orgID"] = null;
+$_SESSION["administrator"] = false;
+$_SESSION["deviceAuth"] = false;
+$_SESSION["loggedIn"] = false;
 
 
 // Query database for any existing devices with this ID
-$sql = "SELECT * FROM device WHERE Device_ID = '$deviceID'";
+$sql = "SELECT * FROM device WHERE Device_ID = '".$_SESSION["deviceID"]."'";
 
 // Execute Query
 $result = $conn->query($sql);
@@ -47,7 +48,7 @@ if ($result->num_rows == 0) {
 
     // New device SQL query
     $sql = "INSERT INTO device (Device_ID, Device_Login_UNIX, Initial_UNIX)
-  VALUES ('$deviceID', $serverUNIX, $deviceInitialUNIX)";
+  VALUES ('" .$_SESSION["deviceID"]. "', $serverUNIX, " .$_SESSION["deviceInitialUNIX"]. ")";
 
     // Execute Query & Output
     databaseInsert($sql, $conn);
@@ -56,15 +57,15 @@ if ($result->num_rows == 0) {
 }
 
 // Query database for devices with this ID
-$sql = "SELECT * FROM device WHERE Device_ID = '$deviceID'";
+$sql = "SELECT * FROM device WHERE Device_ID = '" .$_SESSION["deviceID"]. "'";
 
 // Execute Query
 $result = $conn->query($sql);
 
 if ($result->num_rows == 1) {
     while ($row = $result->fetch_assoc()) {
-        if ($row["Initial_UNIX"] == $deviceInitialUNIX) {
-            $deviceAuth = $_SESSION["deviceAuth"] = true;
+        if ($row["Initial_UNIX"] == $_SESSION["deviceInitialUNIX"]) {
+            $_SESSION["deviceAuth"] = true;
             echo " - deviceAuth = " .$_SESSION["deviceAuth"];
         }
     }
