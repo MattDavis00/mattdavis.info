@@ -33,7 +33,9 @@ angular.module("my-app").controller("loginCtrl", ["$scope", "$http", function($s
     request.then(function(response) {
       $scope.results = response.data;
       $scope.info = " - processLogin() function ran!";
+      $("#side-nav-icon-all").show();
     });
   }
+  $("#side-nav-icon-all").hide();
 
 }]);
