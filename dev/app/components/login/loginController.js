@@ -39,7 +39,7 @@ angular.module("my-app").controller("loginCtrl", ["$scope", "$http", function($s
         } else {
           $("#storeID").html("Store ID<br>"+returnData.storeID);
         }
-        $("#userID").html("Store ID<br>"+returnData.userID);
+        $("#userID").html("User ID<br>"+returnData.userID);
         $(".authenticated-nav-elements").show();
       }
       $scope.info = " - processLogin() function ran!";
