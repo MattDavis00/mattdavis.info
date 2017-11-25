@@ -1,21 +1,28 @@
 <?php
 
 // Database Connection & Post data
-include ($_SERVER["DOCUMENT_ROOT"]."/dev/app/shared/include/connection.php");
+include($_SERVER["DOCUMENT_ROOT"]."/dev/app/shared/include/connection.php");
 
 // Input Variables
 $clientID = $request->id;
 $clientPass = $request->password;
 
-$verified = authenicateLogin($clientID, $clientPass, $conn);
+// Output Array
+$outputArray = array();
+
+$verified = authenicateLogin($clientID, $clientPass, $conn); // Calls the authenticateLogin function
 
 if ($verified == true) {
-    $_SESSION["loggedIn"] = true;
-    echo " - Logged in (User Verified)";
+  $outputArray["userID"] = $_SESSION["userID"];
+  $outputArray["orgID"] = $_SESSION["orgID"];
+  $outputArray["administrator"] = $_SESSION["administrator"];
+  $outputArray["loggedIn"] = $_SESSION["loggedIn"];
+  $outputArray["verification"] = true;
 } else {
     $_SESSION["loggedIn"] = false;
-    echo " - Login Unsuccessful";
 }
+
+echo json_encode($outputArray);
 
 function authenicateLogin($clientID, $clientPass, $conn)
 {
