@@ -26,27 +26,37 @@ echo json_encode($outputArray);
 
 function authenicateLogin($clientID, $clientPass, $conn)
 {
-    // SQL Query
-    $sql = "SELECT * FROM administrator WHERE Email = '$clientID'";
+    if (gettype($clientID) == "integer") { // The user is not an administrator
+        $sql = "SELECT * FROM user WHERE ID = '" .$clientID. "'";
+    } elseif (gettype($clientID) == "string") { // The user is an administrator
+        // SQL Query
+        $sql = "SELECT * FROM administrator WHERE Email = '" .$clientID. "'";
 
-    // Execute Query
-    $result = $conn->query($sql);
+        // Execute Query
+        $result = $conn->query($sql);
 
-    // Output
-    if ($result->num_rows >= 1) {
-        while ($row = $result->fetch_assoc()) {
-            $hashInput = $clientPass . $row["Salt"];
-            echo " - deviceAuth value: ".$_SESSION["deviceAuth"];
-            if (password_verify($hashInput, $row["Hashed_Pass"]) && ($_SESSION["deviceAuth"] == true)) {
-                echo " - Email: " . $row["Email"] . " - Password: " . $row["Hashed_Pass"];
-                return true;
+        // Output
+        if ($result->num_rows == 1) {
+            while ($row = $result->fetch_assoc()) {
+                $hashInput = $clientPass . $row["Salt"];
+                if (password_verify($hashInput, $row["Hashed_Pass"]) && ($_SESSION["deviceAuth"] == true)) { // If the password matches and the device has been authenticated.
+                    $_SESSION["userID"] = $row["Email"]; // Set userID session variable to the administrators email.
+                    $_SESSION["orgID"] = $row["Org_ID"]; // Administrators do not need to be on an organisations device, therefore don't check if there is an entry in the authenication table, just set the session value.
+                    $_SESSION["administrator"] = true; // Set administrator session variable to true.
+                    $_SESSION["loggedIn"] = true; // Sets the loggedIn session variable to true.
+                    return true;
+                }
+                return false;
             }
+        } else {
+            echo " - Error: " . $sql . $conn->error;
             return false;
         }
     } else {
-        echo " - Error: " . $sql . $conn->error;
+        echo " - Data Type for ID is Invalid";
         return false;
     }
 }
+
 // Close Connection
 $conn->close();
