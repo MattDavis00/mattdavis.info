@@ -28,5 +28,6 @@ angular.module("my-app").controller("registerCtrl", ["$scope", "$http", function
       });
     }
   }
+  $(".authenticated-nav-elements").hide(); // Hide the top-nav and side-nav icons
 
 }]);
