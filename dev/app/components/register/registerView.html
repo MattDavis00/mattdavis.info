@@ -1,58 +1,54 @@
-<div>
+<div class="uk-card uk-card-default uk-card-body uk-position-center uk-flex-center uk-text-center card-slim">
 
-  <div class="uk-card uk-card-default uk-card-body uk-position-center uk-flex-center uk-text-center card-slim">
+  <form id="login-form" ng-submit="processRegister()">
 
-    <form id="login-form" ng-submit="processRegister()">
-
-      <div class="center-div">
-        <div class="uk-margin">
-          <div class="uk-inline">
-            <span class="uk-form-icon" uk-icon="icon: user"></span>
-            <input class="uk-input input-field" ng-model="registerData.email" placeholder="Email" type="email" required>
-          </div>
-        </div>
-
-        <div class="uk-margin">
-          <div class="uk-inline">
-            <span class="uk-form-icon" uk-icon="icon: lock"></span>
-            <input class="uk-input input-field" ng-model="registerData.password" placeholder="Password" type="password" required>
-          </div>
-        </div>
-
-        <div class="uk-margin">
-          <div class="uk-inline">
-            <span class="uk-form-icon" uk-icon="icon: lock"></span>
-            <input class="uk-input input-field" ng-model="registerData.repeatPassword" placeholder="Repeat Password" type="password" required>
-          </div>
-        </div>
-
-        <div class="uk-margin">
-          <div class="uk-inline">
-            <span class="uk-form-icon" uk-icon="icon: info"></span>
-            <input class="uk-input input-field" ng-model="registerData.firstName" placeholder="First Name" type="text" required>
-          </div>
-        </div>
-
-        <div class="uk-margin">
-          <div class="uk-inline">
-            <span class="uk-form-icon" uk-icon="icon: info"></span>
-            <input class="uk-input input-field" ng-model="registerData.lastName" placeholder="Last Name" type="text" required>
-          </div>
-        </div>
-
+    <div class="center-div">
+      <div class="uk-margin">
         <div class="uk-inline">
-          <button id="login-button" type="submit" class="uk-button uk-button-primary uk-button-small">Register</button>
-        </div>
-
-        <div class="form-footer">
-          <a href="#">Have an account? Login!</a>
+          <span class="uk-form-icon" uk-icon="icon: user"></span>
+          <input class="uk-input input-field" ng-model="registerData.email" placeholder="Email" type="email" required>
         </div>
       </div>
 
-    </form>
+      <div class="uk-margin">
+        <div class="uk-inline">
+          <span class="uk-form-icon" uk-icon="icon: lock"></span>
+          <input class="uk-input input-field" ng-model="registerData.password" placeholder="Password" type="password" required>
+        </div>
+      </div>
 
-    <pre ng-model="info">{{info}}{{error}}{{results}}</pre>
+      <div class="uk-margin">
+        <div class="uk-inline">
+          <span class="uk-form-icon" uk-icon="icon: lock"></span>
+          <input class="uk-input input-field" ng-model="registerData.repeatPassword" placeholder="Repeat Password" type="password" required>
+        </div>
+      </div>
 
-  </div>
+      <div class="uk-margin">
+        <div class="uk-inline">
+          <span class="uk-form-icon" uk-icon="icon: info"></span>
+          <input class="uk-input input-field" ng-model="registerData.firstName" placeholder="First Name" type="text" required>
+        </div>
+      </div>
+
+      <div class="uk-margin">
+        <div class="uk-inline">
+          <span class="uk-form-icon" uk-icon="icon: info"></span>
+          <input class="uk-input input-field" ng-model="registerData.lastName" placeholder="Last Name" type="text" required>
+        </div>
+      </div>
+
+      <div class="uk-inline">
+        <button id="login-button" type="submit" class="uk-button uk-button-primary uk-button-small">Register</button>
+      </div>
+
+      <div class="form-footer">
+        <a href="#">Have an account? Login!</a>
+      </div>
+    </div>
+
+  </form>
+
+  <pre ng-model="info">{{info}}{{error}}{{results}}</pre>
 
 </div>
