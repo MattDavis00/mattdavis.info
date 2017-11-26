@@ -38,11 +38,10 @@ angular.module("my-app").controller("loginCtrl", ["$scope", "$http", function($s
           $("#storeID").html("Store ID<br>Administrator");
           window.location.href = '#!query'; // Upon successful admin login, user is redirected to the query page.
         } else {
-          $("#storeID").html("Store ID<br>"+returnData.storeID);
+          $("#storeID").html("Store ID<br>" + returnData.storeID);
           window.location.href = '#!query'; // Upon successful user login, user is redirected to the query page.
         }
-        $("#userID").html("User ID<br>"+returnData.userID);
-        $(".authenticated-nav-elements").show();
+        $("#userID").html("User ID<br>" + returnData.userID);
       }
       $scope.info = " - processLogin() function ran!";
     });
