@@ -21,5 +21,5 @@ angular.module("my-app").controller("queryCtrl", ["$scope", "$http", function($s
       $scope.info = " - query.php ran!";
     });
   }
-
+  $(".authenticated-nav-elements").show(); // Show the top-nav and side-nav icons
 }]);
