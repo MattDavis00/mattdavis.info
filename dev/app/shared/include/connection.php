@@ -30,8 +30,11 @@ function databaseInsert($sql, $conn)
 {
     // Execute Query & Output
     if ($conn->query($sql) === true) {
-        echo " - Database insert executed.";
+        $value["success"] = true;
+        return $value;
     } else {
-        echo " - Error: " . $sql . "<br>" . $conn->error;
+        $value["success"] = false;
+        $value["error"] = " - SQL Error: " . $sql . " - Reason: " . $conn->error;
+        return $value;
     }
 }
