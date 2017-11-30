@@ -23,8 +23,11 @@ angular.module("my-app").controller("registerCtrl", ["$scope", "$http", function
       });
 
       request.then(function(response) {
-        $scope.results = response.data;
-        $scope.info = " - You have registered successfully. Email: " + $scope.registerData.email + " Password: " + $scope.registerData.password + " Repeat Password: " + $scope.registerData.repeatPassword + " First Name: " + $scope.registerData.firstName + " Last Name: " + $scope.registerData.lastName;
+        if (response.data.registerSuccess) {
+          window.location.href = '#'; // Upon successful registration, user is redirected to the login page.
+        } else {
+          $scope.info = " - Registration failed: Email is already in use.";
+        }
       });
     }
   }
