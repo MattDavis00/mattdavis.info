@@ -20,6 +20,9 @@ if ($conn->connect_error) {
 $postData = file_get_contents("php://input");
 $request = json_decode($postData);
 
+// Output Array
+$outputArray = array();
+
 // UNIX time
 $serverUNIX = time();
 

@@ -7,17 +7,14 @@ include($_SERVER["DOCUMENT_ROOT"]."/dev/app/shared/include/connection.php");
 $clientID = $request->id;
 $clientPass = $request->password;
 
-// Output Array
-$outputArray = array();
-
 $verified = authenicateLogin($clientID, $clientPass, $conn); // Calls the authenticateLogin function
 
 if ($verified == true) {
-  $outputArray["userID"] = $_SESSION["userID"];
-  $outputArray["orgID"] = $_SESSION["orgID"];
-  $outputArray["administrator"] = $_SESSION["administrator"];
-  $outputArray["loggedIn"] = $_SESSION["loggedIn"];
-  $outputArray["verification"] = true;
+    $outputArray["userID"] = $_SESSION["userID"];
+    $outputArray["orgID"] = $_SESSION["orgID"];
+    $outputArray["administrator"] = $_SESSION["administrator"];
+    $outputArray["loggedIn"] = $_SESSION["loggedIn"];
+    $outputArray["verification"] = true;
 } else {
     $_SESSION["loggedIn"] = false;
 }
