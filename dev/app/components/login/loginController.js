@@ -1,4 +1,4 @@
-angular.module("my-app").controller("loginCtrl", ["$scope", "$http", function($scope, $http) {
+angular.module("my-app").controller("loginCtrl", ["$scope", "$http", "localVariables", function($scope, $http, localVariables) {
 
   $scope.loginData = {};
   $scope.results = "";

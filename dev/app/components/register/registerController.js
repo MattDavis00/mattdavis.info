@@ -1,4 +1,4 @@
-angular.module("my-app").controller("registerCtrl", ["$scope", "$http", function($scope, $http) {
+angular.module("my-app").controller("registerCtrl", ["$scope", "$http", "localVariables", function($scope, $http, localVariables) {
 
   $scope.registerData = {};
   $scope.error = "";

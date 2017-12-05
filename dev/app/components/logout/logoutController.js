@@ -1,4 +1,4 @@
-angular.module("my-app").controller("logoutCtrl", ["$scope", "$http", function($scope, $http) {
+angular.module("my-app").controller("logoutCtrl", ["$scope", "$http", "localVariables", function($scope, $http, localVariables) {
 
   var request = $http({
     method: "post",
