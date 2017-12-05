@@ -11,6 +11,7 @@ $verified = authenicateLogin($clientID, $clientPass, $conn); // Calls the authen
 
 if ($verified == true) {
     $outputArray["userID"] = $_SESSION["userID"];
+    $outputArray["storeID"] = $_SESSION["storeID"];
     $outputArray["orgID"] = $_SESSION["orgID"];
     $outputArray["administrator"] = $_SESSION["administrator"];
     $outputArray["loggedIn"] = $_SESSION["loggedIn"];
@@ -38,6 +39,7 @@ function authenicateLogin($clientID, $clientPass, $conn)
                 $hashInput = $clientPass . $row["Salt"];
                 if (password_verify($hashInput, $row["Hashed_Pass"]) && ($_SESSION["deviceAuth"] == true)) { // If the password matches and the device has been authenticated.
                     $_SESSION["userID"] = $row["Email"]; // Set userID session variable to the administrators email.
+                    $_SESSION["storeID"] = null;
                     $_SESSION["orgID"] = $row["Org_ID"]; // Administrators do not need to be on an organisations device, therefore don't check if there is an entry in the authenication table, just set the session value.
                     $_SESSION["administrator"] = true; // Set administrator session variable to true.
                     $_SESSION["loggedIn"] = true; // Sets the loggedIn session variable to true.
