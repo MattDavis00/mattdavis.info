@@ -47,5 +47,5 @@ angular.module("my-app").controller("loginCtrl", ["$scope", "$http", "localVaria
     });
   }
   $(".authenticated-nav-elements").hide();
-
+  $(".authenticated-nav-elements-administrator").hide();
 }]);

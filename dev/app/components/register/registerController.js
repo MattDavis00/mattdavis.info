@@ -32,5 +32,5 @@ angular.module("my-app").controller("registerCtrl", ["$scope", "$http", "localVa
     }
   }
   $(".authenticated-nav-elements").hide(); // Hide the top-nav and side-nav icons
-
+  $(".authenticated-nav-elements-administrator").hide();
 }]);

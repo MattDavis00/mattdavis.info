@@ -18,5 +18,6 @@ angular.module("my-app").controller("logoutCtrl", ["$scope", "$http", "localVari
     }
   });
   $(".authenticated-nav-elements").hide();
+  $(".authenticated-nav-elements-administrator").hide();
 
 }]);
