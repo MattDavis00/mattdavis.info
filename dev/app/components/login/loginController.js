@@ -33,10 +33,17 @@ angular.module("my-app").controller("loginCtrl", ["$scope", "$http", "localVaria
     request.then(function(response) {
       $scope.results = response.data;
       var returnData = angular.fromJson(response.data);
+
+      localVariables.set_userID(returnData.userID);
+      localVariables.set_storeID(returnData.storeID);
+      localVariables.set_orgID(returnData.orgID);
+      localVariables.set_administrator(returnData.administrator);
+      localVariables.set_loggedIn(returnData.loggedIn);
+
       if (returnData.verification) {
         if (returnData.administrator) {
           $("#storeID").html("Store ID<br>Administrator");
-          window.location.href = '#!query'; // Upon successful admin login, user is redirected to the query page.
+          window.location.href = '#!credentials'; // Upon successful admin login, user is redirected to the query page.
         } else {
           $("#storeID").html("Store ID<br>" + returnData.storeID);
           window.location.href = '#!query'; // Upon successful user login, user is redirected to the query page.
