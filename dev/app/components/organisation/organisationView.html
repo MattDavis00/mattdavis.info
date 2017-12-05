@@ -1,0 +1,19 @@
+<div id="background-card" class="uk-card uk-card-default uk-card-body uk-flex-center card-slim">
+
+  <form id="credentials-form" ng-submit="processcredentials()">
+
+    <div class="center-div">
+      <div class="uk-margin">
+        <div class="uk-inline">
+          <span class="uk-form-icon" uk-icon="icon: search"></span>
+          <input id="credentials-search" class="uk-input input-field" ng-model="credentialsData.id" placeholder="ID" type="text">
+          <button id="credentials-button" type="submit" class="uk-button uk-button-primary uk-button-small">Search</button>
+        </div>
+      </div>
+    </div>
+
+  </form>
+
+  <pre ng-model="info">{{info}}{{results}}</pre>
+
+</div>
