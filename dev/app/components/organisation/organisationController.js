@@ -1,15 +1,15 @@
-angular.module("my-app").controller("credentialsCtrl", ["$scope", "$http", "localVariables", function($scope, $http, localVariables) {
+angular.module("my-app").controller("organisationCtrl", ["$scope", "$http", "localVariables", function($scope, $http, localVariables) {
 
-  $scope.credentialsData = {};
+  $scope.organisationData = {};
   $scope.results = "";
 
-  $scope.processcredentials = function() {
+  $scope.processorganisation = function() {
 
     var request = $http({
       method: "post",
-      url: "app/components/credentials/credentials.php",
+      url: "app/components/organisation/organisation.php",
       data: {
-        id: $scope.credentialsData.id
+        id: $scope.organisationData.id
       },
       headers: {
         "Content-Type": "application/x-www-form-urlencoded"
@@ -18,7 +18,7 @@ angular.module("my-app").controller("credentialsCtrl", ["$scope", "$http", "loca
 
     request.then(function(response) {
       $scope.results = response.data;
-      $scope.info = " - credentials.php ran!";
+      $scope.info = " - organisation.php ran!";
     });
   }
   $(".authenticated-nav-elements").hide(); // Ensure that normal user icons are hidden.
