@@ -43,7 +43,11 @@ angular.module("my-app").controller("loginCtrl", ["$scope", "$http", "localVaria
       if (returnData.verification) {
         if (returnData.administrator) {
           $("#storeID").html("Store ID<br>Administrator");
-          window.location.href = '#!credentials'; // Upon successful admin login, user is redirected to the query page.
+          if (returnData.orgID === null) {
+            window.location.href = '#!organisation'; // If the administrator is not part of an organisation, take them to the organisation view.
+          } else {
+            window.location.href = '#!credentials'; // Upon successful admin login, user is redirected to the query page.
+          }
         } else {
           $("#storeID").html("Store ID<br>" + returnData.storeID);
           window.location.href = '#!query'; // Upon successful user login, user is redirected to the query page.
