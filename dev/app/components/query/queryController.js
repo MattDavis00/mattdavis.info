@@ -21,5 +21,6 @@ angular.module("my-app").controller("queryCtrl", ["$scope", "$http", "localVaria
       $scope.info = " - query.php ran!";
     });
   }
+  $(".authenticated-nav-elements-administrator").hide(); // Ensure that administrator icons are hidden.
   $(".authenticated-nav-elements").show(); // Show the top-nav and side-nav icons
 }]);
