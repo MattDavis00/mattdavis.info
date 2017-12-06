@@ -38,6 +38,12 @@ app.config(function($routeProvider) {
     .when("/inventory", {
       template: "<p>Inventory Placeholder</p>"
     })
+    .when("/stores", {
+      template: "<p>Stores Placeholder</p>"
+    })
+    .when("/devices", {
+      template: "<p>Devices Placeholder</p>"
+    })
     // Otherwise redirect to login
     .otherwise({
       redirectTo: "/"
