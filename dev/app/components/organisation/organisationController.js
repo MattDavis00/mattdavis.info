@@ -22,5 +22,5 @@ angular.module("my-app").controller("organisationCtrl", ["$scope", "$http", "loc
     });
   }
   $(".authenticated-nav-elements").hide(); // Ensure that normal user icons are hidden.
-  $(".authenticated-nav-elements-administrator").show(); // Show the top-nav and side-nav administrator icons
+  $(".authenticated-nav-elements-administrator").hide(); // Ensure that the administrator icons are hidden as they should complete this form before continuing.
 }]);
