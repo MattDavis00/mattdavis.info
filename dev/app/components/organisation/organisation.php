@@ -7,4 +7,4 @@ include($_SERVER["DOCUMENT_ROOT"]."/dev/app/shared/include/connection.php");
 include($_SERVER["DOCUMENT_ROOT"].'/dev/app/shared/include/authenticate.php');
 
 
-echo " - ran(credentials.php)";
+echo " - ran(organisation.php)";
