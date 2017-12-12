@@ -88,14 +88,6 @@ html {
   padding-right: 10px;
 }
 
-.uk-navbar-nav>li>button, .uk-navbar-nav>li>a {
-  color: rgba(255, 255, 255, 0.8);
-}
-
-.uk-navbar-nav>li>a:hover, .uk-navbar-nav>li.uk-active>a, .uk-logo:hover, .uk-nav>li>a:hover, .uk-nav>li.uk-active>a, .uk-navbar-nav>li>button:hover {
-  color: rgba(255, 255, 255, 1);
-}
-
 .nav-divider {
   padding-left: 4px;
   padding-right: 0px;
@@ -122,6 +114,22 @@ html {
 
 .input-field {
   width: 300px;
+}
+
+#framework-overwrite .nav-link:hover, #top-nav .nav-link:focus {
+  color: rgba(255, 255, 255, 1);
+}
+
+#top-nav .nav-link {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+#side-nav .nav-link {
+  color: #999;
+}
+
+#side-nav .nav-link:focus {
+  color: #00a0df;
 }
 
 /* Colour Palette*/
