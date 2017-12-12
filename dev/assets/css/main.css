@@ -1,6 +1,10 @@
+/* Element Selector */
+
 html {
   line-height: 1.25;
 }
+
+/* ID Selector */
 
 #top-nav {
   background: #00a0df;
@@ -76,6 +80,8 @@ html {
 #query-search {
   height: 31px;
 }
+
+/* Class Selector */
 
 .uk-navbar-nav>li>a {
   padding-left: 10px;
