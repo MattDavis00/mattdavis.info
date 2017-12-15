@@ -62,11 +62,6 @@ html {
   border: 1px solid rgba(255, 255, 255, 1);
 }
 
-#login-form {
-  margin: 0 auto;
-  width: 300px;
-}
-
 #login-button {
   width: 150px;
 }
@@ -130,6 +125,11 @@ html {
 
 #side-nav .nav-link:focus {
   color: #00a0df;
+}
+
+#framework-override .card-form {
+  margin: 0 auto;
+  width: 300px;
 }
 
 /* Colour Palette*/
