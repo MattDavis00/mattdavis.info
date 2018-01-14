@@ -4,23 +4,21 @@
 
     <div class="center-div">
       <div class="uk-margin">
-        <div class="uk-inline">
-          <span class="uk-form-icon" uk-icon="icon: unlock"></span>
-          <input id="organisation-search" class="uk-input input-field" ng-model="organisationData.key" placeholder="Key" type="text">
-          <button id="organisation-button" type="submit" class="uk-button uk-button-primary uk-button-small">Use</button>
+        <p class="uk-text-center uk-text-meta">You are not part of an organisation.</p>
+        <p class="uk-text-center uk-text-meta">Either ask an administrator to add you to an existing organisation.</p>
+        <hr class="uk-divider-small uk-text-center">
+        <p class="uk-text-center uk-text-meta">Or create a new organisation.</p>
+      </div>
+
+      <div class="uk-margin">
+        <div class="uk-inline horizontal-center">
+            <span class="uk-form-icon" uk-icon="icon: pencil"></span>
+            <input id="organisation-search" class="uk-input input-field" ng-model="organisationData.name" placeholder="Organisation Name" type="text">
         </div>
       </div>
-      <div class="uk-margin">
-        <div class="uk-inline uk-position-center">
-          <hr class="uk-divider-small">
-        </div>
-      </div>
-      <div class="uk-margin">
-        <div class="uk-inline">
-          <span class="uk-form-icon" uk-icon="icon: search"></span>
-          <input id="organisation-search" class="uk-input input-field" ng-model="organisationData.id" placeholder="ID" type="text">
-          <button id="organisation-button" type="submit" class="uk-button uk-button-primary uk-button-small">Search</button>
-        </div>
+
+      <div class="uk-inline horizontal-center">
+        <button id="login-button" type="submit" class="uk-button uk-button-primary uk-button-small">Create</button>
       </div>
     </div>
 
