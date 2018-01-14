@@ -14,14 +14,19 @@ $clientSalt = bin2hex(random_bytes(8));
 $clientPasswordHash = password_hash($clientPassword . $clientSalt, PASSWORD_BCRYPT);
 
 // SQL Query
-$sql = "INSERT INTO administrator (Email, Org_ID, Hashed_Pass, Salt, First_Name, Last_Name, Last_Login_UNIX, Creation_UNIX)
-VALUES ('$clientEmail', NULL, '$clientPasswordHash', '$clientSalt', '$clientFirstName', '$clientLastName', NULL, $serverUNIX)";
+// $sql = "INSERT INTO administrator (Email, Org_ID, Hashed_Pass, Salt, First_Name, Last_Name, Last_Login_UNIX, Creation_UNIX)
+// VALUES ('$clientEmail', NULL, '$clientPasswordHash', '$clientSalt', '$clientFirstName', '$clientLastName', NULL, $serverUNIX)";
+
+$administratorInsert = $conn->prepare("INSERT INTO administrator (Email, Org_ID, Hashed_Pass, Salt, First_Name, Last_Name, Last_Login_UNIX, Creation_UNIX)
+VALUES (?, NULL, ?, ?, ?, ?, NULL, ?)");
+$administratorInsert->bind_param("sssssi", $clientEmail, $clientPasswordHash, $clientSalt, $clientFirstName, $clientLastName, $serverUNIX);
+
 
 // Execute Query
-$registerReturn = databaseInsert($sql, $conn);
+$registerReturn = $administratorInsert->execute();
 
 // Check Query
-if ($registerReturn["success"]) {
+if ($registerReturn) {
     $outputArray["registerSuccess"] = true; // If the insert was successful, return true.
 } else {
     $outputArray["registerSuccess"] = false; // If the insert failed, return false.
