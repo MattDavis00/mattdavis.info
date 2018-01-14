@@ -111,6 +111,15 @@ html {
   width: 300px;
 }
 
+.horizontal-center {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.uk-text-meta {
+  line-height: 1px;
+}
+
 #framework-overwrite .nav-link:hover, #top-nav .nav-link:focus {
   color: rgba(255, 255, 255, 1);
 }
