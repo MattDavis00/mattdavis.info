@@ -15,18 +15,15 @@ $clientLastName = $request->lastName;
 $clientSalt = bin2hex(random_bytes(8));
 $clientPasswordHash = password_hash($clientPassword . $clientSalt, PASSWORD_BCRYPT);
 
-// SQL Query
-// $sql = "INSERT INTO administrator (Email, Org_ID, Hashed_Pass, Salt, First_Name, Last_Name, Last_Login_UNIX, Creation_UNIX)
-// VALUES ('$clientEmail', NULL, '$clientPasswordHash', '$clientSalt', '$clientFirstName', '$clientLastName', NULL, $serverUNIX)";
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-$administratorInsert = $conn->prepare("INSERT INTO administrator (Email, Org_ID, Hashed_Pass, Salt, First_Name, Last_Name, Last_Login_UNIX, Creation_UNIX)
+// SQL Query
+$stmt = $conn->prepare("INSERT INTO administrator (Email, Org_ID, Hashed_Pass, Salt, First_Name, Last_Name, Last_Login_UNIX, Creation_UNIX)
 VALUES (?, NULL, ?, ?, ?, ?, NULL, ?)");
-$administratorInsert->bind_param("sssssi", $clientEmail, $clientPasswordHash, $clientSalt, $clientFirstName, $clientLastName, $serverUNIX);
+$stmt->bind_param("sssssi", $clientEmail, $clientPasswordHash, $clientSalt, $clientFirstName, $clientLastName, $serverUNIX);
 
-
-// Execute Query
-$registerReturn = $administratorInsert->execute();
+// // Execute Query
+$registerReturn = $stmt->execute();
 
 // Check Query
 if ($registerReturn) {

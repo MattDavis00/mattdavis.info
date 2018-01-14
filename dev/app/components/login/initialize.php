@@ -42,42 +42,67 @@ $_SESSION["loggedIn"] = false;
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Query database for any existing devices with this ID
-$sql = "SELECT * FROM device WHERE Device_ID = '".$_SESSION["deviceID"]."'";
+$deviceSelect = $conn->prepare("SELECT `Device_ID`, `Device_Login_UNIX`, `Initial_UNIX` FROM `device` WHERE `Device_ID` = ? LIMIT 1");
+$deviceSelect->bind_param("i", $_SESSION["deviceID"]);
 
-// Execute Query
-$result = $conn->query($sql);
+// Execute Query And Bind Results
+$deviceSelect->execute();
+$deviceSelect->store_result();
+$deviceSelect->bind_result($serverDevice_ID, $serverDevice_Login_Unix, $serverInitial_UNIX);
 
+
+// $result = $deviceSelect->execute();
 // If there are no exisiting devices, insert a new device
-if ($result->num_rows == 0) {
-    echo " - deviceID not found. Error: " . $sql . $conn->error;
+if ($deviceSelect->num_rows == 0) {
+    // echo " - deviceID not found. Error: " . $sql . $conn->error;
 
-    // New device SQL query
-    $sql = "INSERT INTO device (Device_ID, Device_Login_UNIX, Initial_UNIX)
-  VALUES ('" .$_SESSION["deviceID"]. "', $serverUNIX, " .$_SESSION["deviceInitialUNIX"]. ")";
+    //   // New device SQL query
+    //   $sql = "INSERT INTO device (Device_ID, Device_Login_UNIX, Initial_UNIX)
+    // VALUES ('" .$_SESSION["deviceID"]. "', $serverUNIX, " .$_SESSION["deviceInitialUNIX"]. ")";
+    //
+    //   // Execute Query & Output
+    //   databaseInsert($sql, $conn);
+    // SQL Query
+    $deviceInsert = $conn->prepare("INSERT INTO `device` (`Device_ID`, `Device_Login_UNIX`, `Initial_UNIX`)
+    VALUES (?, ?, ?)");
+    $deviceInsert->bind_param("sii", $_SESSION["deviceID"], $serverUNIX, $_SESSION["deviceInitialUNIX"]);
 
-    // Execute Query & Output
-    databaseInsert($sql, $conn);
-} elseif ($result->num_rows > 1) {
-    echo " - Already more than one entry for this deviceID.";
+    // Execute Query
+    $deviceInsert->execute();
+
+    // Close Statement
+    $deviceInsert->close();
 }
 
-// Query database for devices with this ID
-$sql = "SELECT * FROM device WHERE Device_ID = '" .$_SESSION["deviceID"]. "'";
+$deviceSelect->execute();
+$deviceSelect->store_result();
+$deviceSelect->fetch();
 
-// Execute Query
-$result = $conn->query($sql);
+// Check User Isn't Brute Forcing DeviceID's
+if ($serverInitial_UNIX == $_SESSION["deviceInitialUNIX"]) {
+    $_SESSION["deviceAuth"] = true;
+    echo " - deviceAuth = " .$_SESSION["deviceAuth"];
+}
+
+// // Execute Query
+// $result = $conn->query($sql);
+//
+// if ($result->num_rows == 1) {
+//     while ($row = $result->fetch_assoc()) {
+//         if ($row["Initial_UNIX"] == $_SESSION["deviceInitialUNIX"]) {
+//             $_SESSION["deviceAuth"] = true;
+//             echo " - deviceAuth = " .$_SESSION["deviceAuth"];
+//         }
+//     }
+// } else {
+//     echo " - Already more than one entry or no entries for this deviceID after query.";
+// }
+
+// Close Statement
+$deviceSelect->close();
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-if ($result->num_rows == 1) {
-    while ($row = $result->fetch_assoc()) {
-        if ($row["Initial_UNIX"] == $_SESSION["deviceInitialUNIX"]) {
-            $_SESSION["deviceAuth"] = true;
-            echo " - deviceAuth = " .$_SESSION["deviceAuth"];
-        }
-    }
-} else {
-    echo " - Already more than one entry or no entries for this deviceID after query.";
-}
 
 // Close Connection
 $conn->close();
