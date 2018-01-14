@@ -3,6 +3,8 @@
 // Database Connection & Post data
 include($_SERVER["DOCUMENT_ROOT"]."/dev/app/shared/include/connection.php");
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // Input Variables
 $clientEmail = $request->email;
 $clientPassword = $request->password;
@@ -16,6 +18,7 @@ $clientPasswordHash = password_hash($clientPassword . $clientSalt, PASSWORD_BCRY
 // SQL Query
 // $sql = "INSERT INTO administrator (Email, Org_ID, Hashed_Pass, Salt, First_Name, Last_Name, Last_Login_UNIX, Creation_UNIX)
 // VALUES ('$clientEmail', NULL, '$clientPasswordHash', '$clientSalt', '$clientFirstName', '$clientLastName', NULL, $serverUNIX)";
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 $administratorInsert = $conn->prepare("INSERT INTO administrator (Email, Org_ID, Hashed_Pass, Salt, First_Name, Last_Name, Last_Login_UNIX, Creation_UNIX)
 VALUES (?, NULL, ?, ?, ?, ?, NULL, ?)");
@@ -31,6 +34,8 @@ if ($registerReturn) {
 } else {
     $outputArray["registerSuccess"] = false; // If the insert failed, return false.
 }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Output
 echo json_encode($outputArray);

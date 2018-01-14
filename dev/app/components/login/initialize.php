@@ -1,7 +1,9 @@
 <?php
-// Test commit for git over https.
+
 // Database Connection & Post data
 include($_SERVER["DOCUMENT_ROOT"]."/dev/app/shared/include/connection.php");
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Check that the cookie is set and then update expiration.
 $expirationUNIX = $serverUNIX + (86400 * 60); // Cookie expires in 60 days if user does not connect.
@@ -22,6 +24,8 @@ if (isset($_COOKIE["Absolute_Inventory"])) {
     $_COOKIE["Absolute_Inventory"] = $newCookieJSON; // Improved execution times by setting the value locally.
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // Decode JSON cookie data into linked array
 $cookieData = json_decode($_COOKIE["Absolute_Inventory"], true);
 
@@ -35,6 +39,7 @@ $_SESSION["administrator"] = false;
 $_SESSION["deviceAuth"] = false;
 $_SESSION["loggedIn"] = false;
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Query database for any existing devices with this ID
 $sql = "SELECT * FROM device WHERE Device_ID = '".$_SESSION["deviceID"]."'";
@@ -61,6 +66,7 @@ $sql = "SELECT * FROM device WHERE Device_ID = '" .$_SESSION["deviceID"]. "'";
 
 // Execute Query
 $result = $conn->query($sql);
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 if ($result->num_rows == 1) {
     while ($row = $result->fetch_assoc()) {
