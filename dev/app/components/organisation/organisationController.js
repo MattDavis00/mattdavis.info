@@ -3,13 +3,13 @@ angular.module("my-app").controller("organisationCtrl", ["$scope", "$http", "loc
   $scope.organisationData = {};
   $scope.results = "";
 
-  $scope.processorganisation = function() {
+  $scope.processOrganisation = function() {
 
     var request = $http({
       method: "post",
       url: "app/components/organisation/organisation.php",
       data: {
-        id: $scope.organisationData.name
+        name: $scope.organisationData.name
       },
       headers: {
         "Content-Type": "application/x-www-form-urlencoded"
