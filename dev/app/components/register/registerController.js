@@ -30,7 +30,12 @@ angular.module("my-app").controller("registerCtrl", ["$scope", "$http", "localVa
 
     if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test($scope.registerData.email))) { // w3resource regex for email validation.
       $scope.error += " - Email does not match standard rules!";
-      $("#email-input").addClass("error-border");
+      emailFlag = true;
+      errorFlag = true;
+    }
+
+    if ($scope.registerData.email.length > 100) {
+      $scope.error += " - Email is longer than 100 characters!";
       emailFlag = true;
       errorFlag = true;
     }
