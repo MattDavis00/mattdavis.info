@@ -9,7 +9,7 @@ angular.module("my-app").controller("organisationCtrl", ["$scope", "$http", "loc
       method: "post",
       url: "app/components/organisation/organisation.php",
       data: {
-        id: $scope.organisationData.id
+        id: $scope.organisationData.name
       },
       headers: {
         "Content-Type": "application/x-www-form-urlencoded"
