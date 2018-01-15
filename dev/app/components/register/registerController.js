@@ -101,6 +101,7 @@ angular.module("my-app").controller("registerCtrl", ["$scope", "$http", "localVa
           window.location.href = '#'; // Upon successful registration, user is redirected to the login page.
         } else {
           $scope.info = " - Registration failed: Email is already in use.";
+          $("#email-input").addClass("error-border"); // If email is already in use then the email field is highlighted.
         }
       });
     }
