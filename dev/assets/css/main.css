@@ -120,6 +120,11 @@ html {
   line-height: 1px;
 }
 
+.error-border {
+  outline: 0;
+  border-color: #f0506e;
+}
+
 #framework-overwrite .nav-link:hover, #top-nav .nav-link:focus {
   color: rgba(255, 255, 255, 1);
 }

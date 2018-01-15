@@ -16,6 +16,16 @@ angular.module("my-app").controller("registerCtrl", ["$scope", "$http", "localVa
     var firstNameFlag = false;
     var lastNameFlag = false;
 
+
+    // Reset CSS Error Classes //
+
+    $("#email-input").removeClass("error-border");
+    $("#password-input").removeClass("error-border");
+    $("#passwordRepeat-input").removeClass("error-border");
+    $("#firstName-input").removeClass("error-border");
+    $("#lastName-input").removeClass("error-border");
+
+
     // Input Validations //
 
     if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test($scope.registerData.email))) { // w3resource regex for email validation.
@@ -42,6 +52,25 @@ angular.module("my-app").controller("registerCtrl", ["$scope", "$http", "localVa
       $scope.error += " - Last name exceeds 50 characters!";
       lastNameFlag = true;
       errorFlag = true;
+    }
+
+
+    // Check Flags And Set Classes //
+
+    if (emailFlag == true) {
+      $("#email-input").addClass("error-border");
+    }
+    if (passwordFlag == true) {
+      $("#password-input").addClass("error-border");
+    }
+    if (passwordRepeatFlag == true) {
+      $("#passwordRepeat-input").addClass("error-border");
+    }
+    if (firstNameFlag == true) {
+      $("#firstName-input").addClass("error-border");
+    }
+    if (lastNameFlag == true) {
+      $("#lastName-input").addClass("error-border");
     }
 
 
