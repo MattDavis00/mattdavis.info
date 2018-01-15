@@ -5,9 +5,49 @@ angular.module("my-app").controller("registerCtrl", ["$scope", "$http", "localVa
 
   $scope.processRegister = function() {
 
+
+    // Error Flags //
+
+    $scope.error = "";
+    var errorFlag = false;
+    var emailFlag = false;
+    var passwordFlag = false;
+    var passwordRepeatFlag = false;
+    var firstNameFlag = false;
+    var lastNameFlag = false;
+
+    // Input Validations //
+
+    if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test($scope.registerData.email))) { // w3resource regex for email validation.
+      $scope.error += " - Email does not match standard rules!";
+      $("#email-input").addClass("error-border");
+      emailFlag = true;
+      errorFlag = true;
+    }
+
     if ($scope.registerData.password != $scope.registerData.repeatPassword) {
-      $scope.error = " - Passwords do not match!";
-    } else {
+      $scope.error += " - Passwords do not match!";
+      passwordFlag = true;
+      passwordRepeatFlag = true;
+      errorFlag = true;
+    }
+
+    if ($scope.registerData.firstName.length > 50) {
+      $scope.error += " - First name exceeds 50 characters!";
+      firstNameFlag = true;
+      errorFlag = true;
+    }
+
+    if ($scope.registerData.lastName.length > 50) {
+      $scope.error += " - Last name exceeds 50 characters!";
+      lastNameFlag = true;
+      errorFlag = true;
+    }
+
+
+    // POST Request //
+
+    if (errorFlag == false) {
       var request = $http({
         method: "post",
         url: "app/components/register/register.php",
