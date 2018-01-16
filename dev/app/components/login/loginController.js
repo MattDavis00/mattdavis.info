@@ -34,25 +34,23 @@ angular.module("my-app").controller("loginCtrl", ["$scope", "$http", "authCheck"
       $scope.results = response.data;
       var returnData = angular.fromJson(response.data);
 
-      localVariables.set_userID(returnData.userID);
-      localVariables.set_storeID(returnData.storeID);
-      localVariables.set_orgID(returnData.orgID);
-      localVariables.set_administrator(returnData.administrator);
-      localVariables.set_loggedIn(returnData.loggedIn);
+      sessionStorage.userID = returnData.userID;
+      sessionStorage.storeID = returnData.storeID;
+      sessionStorage.orgID = returnData.orgID;
+      sessionStorage.administrator = returnData.administrator;
+      sessionStorage.loggedIn = returnData.loggedIn;
 
       if (returnData.verification) {
         if (returnData.administrator) {
-          $("#storeID").html("Store ID<br>Administrator");
+          sessionStorage.storeID = "Administrator";
           if (returnData.orgID === null) {
             window.location.href = '#!organisation'; // If the administrator is not part of an organisation, take them to the organisation view.
           } else {
             window.location.href = '#!credentials'; // Upon successful admin login, user is redirected to the query page.
           }
         } else {
-          $("#storeID").html("Store ID<br>" + returnData.storeID);
           window.location.href = '#!query'; // Upon successful user login, user is redirected to the query page.
         }
-        $("#userID").html("User ID<br>" + returnData.userID);
       }
       $scope.info = " - processLogin() function ran!";
     });

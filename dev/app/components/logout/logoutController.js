@@ -13,6 +13,12 @@ angular.module("my-app").controller("logoutCtrl", ["$scope", "$http", "authCheck
     var returnData = angular.fromJson(response.data);
     if (!returnData.verification) {
       if (!returnData.loggedIn) {
+        sessionStorage.userID = null;
+        sessionStorage.storeID = null;
+        sessionStorage.orgID = null;
+        sessionStorage.administrator = false;
+        sessionStorage.loggedIn = false;
+
         window.location.href = '#'; // Upon successful admin logout, user is redirected to the login page.
       }
     }
