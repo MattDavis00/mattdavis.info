@@ -52,5 +52,21 @@ app.config(function($routeProvider) {
 
 app.service('authCheck', function() {
 
+  this.Admin = function() {
+    if (sessionStorage.loggedIn == "false" || sessionStorage.administrator === "false") { // If the user is either not logged in or is not an administrator. sessionStorage automatically converts everything to a string.
+      window.location.href = '#!logout';
     }
+  }
+
+  this.User = function() {
+    if (sessionStorage.loggedIn == "false") { // If the user is not logged in.
+      window.location.href = '#!logout';
+    }
+  }
+
+  this.Init = function() {
+    $("#userID").html("User ID<br>" + sessionStorage.userID);
+    $("#storeID").html("Store ID<br>" + sessionStorage.storeID);
+  }
+
 });

@@ -1,5 +1,7 @@
 angular.module("my-app").controller("credentialsCtrl", ["$scope", "$http", "authCheck", function($scope, $http, authCheck) {
 
+  authCheck.Admin();
+  authCheck.Init();
   $scope.credentialsData = {};
   $scope.results = "";
 

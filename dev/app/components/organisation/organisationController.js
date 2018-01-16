@@ -1,5 +1,8 @@
 angular.module("my-app").controller("organisationCtrl", ["$scope", "$http", "authCheck", function($scope, $http, authCheck) {
 
+  authCheck.Admin();
+  authCheck.Init();
+
   $scope.organisationData = {};
   $scope.results = "";
 
@@ -19,7 +22,7 @@ angular.module("my-app").controller("organisationCtrl", ["$scope", "$http", "aut
     request.then(function(response) {
       $scope.results = response.data;
       $scope.info = " - organisation.php ran!";
-      window.location.href = '#!logout';
+      window.location.href = '#!credentials';
     });
   }
   $(".authenticated-nav-elements").hide(); // Ensure that normal user icons are hidden.

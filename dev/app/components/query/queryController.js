@@ -1,5 +1,8 @@
 angular.module("my-app").controller("queryCtrl", ["$scope", "$http", "authCheck", function($scope, $http, authCheck) {
 
+  authCheck.User();
+  authCheck.Init();
+
   $scope.queryData = {};
   $scope.results = "";
 
