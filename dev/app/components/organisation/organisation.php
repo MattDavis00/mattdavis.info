@@ -37,6 +37,21 @@ if ($insertSuccess) {
 
     // Close Statement
     $administratorUpdate->close();
+
+    // Query database for any existing devices with this ID
+    $administratorSelect = $conn->prepare("SELECT `Org_ID` FROM `administrator` WHERE `email` = ? LIMIT 1");
+    $administratorSelect->bind_param("s", $_SESSION["userID"]);
+
+    // Execute Query And Bind Results
+    $administratorSelect->execute();
+    $administratorSelect->store_result();
+    $administratorSelect->bind_result($serverOrg_ID);
+    $administratorSelect->fetch();
+
+    $_SESSION["orgID"] = $serverOrg_ID;
+
+    // Close Statement
+    $administratorSelect->close();
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

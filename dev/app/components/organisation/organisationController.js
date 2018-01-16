@@ -19,6 +19,7 @@ angular.module("my-app").controller("organisationCtrl", ["$scope", "$http", "loc
     request.then(function(response) {
       $scope.results = response.data;
       $scope.info = " - organisation.php ran!";
+      window.location.href = '#!logout';
     });
   }
   $(".authenticated-nav-elements").hide(); // Ensure that normal user icons are hidden.
