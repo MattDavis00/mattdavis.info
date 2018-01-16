@@ -1,4 +1,4 @@
-angular.module("my-app").controller("credentialsCtrl", ["$scope", "$http", "localVariables", function($scope, $http, localVariables) {
+angular.module("my-app").controller("credentialsCtrl", ["$scope", "$http", "authCheck", function($scope, $http, authCheck) {
 
   $scope.credentialsData = {};
   $scope.results = "";

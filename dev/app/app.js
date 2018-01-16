@@ -50,50 +50,7 @@ app.config(function($routeProvider) {
     })
 });
 
-app.service('localVariables', function() {
-  var userID;
-  var storeID;
-  var orgID;
-  var administrator = false;
-  var deviceAuth = false;
-  var loggedIn = false;
+app.service('authCheck', function() {
 
-  return {
-    get_userID: function() {
-      return userID;
-    },
-    set_userID: function(value) {
-      userID = value;
-    },
-    get_storeID: function() {
-      return storeID;
-    },
-    set_storeID: function(value) {
-      storeID = value;
-    },
-    get_orgID: function() {
-      return orgID;
-    },
-    set_orgID: function(value) {
-      orgID = value;
-    },
-    get_administrator: function() {
-      return administrator;
-    },
-    set_administrator: function(value) {
-      administrator = value;
-    },
-    get_deviceAuth: function() {
-      return deviceAuth;
-    },
-    set_deviceAuth: function(value) {
-      deviceAuth = value;
-    },
-    get_loggedIn: function() {
-      return loggedIn;
-    },
-    set_loggedIn: function(value) {
-      loggedIn = value;
     }
-  };
 });

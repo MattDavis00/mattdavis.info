@@ -1,4 +1,4 @@
-angular.module("my-app").controller("queryCtrl", ["$scope", "$http", "localVariables", function($scope, $http, localVariables) {
+angular.module("my-app").controller("queryCtrl", ["$scope", "$http", "authCheck", function($scope, $http, authCheck) {
 
   $scope.queryData = {};
   $scope.results = "";

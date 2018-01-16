@@ -26,7 +26,7 @@ function authenicateLogin($clientID, $clientPass, $conn)
 {
     if (gettype($clientID) == "integer") { // The user is not an administrator
         $sql = "SELECT * FROM user WHERE ID = '" .$clientID. "'";
-    } elseif (gettype($clientID) == "string") { // The user is an administrator
+    } else if (gettype($clientID) == "string") { // The user is an administrator
         // SQL Query
         $sql = "SELECT * FROM administrator WHERE Email = '" .$clientID. "'";
 

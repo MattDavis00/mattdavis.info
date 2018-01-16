@@ -1,4 +1,4 @@
-angular.module("my-app").controller("organisationCtrl", ["$scope", "$http", "localVariables", function($scope, $http, localVariables) {
+angular.module("my-app").controller("organisationCtrl", ["$scope", "$http", "authCheck", function($scope, $http, authCheck) {
 
   $scope.organisationData = {};
   $scope.results = "";
