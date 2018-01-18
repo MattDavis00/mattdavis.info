@@ -39,7 +39,8 @@ app.config(function($routeProvider) {
       template: "<p>Inventory Placeholder</p>"
     })
     .when("/stores", {
-      template: "<p>Stores Placeholder</p>"
+      templateUrl: "app/components/stores/storesView.html",
+      controller: "storesCtrl"
     })
     .when("/devices", {
       template: "<p>Devices Placeholder</p>"
