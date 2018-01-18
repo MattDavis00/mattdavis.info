@@ -22,8 +22,11 @@ $stmt = $conn->prepare("INSERT INTO administrator (Email, Org_ID, Hashed_Pass, S
 VALUES (?, NULL, ?, ?, ?, ?, NULL, ?)");
 $stmt->bind_param("sssssi", $clientEmail, $clientPasswordHash, $clientSalt, $clientFirstName, $clientLastName, $serverUNIX);
 
-// // Execute Query
+// Execute Query
 $registerReturn = $stmt->execute();
+
+// Close Statement
+$stmt->close();
 
 // Check Query
 if ($registerReturn) {
