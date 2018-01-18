@@ -5,13 +5,15 @@ angular.module("my-app").controller("storesCtrl", ["$scope", "$http", "authCheck
   $scope.storesData = {};
   $scope.results = "";
 
-  $scope.processStores = function() {
+  $scope.CreateStore = function() {
 
     var request = $http({
       method: "post",
-      url: "app/components/stores/stores.php",
+      url: "app/components/stores/createStore.php",
       data: {
-        id: $scope.storesData.id
+        name: $scope.storesData.name,
+        address: $scope.storesData.address,
+        phoneNumber: $scope.storesData.phoneNumber
       },
       headers: {
         "Content-Type": "application/x-www-form-urlencoded"

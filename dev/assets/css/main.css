@@ -4,6 +4,10 @@ html {
   line-height: 1.25;
 }
 
+p {
+  margin-bottom: 8px;
+}
+
 /* ID Selector */
 
 #top-nav {
@@ -148,6 +152,10 @@ html {
 #framework-override .card-form {
   margin: 0 auto;
   width: 300px;
+}
+
+.short-text-box {
+  height: 31px;
 }
 
 /* Colour Palette*/

@@ -1,19 +1,35 @@
 <div id="background-card" class="uk-card uk-card-default uk-card-body uk-flex-center card-slim">
 
-  <form id="stores-form" ng-submit="processStores()">
+  <form ng-submit="CreateStore()">
 
     <div class="center-div">
       <div class="uk-margin">
+        <p class="uk-text-muted">Create a new store:</p>
         <div class="uk-inline">
-          <span class="uk-form-icon" uk-icon="icon: search"></span>
-          <input id="stores-search" class="uk-input input-field" ng-model="storesData.id" placeholder="ID" type="text">
-          <button id="stores-button" type="submit" class="uk-button uk-button-primary uk-button-small">Search</button>
+          <input class="uk-input input-field short-text-box" ng-model="storesData.name" placeholder="Name" type="text">
+          <input class="uk-input input-field short-text-box" ng-model="storesData.address" placeholder="Address" type="text">
+          <input class="uk-input input-field short-text-box" ng-model="storesData.phoneNumber" placeholder="Phone Number" type="text">
+          <button type="submit" class="uk-button uk-button-primary uk-button-small">Create</button>
+        </div>
+        <p ng-model="info">{{info}}{{results}}</p>
+      </div>
+    </div>
+
+  </form>
+  <form id="stores-form" ng-submit="processStoresSearch()">
+
+    <div class="center-div">
+      <div class="uk-margin">
+        <hr class="uk-divider-icon">
+        <p class="uk-text-muted">Search:</p>
+        <div class="uk-inline">
+          <span class="uk-form-icon uk-icon" uk-icon="icon: search"></span>
+          <input class="uk-input input-field short-text-box" ng-model="storesData.search" placeholder="Search" type="text">
+          <button type="submit" class="uk-button uk-button-primary uk-button-small">Search</button>
         </div>
       </div>
     </div>
 
   </form>
-
-  <p ng-model="info">{{info}}{{results}}</p>
 
 </div>
