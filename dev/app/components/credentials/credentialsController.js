@@ -5,7 +5,7 @@ angular.module("my-app").controller("credentialsCtrl", ["$scope", "$http", "auth
   $scope.credentialsData = {};
   $scope.results = "";
 
-  $scope.processcredentials = function() {
+  $scope.processCredentials = function() {
 
     var request = $http({
       method: "post",
