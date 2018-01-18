@@ -125,6 +125,10 @@ html {
   border-color: #f0506e;
 }
 
+#side-nav .active-icon {
+  color: #00a0df;
+}
+
 #framework-overwrite .nav-link:hover, #top-nav .nav-link:focus {
   color: rgba(255, 255, 255, 1);
 }
@@ -133,7 +137,7 @@ html {
   color: rgba(255, 255, 255, 0.8);
 }
 
-#side-nav .nav-link {
+.nav-link {
   color: #999;
 }
 

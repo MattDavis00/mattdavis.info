@@ -68,6 +68,39 @@ app.service('authCheck', function() {
   this.Init = function() {
     $("#userID").html("User ID<br>" + sessionStorage.userID);
     $("#storeID").html("Store ID<br>" + sessionStorage.storeID);
+
+    var view = location.hash;
+
+    $("#queryIcon").removeClass("active-icon");
+    $("#posIcon").removeClass("active-icon");
+    $("#analyticsIcon").removeClass("active-icon");
+    $("#credentialsIcon").removeClass("active-icon");
+    $("#inventoryIcon").removeClass("active-icon");
+    $("#storesIcon").removeClass("active-icon");
+    $("#devicesIcon").removeClass("active-icon");
+
+    if (view == "#!/query") {
+      $("#queryIcon").addClass("active-icon");
+    }
+    if (view == "#!/pos") {
+      $("#posIcon").addClass("active-icon");
+    }
+    if (view == "#!/analytics") {
+      $("#analyticsIcon").addClass("active-icon");
+    }
+    if (view == "#!/credentials") {
+      $("#credentialsIcon").addClass("active-icon");
+    }
+    if (view == "#!/inventory") {
+      $("#inventoryIcon").addClass("active-icon");
+    }
+    if (view == "#!/stores") {
+      $("#storesIcon").addClass("active-icon");
+    }
+    if (view == "#!/devices") {
+      $("#devicesIcon").addClass("active-icon");
+    }
+
   }
 
 });
