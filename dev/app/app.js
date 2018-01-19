@@ -43,7 +43,8 @@ app.config(function($routeProvider) {
       controller: "storesCtrl"
     })
     .when("/devices", {
-      template: "<p>Devices Placeholder</p>"
+      templateUrl: "app/components/devices/devicesView.html",
+      controller: "devicesCtrl"
     })
     // Otherwise redirect to login
     .otherwise({
