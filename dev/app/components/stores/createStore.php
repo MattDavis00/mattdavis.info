@@ -22,6 +22,7 @@ $stmt->bind_param("isss", $_SESSION["orgID"], $clientAddress, $clientName, $clie
 
 // Execute Query
 $registerReturn = $stmt->execute();
+$serverStoreID = $stmt->insert_id;
 
 // Close Statement
 $stmt->close();
@@ -29,6 +30,7 @@ $stmt->close();
 // Check Query
 if ($registerReturn) {
     $outputArray["insertSuccess"] = true; // If the insert was successful, return true.
+    $outputArray["storeID"] = $serverStoreID;
 } else {
     $outputArray["insertSuccess"] = false; // If the insert failed, return false.
 }
