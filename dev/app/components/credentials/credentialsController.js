@@ -5,13 +5,17 @@ angular.module("my-app").controller("credentialsCtrl", ["$scope", "$http", "auth
   $scope.credentialsData = {};
   $scope.results = "";
 
-  $scope.processCredentials = function() {
+  $scope.CreateUser = function() {
 
     var request = $http({
       method: "post",
-      url: "app/components/credentials/credentials.php",
+      url: "app/components/credentials/createUser.php",
       data: {
-        id: $scope.credentialsData.id
+        storeID: $scope.credentialsData.storeID,
+        password: $scope.credentialsData.password,
+        repeatPassword: $scope.credentialsData.repeatPassword,
+        firstName: $scope.credentialsData.firstName,
+        lastName: $scope.credentialsData.lastName
       },
       headers: {
         "Content-Type": "application/x-www-form-urlencoded"
