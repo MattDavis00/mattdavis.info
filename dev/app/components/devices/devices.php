@@ -6,6 +6,9 @@ include($_SERVER["DOCUMENT_ROOT"]."/dev/app/shared/include/connection.php");
 // Make sure that the user is logged in and authenticated before running any code.
 include($_SERVER["DOCUMENT_ROOT"].'/dev/app/shared/include/adminAuthenticate.php');
 
+// Success flag.
+$insertReturn = false;
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Input Variables
@@ -14,17 +17,17 @@ $clientStoreID = $request->id;
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Query database for any existing devices with this ID
-$administratorSelect = $conn->prepare("SELECT `Org_ID` FROM `store` WHERE `Store_ID` = ? LIMIT 1");
-$administratorSelect->bind_param("i", $clientStoreID);
+$storeSelect = $conn->prepare("SELECT `Org_ID` FROM `store` WHERE `Store_ID` = ? LIMIT 1");
+$storeSelect->bind_param("i", $clientStoreID);
 
 // Execute Query And Bind Results
-$administratorSelect->execute();
-$administratorSelect->store_result();
-$administratorSelect->bind_result($serverOrg_ID);
-$administratorSelect->fetch();
+$storeSelect->execute();
+$storeSelect->store_result();
+$storeSelect->bind_result($serverOrg_ID);
+$storeSelect->fetch();
 
 // Close Statement
-$administratorSelect->close();
+$storeSelect->close();
 
 if ($serverOrg_ID == $_SESSION["orgID"]) { // If the Store_ID is found and the administrator is part of this organisation.
 
@@ -43,21 +46,20 @@ if ($serverOrg_ID == $_SESSION["orgID"]) { // If the Store_ID is found and the a
   $stmt->bind_param("iiii", $serverKey, $clientStoreID, $serverUNIX, $serverExpiryUNIX);
 
   // Execute Query
-  $registerReturn = $stmt->execute();
+  $insertReturn = $stmt->execute();
 
   // Close Statement
   $stmt->close();
 
-  // Check Query
-  if ($registerReturn) {
-      $outputArray["key"] = $serverKey; // Return the generated and inserted key.
-      $outputArray["insertSuccess"] = true; // If the insert was successful, return true.
-  } else {
-      $outputArray["insertSuccess"] = false; // If the insert failed, return false.
-  }
-
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Check Query
+if ($insertReturn) {
+    $outputArray["key"] = $serverKey; // Return the generated and inserted key.
+    $outputArray["insertSuccess"] = true; // If the insert was successful, return true.
+}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
