@@ -12,8 +12,6 @@ angular.module("my-app").controller("credentialsCtrl", ["$scope", "$http", "auth
       url: "app/components/credentials/createUser.php",
       data: {
         storeID: $scope.credentialsData.storeID,
-        password: $scope.credentialsData.password,
-        repeatPassword: $scope.credentialsData.repeatPassword,
         firstName: $scope.credentialsData.firstName,
         lastName: $scope.credentialsData.lastName
       },
@@ -24,7 +22,12 @@ angular.module("my-app").controller("credentialsCtrl", ["$scope", "$http", "auth
 
     request.then(function(response) {
       $scope.results = response.data;
-      $scope.info = " - credentials.php ran!";
+      if (response.data.insertSuccess) {
+        $scope.info = "User ID: " + response.data.userID;
+        $scope.info += "  Password: " + response.data.password;
+      } else {
+        $scope.info = " - Could not create key.";
+      }
     });
   }
   $(".authenticated-nav-elements").hide(); // Ensure that normal user icons are hidden.
