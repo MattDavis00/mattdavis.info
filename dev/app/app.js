@@ -11,6 +11,10 @@ app.config(function($routeProvider) {
       templateUrl: "app/components/register/registerView.html",
       controller: "registerCtrl"
     })
+    .when("/key", {
+      templateUrl: "app/components/key/keyView.html",
+      controller: "keyCtrl"
+    })
     .when("/logout", {
       template: "<p>Logout Placeholder</p>",
       controller: "logoutCtrl"
