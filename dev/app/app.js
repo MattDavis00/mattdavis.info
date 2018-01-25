@@ -40,7 +40,8 @@ app.config(function($routeProvider) {
       controller: "credentialsCtrl"
     })
     .when("/inventory", {
-      template: "<p>Inventory Placeholder</p>"
+      templateUrl: "app/components/inventory/inventoryView.html",
+      controller: "inventoryCtrl"
     })
     .when("/stores", {
       templateUrl: "app/components/stores/storesView.html",
