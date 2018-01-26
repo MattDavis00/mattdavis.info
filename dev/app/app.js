@@ -39,9 +39,13 @@ app.config(function($routeProvider) {
       templateUrl: "app/components/credentials/credentialsView.html",
       controller: "credentialsCtrl"
     })
-    .when("/inventory", {
-      templateUrl: "app/components/inventory/inventoryView.html",
-      controller: "inventoryCtrl"
+    .when("/inventory-create", {
+      templateUrl: "app/components/inventory/create/createItemView.html",
+      controller: "createItemCtrl"
+    })
+    .when("/inventory-search", {
+      templateUrl: "app/components/inventory/search/searchItemView.html",
+      controller: "searchItemCtrl"
     })
     .when("/stores", {
       templateUrl: "app/components/stores/storesView.html",
@@ -87,23 +91,19 @@ app.service('authCheck', function() {
 
     if (view == "#!/query") {
       $("#queryIcon").addClass("active-icon");
-    }
-    if (view == "#!/pos") {
+    } else if (view == "#!/pos") {
       $("#posIcon").addClass("active-icon");
-    }
-    if (view == "#!/analytics") {
+    } else if (view == "#!/analytics") {
       $("#analyticsIcon").addClass("active-icon");
-    }
-    if (view == "#!/credentials") {
+    } else if (view == "#!/credentials") {
       $("#credentialsIcon").addClass("active-icon");
-    }
-    if (view == "#!/inventory") {
+    } else if (view == "#!/inventory-create") {
       $("#inventoryIcon").addClass("active-icon");
-    }
-    if (view == "#!/stores") {
+    } else if (view == "#!/inventory-search") {
+      $("#inventoryIcon").addClass("active-icon");
+    } else if (view == "#!/stores") {
       $("#storesIcon").addClass("active-icon");
-    }
-    if (view == "#!/devices") {
+    } else if (view == "#!/devices") {
       $("#devicesIcon").addClass("active-icon");
     }
 

@@ -1,19 +1,19 @@
-angular.module("my-app").controller("inventoryCtrl", ["$scope", "$http", "authCheck", function($scope, $http, authCheck) {
+angular.module("my-app").controller("createItemCtrl", ["$scope", "$http", "authCheck", function($scope, $http, authCheck) {
 
   authCheck.Admin();
   authCheck.Init();
-  $scope.inventoryData = {};
+  $scope.createItemData = {};
   $scope.results = "";
 
   $scope.CreateItem = function() {
 
     var request = $http({
       method: "post",
-      url: "app/components/inventory/createItem.php",
+      url: "app/components/inventory/create/createItem.php",
       data: {
-        storeID: $scope.inventoryData.storeID,
-        firstName: $scope.inventoryData.firstName,
-        lastName: $scope.inventoryData.lastName
+        storeID: $scope.createItemData.storeID,
+        firstName: $scope.createItemData.firstName,
+        lastName: $scope.createItemData.lastName
       },
       headers: {
         "Content-Type": "application/x-www-form-urlencoded"
