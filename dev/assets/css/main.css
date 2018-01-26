@@ -5,7 +5,8 @@ html {
 }
 
 p {
-  margin-bottom: 8px;
+  margin-top: 12px;
+  margin-bottom: 12px;
 }
 
 /* ID Selector */
@@ -78,6 +79,10 @@ p {
 
 #query-search {
   height: 31px;
+}
+
+#dynamic-canvas-top-text {
+  margin-top: 0;
 }
 
 /* Class Selector */
@@ -156,6 +161,23 @@ p {
 
 .short-text-box {
   height: 31px;
+}
+
+.uk-textarea {
+  resize: none;
+}
+
+.bottom-margin {
+  margin-bottom: 15px;
+}
+
+.uk-divider-icon {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.wide-button {
+  width: 150px;
 }
 
 /* Colour Palette*/
