@@ -180,6 +180,11 @@ p {
   width: 150px;
 }
 
+.table-scrollable {
+  max-height: 200px;
+  overflow: hidden;
+}
+
 /* Colour Palette*/
 
 .color-1 {
