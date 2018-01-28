@@ -18,7 +18,7 @@ $clientLastName = $request->lastName;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// Query database for any existing devices with this ID
+// Query database for any existing store and check its organisation ID.
 $storeSelect = $conn->prepare("SELECT `Org_ID` FROM `store` WHERE `Store_ID` = ? LIMIT 1");
 $storeSelect->bind_param("i", $clientStoreID);
 

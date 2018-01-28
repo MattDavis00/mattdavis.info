@@ -11,9 +11,10 @@ angular.module("my-app").controller("createItemCtrl", ["$scope", "$http", "authC
       method: "post",
       url: "app/components/inventory/create/createItem.php",
       data: {
-        storeID: $scope.createItemData.storeID,
-        firstName: $scope.createItemData.firstName,
-        lastName: $scope.createItemData.lastName
+        name: $scope.createItemData.name,
+        price: $scope.createItemData.price,
+        barcode: $scope.createItemData.barcode,
+        description: $scope.createItemData.description
       },
       headers: {
         "Content-Type": "application/x-www-form-urlencoded"
@@ -23,10 +24,9 @@ angular.module("my-app").controller("createItemCtrl", ["$scope", "$http", "authC
     request.then(function(response) {
       $scope.results = response.data;
       if (response.data.insertSuccess) {
-        $scope.info = "User ID: " + response.data.userID;
-        $scope.info += "  Password: " + response.data.password;
+        $scope.info = "Item ID: " + response.data.itemID;
       } else {
-        $scope.info = " - Could not create key.";
+        $scope.info = " - Could not create item.";
       }
     });
   }
