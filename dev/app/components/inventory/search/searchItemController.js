@@ -28,7 +28,7 @@ angular.module("my-app").controller("searchItemCtrl", ["$scope", "$http", "authC
 
   $scope.EditItem = function(item) {
 
-    $scope.info = item.id;
+    $scope.info = item.itemID;
     $scope.SearchItem(); // After the item has been editted/updated, run the SearchItem() function to update the table of results.
 
   }
