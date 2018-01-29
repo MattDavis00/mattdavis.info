@@ -41,7 +41,7 @@
               <span ng-show="sortType == 'name' && sortReverse" uk-icon="icon: triangle-up"></span> <!-- Only display if this column is being sorted, and it is in a reversed order. -->
             </a>
         </th>
-        <th class="uk-table-shrink">
+        <th id="arrow-fix" class="uk-table-shrink">
           <a href="" ng-click="sortType = 'price'; sortReverse = !sortReverse">
               Price
               <span ng-show="sortType == 'price' && !sortReverse" uk-icon="icon: triangle-down"></span> <!-- Only display if this column is being sorted, and it is in the normal order. -->
@@ -69,7 +69,7 @@
       <tr ng-repeat="item in items | orderBy:sortType:sortReverse | filter:searchItemData.search | limitTo:10"> <!-- Order and filter the items displayed to the user, limit the results to 10 items. -->
         <td>{{ item.id }}</td>
         <td>{{ item.name | limitTo: 40 }}{{item.name.length > 40 ? '...' : ''}}</td> <!-- Truncate name to 40 characters long, if it exceeds this limit then add '...' to the end of the string -->
-        <td>{{ item.price }}</td>
+        <td>{{ item.price  | currency : "£" : 2}}</td>
         <td>{{ item.description | limitTo: 150 }}{{item.description.length > 150 ? '...' : ''}}</td> <!-- Truncate description to 150 characters long, if it exceeds this limit then add '...' to the end of the string -->
         <td>{{ item.barcode }}</td>
         <td><button ng-click="EditItem(item)" type="submit" class="uk-button uk-button-primary uk-button-small">Edit</button></td> <!-- Add an edit button for each row, this uses an ng-click directive to call the Search. -->
