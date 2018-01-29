@@ -13,12 +13,12 @@ angular.module("my-app").controller("searchItemCtrl", ["$scope", "$http", "authC
       id: 456231,
       name: 'Nails',
       price: 2.49,
-      description: "Oh this is a really nice and long description, I really hope this gets truncated some time soon.",
+      description: "Oh this is a really nice and long description, I really hope this gets truncated some time soon. Oh this is a really nice and long description, I really hope this gets truncated some time soon. Oh this is a really nice and long description, I really hope this gets truncated some time soon.",
       barcode: "45616168789165"
     },
     {
       id: 626451,
-      name: 'Beans',
+      name: 'Beans Beans Beans Beans Beans Beans Beans Beans',
       price: 7.99,
       description: "This is a different description!",
       barcode: "245661419514591"
@@ -43,8 +43,7 @@ angular.module("my-app").controller("searchItemCtrl", ["$scope", "$http", "authC
     $scope.searchItemData.search = "";
   }
 
-  $scope.SearchItem = function() {
-
+  $scope.SearchItem = function(item) {
     var request = $http({
       method: "post",
       url: "app/components/inventory/search/searchItem.php",
@@ -67,6 +66,12 @@ angular.module("my-app").controller("searchItemCtrl", ["$scope", "$http", "authC
         $scope.info = " - Could not create key.";
       }
     });
+  }
+
+  $scope.EditItem = function(item) {
+
+    $scope.info = item.id;
+
   }
   $(".authenticated-nav-elements").hide(); // Ensure that normal user icons are hidden.
   $(".authenticated-nav-elements-administrator").show(); // Show the top-nav and side-nav administrator icons
