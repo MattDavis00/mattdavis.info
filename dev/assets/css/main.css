@@ -85,10 +85,6 @@ p {
   margin-top: 0;
 }
 
-#arrow-fix {
-  min-width: 60px;
-}
-
 /* Class Selector */
 
 .uk-navbar-nav>li>a {
@@ -187,6 +183,10 @@ p {
 .table-scrollable {
   max-height: 200px;
   overflow: hidden;
+}
+
+.arrow-fix {
+  min-width: 60px;
 }
 
 /* Colour Palette*/

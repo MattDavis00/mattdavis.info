@@ -27,7 +27,7 @@
   <table id="search-table" class="uk-table uk-table-striped uk-table-small uk-table-middle table-scrollable">
     <thead>
       <tr>
-        <th class="uk-table-shrink">
+        <th class="uk-table-shrink arrow-fix">
           <a href="" ng-click="sortType = 'id'; sortReverse = !sortReverse">
               ID
               <span ng-show="sortType == 'id' && !sortReverse" uk-icon="icon: triangle-down"></span> <!-- Only display if this column is being sorted, and it is in the normal order. -->
@@ -41,7 +41,7 @@
               <span ng-show="sortType == 'name' && sortReverse" uk-icon="icon: triangle-up"></span> <!-- Only display if this column is being sorted, and it is in a reversed order. -->
             </a>
         </th>
-        <th id="arrow-fix" class="uk-table-shrink">
+        <th class="uk-table-shrink arrow-fix">
           <a href="" ng-click="sortType = 'price'; sortReverse = !sortReverse">
               Price
               <span ng-show="sortType == 'price' && !sortReverse" uk-icon="icon: triangle-down"></span> <!-- Only display if this column is being sorted, and it is in the normal order. -->
