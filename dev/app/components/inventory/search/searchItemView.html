@@ -28,10 +28,10 @@
     <thead>
       <tr>
         <th class="uk-table-shrink arrow-fix">
-          <a href="" ng-click="sortType = 'id'; sortReverse = !sortReverse">
+          <a href="" ng-click="sortType = 'itemID'; sortReverse = !sortReverse">
               ID
-              <span ng-show="sortType == 'id' && !sortReverse" uk-icon="icon: triangle-down"></span> <!-- Only display if this column is being sorted, and it is in the normal order. -->
-              <span ng-show="sortType == 'id' && sortReverse" uk-icon="icon: triangle-up"></span> <!-- Only display if this column is being sorted, and it is in a reversed order. -->
+              <span ng-show="sortType == 'itemID' && !sortReverse" uk-icon="icon: triangle-down"></span> <!-- Only display if this column is being sorted, and it is in the normal order. -->
+              <span ng-show="sortType == 'itemID' && sortReverse" uk-icon="icon: triangle-up"></span> <!-- Only display if this column is being sorted, and it is in a reversed order. -->
             </a>
         </th>
         <th class="uk-table-expand">
@@ -67,7 +67,7 @@
     </thead>
     <tbody>
       <tr ng-repeat="item in items | orderBy:sortType:sortReverse | filter:searchItemData.search | limitTo:10"> <!-- Order and filter the items displayed to the user, limit the results to 10 items. -->
-        <td>{{ item.id }}</td>
+        <td>{{ item.itemID }}</td>
         <td>{{ item.name | limitTo: 40 }}{{item.name.length > 40 ? '...' : ''}}</td> <!-- Truncate name to 40 characters long, if it exceeds this limit then add '...' to the end of the string -->
         <td>{{ item.price  | currency : "£" : 2}}</td>
         <td>{{ item.description | limitTo: 150 }}{{item.description.length > 150 ? '...' : ''}}</td> <!-- Truncate description to 150 characters long, if it exceeds this limit then add '...' to the end of the string -->
