@@ -12,8 +12,7 @@ angular.module("my-app").controller("loginCtrl", ["$scope", "$http", "authCheck"
   });
 
   request.then(function(response) {
-    $scope.results = response.data;
-    $scope.info = " - initialise() function ran!";
+    // Any checks after the initialise.php script has ran.
   });
 
   $scope.processLogin = function() {
@@ -31,7 +30,6 @@ angular.module("my-app").controller("loginCtrl", ["$scope", "$http", "authCheck"
     });
 
     request.then(function(response) {
-      $scope.results = response.data;
       var returnData = angular.fromJson(response.data);
 
       sessionStorage.userID = returnData.userID;
