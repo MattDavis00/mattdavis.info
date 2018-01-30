@@ -28,8 +28,14 @@ angular.module("my-app").controller("searchItemCtrl", ["$scope", "$http", "authC
 
   $scope.EditItem = function(item) {
 
-    $scope.info = item.itemID;
-    $scope.SearchItem(); // After the item has been editted/updated, run the SearchItem() function to update the table of results.
+    // Save the object locally on the user's machine using session storage.
+    sessionStorage.editDataItemItemID = item.itemID;
+    sessionStorage.editDataItemName = item.name;
+    sessionStorage.editDataItemPrice = item.price;
+    sessionStorage.editDataItemBarcode = item.barcode;
+    sessionStorage.editDataItemDescription = item.description;
+    sessionStorage.editDataRequest = "true"; // State that a request is being made.
+    window.location.href = '#!inventory-update'; // Redirect the user to the update item view.
 
   }
   $(".authenticated-nav-elements").hide(); // Ensure that normal user icons are hidden.

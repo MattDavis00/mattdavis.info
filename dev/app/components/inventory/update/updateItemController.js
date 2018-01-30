@@ -5,6 +5,17 @@ angular.module("my-app").controller("updateItemCtrl", ["$scope", "$http", "authC
   $scope.updateItemData = {};
   $scope.results = "";
 
+  $scope.CheckEdit = function() {
+    if (sessionStorage.editDataRequest == "true") { // If the session storage contains an item.
+      sessionStorage.editDataRequest = "false"; // Clear the session storage variables used for the edit button.
+      $scope.updateItemData.itemID = sessionStorage.editDataItemItemID; // Update the form to contain the correct values.
+      $scope.updateItemData.name = sessionStorage.editDataItemName;
+      $scope.updateItemData.price = sessionStorage.editDataItemPrice;
+      $scope.updateItemData.barcode = sessionStorage.editDataItemBarcode;
+      $scope.updateItemData.description = sessionStorage.editDataItemDescription;
+    }
+  }
+
   $scope.UpdateItem = function() {
 
     var request = $http({
@@ -31,4 +42,6 @@ angular.module("my-app").controller("updateItemCtrl", ["$scope", "$http", "authC
   }
   $(".authenticated-nav-elements").hide(); // Ensure that normal user icons are hidden.
   $(".authenticated-nav-elements-administrator").show(); // Show the top-nav and side-nav administrator icons
+
+  $scope.CheckEdit(); // Call the CheckEdit function to see if there is an item that has been editted.
 }]);
