@@ -30,7 +30,9 @@ app.config(function($routeProvider) {
     .when("/analytics", {
       template: "<p>Analytics Placeholder</p>"
     })
-    // Administrator
+
+
+    ///////////////////////// Administrator////////////////////////////
     .when("/organisation", {
       templateUrl: "app/components/organisation/organisationView.html",
       controller: "organisationCtrl"
@@ -39,6 +41,8 @@ app.config(function($routeProvider) {
       templateUrl: "app/components/credentials/credentialsView.html",
       controller: "credentialsCtrl"
     })
+
+    // Inventory //
     .when("/inventory-create", {
       templateUrl: "app/components/inventory/create/createItemView.html",
       controller: "createItemCtrl"
@@ -47,6 +51,11 @@ app.config(function($routeProvider) {
       templateUrl: "app/components/inventory/search/searchItemView.html",
       controller: "searchItemCtrl"
     })
+    .when("/inventory-update", {
+      templateUrl: "app/components/inventory/update/updateItemView.html",
+      controller: "updateItemCtrl"
+    })
+
     .when("/stores", {
       templateUrl: "app/components/stores/storesView.html",
       controller: "storesCtrl"
@@ -55,6 +64,8 @@ app.config(function($routeProvider) {
       templateUrl: "app/components/devices/devicesView.html",
       controller: "devicesCtrl"
     })
+
+
     // Otherwise redirect to login
     .otherwise({
       redirectTo: "/"
@@ -100,6 +111,8 @@ app.service('authCheck', function() {
     } else if (view == "#!/inventory-create") {
       $("#inventoryIcon").addClass("active-icon");
     } else if (view == "#!/inventory-search") {
+      $("#inventoryIcon").addClass("active-icon");
+    } else if (view == "#!/inventory-update") {
       $("#inventoryIcon").addClass("active-icon");
     } else if (view == "#!/stores") {
       $("#storesIcon").addClass("active-icon");
