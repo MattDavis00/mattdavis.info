@@ -24,6 +24,10 @@ angular.module("my-app").controller("createItemCtrl", ["$scope", "$http", "authC
     request.then(function(response) {
       if (response.data.insertSuccess) {
         $scope.info = "A new item has been created. Item ID: " + response.data.itemID;
+        $scope.createItemData.name = "";
+        $scope.createItemData.price = "";
+        $scope.createItemData.barcode = "";
+        $scope.createItemData.description = "";
       } else {
         $scope.info = " - Could not create item.";
       }

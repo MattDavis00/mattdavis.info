@@ -22,6 +22,7 @@ angular.module("my-app").controller("updateItemCtrl", ["$scope", "$http", "authC
       method: "post",
       url: "app/components/inventory/update/updateItem.php",
       data: {
+        itemID: $scope.updateItemData.itemID,
         name: $scope.updateItemData.name,
         price: $scope.updateItemData.price,
         barcode: $scope.updateItemData.barcode,
@@ -33,8 +34,13 @@ angular.module("my-app").controller("updateItemCtrl", ["$scope", "$http", "authC
     });
 
     request.then(function(response) {
-      if (response.data.insertSuccess) {
+      if (response.data.updateSuccess) {
         $scope.info = "An existing item has been updated. Item ID: " + response.data.itemID;
+        $scope.updateItemData.itemID = "";
+        $scope.updateItemData.name = "";
+        $scope.updateItemData.price = "";
+        $scope.updateItemData.barcode = "";
+        $scope.updateItemData.description = "";
       } else {
         $scope.info = " - Could not update item.";
       }

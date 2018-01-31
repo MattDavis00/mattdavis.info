@@ -7,11 +7,12 @@ include($_SERVER["DOCUMENT_ROOT"]."/dev/app/shared/include/connection.php");
 include($_SERVER["DOCUMENT_ROOT"].'/dev/app/shared/include/adminAuthenticate.php');
 
 // Success flag.
-$insertReturn = false;
+$updateReturn = false;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Input Variables
+$clientItemID = $request->itemID;
 $clientName = $request->name;
 $clientPrice = $request->price;
 $clientBarcode = $request->barcode;
@@ -20,15 +21,13 @@ $clientDescription = $request->description;
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // SQL Query
-$stmt = $conn->prepare("INSERT INTO item (Org_ID, Name, Price, Description, Barcode)
-VALUES (?, ?, ?, ?, ?)");
-$stmt->bind_param("isdss", $_SESSION["orgID"], $clientName, $clientPrice, $clientDescription, $clientBarcode);
+$stmt = $conn->prepare("UPDATE item
+SET `Name` = ?, `Price` = ?, `Description` = ?, `Barcode` = ?
+WHERE `Item_ID` = ? AND `Org_ID` = ?");
+$stmt->bind_param("sdssii", $clientName, $clientPrice, $clientDescription, $clientBarcode, $clientItemID, $_SESSION["orgID"]);
 
 // Execute Query
-$insertReturn = $stmt->execute();
-
-// Store User ID
-$serverItemID = $stmt->insert_id;
+$updateReturn = $stmt->execute();
 
 // Close Statement
 $stmt->close();
@@ -37,9 +36,9 @@ $stmt->close();
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Check Query
-if ($insertReturn) {
-    $outputArray["itemID"] = $serverItemID; // Return the generated Item ID.
-    $outputArray["insertSuccess"] = true; // If the insert was successful, return true.
+if ($updateReturn) {
+    $outputArray["itemID"] = $clientItemID; // Return the generated Item ID.
+    $outputArray["updateSuccess"] = true; // If the insert was successful, return true.
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
