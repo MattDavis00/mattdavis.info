@@ -189,6 +189,14 @@ p {
   min-width: 60px;
 }
 
+.column-minimum-size {
+  min-width: 110px;
+}
+
+.thin-text-box {
+  width: 70px;
+}
+
 /* Colour Palette*/
 
 .color-1 {

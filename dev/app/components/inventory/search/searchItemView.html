@@ -35,7 +35,7 @@
               <span ng-show="sortType == 'itemID' && sortReverse" uk-icon="icon: triangle-up"></span> <!-- Only display if this column is being sorted, and it is in a reversed order. -->
             </a>
         </th>
-        <th class="uk-table-expand">
+        <th class="uk-width-medium column-minimum-size">
           <a href="" ng-click="sortType = 'name'; sortReverse = !sortReverse">
               Name
               <span ng-show="sortType == 'name' && !sortReverse" uk-icon="icon: triangle-down"></span> <!-- Only display if this column is being sorted, and it is in the normal order. -->
@@ -49,14 +49,14 @@
               <span ng-show="sortType == 'price' && sortReverse" uk-icon="icon: triangle-up"></span> <!-- Only display if this column is being sorted, and it is in a reversed order. -->
             </a>
         </th>
-        <th class="uk-table-expand">
+        <th class="uk-table-expand column-minimum-size">
           <a href="" ng-click="sortType = 'description'; sortReverse = !sortReverse">
               Description
               <span ng-show="sortType == 'description' && !sortReverse" uk-icon="icon: triangle-down"></span> <!-- Only display if this column is being sorted, and it is in the normal order. -->
               <span ng-show="sortType == 'description' && sortReverse" uk-icon="icon: triangle-up"></span> <!-- Only display if this column is being sorted, and it is in a reversed order. -->
             </a>
         </th>
-        <th class="uk-table-shrink">
+        <th class="uk-table-shrink column-minimum-size">
           <a href="" ng-click="sortType = 'barcode'; sortReverse = !sortReverse">
               Barcode
               <span ng-show="sortType == 'barcode' && !sortReverse" uk-icon="icon: triangle-down"></span> <!-- Only display if this column is being sorted, and it is in the normal order. -->
@@ -67,16 +67,27 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="item in items | orderBy:sortType:sortReverse | filter:searchItemData.search | limitTo:10"> <!-- Order and filter the items displayed to the user, limit the results to 10 items. -->
+      <tr ng-repeat="item in items">
         <td>{{ item.itemID }}</td>
-        <td>{{ item.name | limitTo: 40 }}{{item.name.length > 40 ? '...' : ''}}</td> <!-- Truncate name to 40 characters long, if it exceeds this limit then add '...' to the end of the string -->
-        <td>{{ item.price  | currency : "£" : 2}}</td>
-        <td>{{ item.description | limitTo: 150 }}{{item.description.length > 150 ? '...' : ''}}</td> <!-- Truncate description to 150 characters long, if it exceeds this limit then add '...' to the end of the string -->
+        <td class="uk-text-truncate">{{ item.name | limitTo: 40 }}{{item.name.length > 40 ? '...' : ''}}</td>
+        <!-- Truncate name to 40 characters long, if it exceeds this limit then add '...' to the end of the string -->
+        <td>{{ item.price | currency : "£" : 2}}</td>
+        <td class="uk-text-truncate">{{ item.description | limitTo: 150 }}{{item.description.length > 150 ? '...' : ''}}</td>
+        <!-- Truncate description to 150 characters long, if it exceeds this limit then add '...' to the end of the string -->
         <td>{{ item.barcode }}</td>
-        <td><button ng-click="EditItem(item)" type="submit" class="uk-button uk-button-primary uk-button-small">Edit</button></td> <!-- Add an edit button for each row, this uses an ng-click directive to call the Search. -->
+        <td><button ng-click="EditItem(item)" type="submit" class="uk-button uk-button-primary uk-button-small">Edit</button></td>
+        <!-- Add an edit button for each row, this uses an ng-click directive to call the Search. -->
       </tr>
     </tbody>
   </table>
+
+  <div class="uk-inline">
+    <button class="uk-button uk-button-primary uk-button-small" ng-click="PreviousPage()">Previous</button>
+    <button class="uk-button uk-button-primary uk-button-small" ng-click="NextPage()">Next</button>
+    <label class="uk-text-muted"> Page: {{sortPage + 1}} of {{(amountOfItems / itemsPerPage) + 1 | number : 0}} </label> <!-- Get the total number of pages. -->
+    <label class="uk-text-muted">  -  Items Per Page:  </label>
+    <input class="uk-input input-field short-text-box thin-text-box" ng-model="itemsPerPage" placeholder="0" type="number" min="5" step="5" onkeydown="return false"> <!-- Allow a minimum of 5 items per page, do not allow the user to edit the box, and increment in 5. -->
+  </div>
 
   <p ng-model="info">{{info}}{{results}}</p>
 
