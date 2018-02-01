@@ -84,7 +84,7 @@
   <div class="uk-inline">
     <button class="uk-button uk-button-primary uk-button-small" ng-click="PreviousPage()">Previous</button>
     <button class="uk-button uk-button-primary uk-button-small" ng-click="NextPage()">Next</button>
-    <label class="uk-text-muted"> Page: {{sortPage + 1}} of {{(amountOfItems / itemsPerPage) + 1 | number : 0}} </label> <!-- Get the total number of pages. -->
+    <label class="uk-text-muted"> Page: {{sortPage + 1}} of {{numberOfPages + 1 | number : 0}} </label> <!-- Get the total number of pages. -->
     <label class="uk-text-muted">  -  Items Per Page:  </label>
     <input class="uk-input input-field short-text-box thin-text-box" ng-model="itemsPerPage" placeholder="0" type="number" min="5" step="5" onkeydown="return false"> <!-- Allow a minimum of 5 items per page, do not allow the user to edit the box, and increment in 5. -->
   </div>
