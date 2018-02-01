@@ -53,7 +53,7 @@ angular.module("my-app").controller("searchItemCtrl", ["$scope", "$http", "authC
     if ($scope.permItems != null) { // This function is called on load and every time a variable is changed, to prevent this code causing an error whilst waiting for the post request, this stops the code running on load.
       $scope.temp = $filter('filter')($scope.permItems, $scope.searchItemData.search); // Filter the search query in the search bar.
       $scope.amountOfItems = $scope.temp.length; // Save the amount of items to a variable.
-      $scope.numberOfPages = parseInt($scope.amountOfItems / $scope.itemsPerPage);
+      $scope.numberOfPages = Math.floor(($scope.amountOfItems - 1) / $scope.itemsPerPage);
       $scope.temp = $filter('orderBy')($scope.temp, $scope.sortType, $scope.sortReverse); // Filter by column.
       $scope.temp = $filter('limitTo')($scope.temp, $scope.itemsPerPage, $scope.sortPage * $scope.itemsPerPage); // Limit to x per page, and start on page number * x;
       $scope.items = $scope.temp;
@@ -61,7 +61,7 @@ angular.module("my-app").controller("searchItemCtrl", ["$scope", "$http", "authC
   });
 
   $scope.NextPage = function() {
-    $scope.numberOfPages = parseInt($scope.amountOfItems / $scope.itemsPerPage);
+    $scope.numberOfPages = Math.floor(($scope.amountOfItems - 1) / $scope.itemsPerPage);
     if ($scope.numberOfPages > $scope.sortPage) { // Check if the page is the last page, if not then increment the page number.
       $scope.sortPage++;
     }
