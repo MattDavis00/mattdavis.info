@@ -37,9 +37,19 @@ app.config(function($routeProvider) {
       templateUrl: "app/components/organisation/organisationView.html",
       controller: "organisationCtrl"
     })
-    .when("/credentials", {
-      templateUrl: "app/components/credentials/credentialsView.html",
-      controller: "credentialsCtrl"
+
+    // Credentials //
+    .when("/credentials-create", {
+      templateUrl: "app/components/credentials/create/createUserView.html",
+      controller: "createUserCtrl"
+    })
+    .when("/credentials-search", {
+      templateUrl: "app/components/credentials/search/searchUserView.html",
+      controller: "searchUserCtrl"
+    })
+    .when("/credentials-update", {
+      templateUrl: "app/components/credentials/update/updateUserView.html",
+      controller: "updateUserCtrl"
     })
 
     // Inventory //
@@ -106,7 +116,11 @@ app.service('authCheck', function() {
       $("#posIcon").addClass("active-icon");
     } else if (view == "#!/analytics") {
       $("#analyticsIcon").addClass("active-icon");
-    } else if (view == "#!/credentials") {
+    } else if (view == "#!/credentials-create") {
+      $("#credentialsIcon").addClass("active-icon");
+    } else if (view == "#!/credentials-search") {
+      $("#credentialsIcon").addClass("active-icon");
+    } else if (view == "#!/credentials-update") {
       $("#credentialsIcon").addClass("active-icon");
     } else if (view == "#!/inventory-create") {
       $("#inventoryIcon").addClass("active-icon");

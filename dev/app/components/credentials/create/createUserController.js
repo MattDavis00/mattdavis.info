@@ -1,4 +1,4 @@
-angular.module("my-app").controller("credentialsCtrl", ["$scope", "$http", "authCheck", function($scope, $http, authCheck) {
+angular.module("my-app").controller("createUserCtrl", ["$scope", "$http", "authCheck", function($scope, $http, authCheck) {
 
   authCheck.Admin();
   authCheck.Init();
@@ -9,7 +9,7 @@ angular.module("my-app").controller("credentialsCtrl", ["$scope", "$http", "auth
 
     var request = $http({
       method: "post",
-      url: "app/components/credentials/createUser.php",
+      url: "app/components/credentials/create/createUser.php",
       data: {
         storeID: $scope.credentialsData.storeID,
         firstName: $scope.credentialsData.firstName,
