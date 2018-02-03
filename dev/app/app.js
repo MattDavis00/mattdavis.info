@@ -128,21 +128,33 @@ app.service('authCheck', function() {
       $("#posIcon").addClass("active-icon");
     } else if (view == "#!/analytics") {
       $("#analyticsIcon").addClass("active-icon");
-    } else if (view == "#!/credentials-create") {
+    }
+    // Credentials
+    else if (view == "#!/credentials-create") {
       $("#credentialsIcon").addClass("active-icon");
     } else if (view == "#!/credentials-search") {
       $("#credentialsIcon").addClass("active-icon");
     } else if (view == "#!/credentials-update") {
       $("#credentialsIcon").addClass("active-icon");
-    } else if (view == "#!/inventory-create") {
+    }
+    // Inventory
+    else if (view == "#!/inventory-create") {
       $("#inventoryIcon").addClass("active-icon");
     } else if (view == "#!/inventory-search") {
       $("#inventoryIcon").addClass("active-icon");
     } else if (view == "#!/inventory-update") {
       $("#inventoryIcon").addClass("active-icon");
-    } else if (view == "#!/stores") {
+    }
+    // Stores
+    else if (view == "#!/stores-create") {
       $("#storesIcon").addClass("active-icon");
-    } else if (view == "#!/devices") {
+    } else if (view == "#!/stores-search") {
+      $("#storesIcon").addClass("active-icon");
+    } else if (view == "#!/stores-search") {
+      $("#storesIcon").addClass("active-icon");
+    }
+    // Devices
+    else if (view == "#!/devices") {
       $("#devicesIcon").addClass("active-icon");
     }
 
