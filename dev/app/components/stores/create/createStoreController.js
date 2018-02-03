@@ -21,8 +21,14 @@ angular.module("my-app").controller("createStoreCtrl", ["$scope", "$http", "auth
     });
 
     request.then(function(response) {
-      $scope.results = response.data;
-      $scope.info = " - stores.php ran!";
+      if (response.data.insertSuccess) {
+        $scope.info = "A new store has been created. Store ID: " + response.data.storeID;
+        $scope.storesData.name = "";
+        $scope.storesData.address = "";
+        $scope.storesData.phoneNumber = "";
+      } else {
+        $scope.info = " - Could not create store.";
+      }
     });
   }
   $(".authenticated-nav-elements").hide(); // Ensure that normal user icons are hidden.

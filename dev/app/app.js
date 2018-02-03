@@ -97,13 +97,13 @@ app.config(function($routeProvider) {
 app.service('authCheck', function() {
 
   this.Admin = function() {
-    if (sessionStorage.loggedIn == "false" || sessionStorage.administrator === "false") { // If the user is either not logged in or is not an administrator. sessionStorage automatically converts everything to a string.
+    if (sessionStorage.loggedIn != "true" || sessionStorage.administrator != "true") { // If the user is either not logged in or is not an administrator. sessionStorage automatically converts everything to a string.
       window.location.href = '#!logout';
     }
   }
 
   this.User = function() {
-    if (sessionStorage.loggedIn == "false") { // If the user is not logged in.
+    if (sessionStorage.loggedIn != "true") { // If the user is not logged in.
       window.location.href = '#!logout';
     }
   }
@@ -150,7 +150,7 @@ app.service('authCheck', function() {
       $("#storesIcon").addClass("active-icon");
     } else if (view == "#!/stores-search") {
       $("#storesIcon").addClass("active-icon");
-    } else if (view == "#!/stores-search") {
+    } else if (view == "#!/stores-update") {
       $("#storesIcon").addClass("active-icon");
     }
     // Devices

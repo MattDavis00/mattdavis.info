@@ -1,0 +1,84 @@
+<div id="background-card" class="uk-card uk-card-default uk-card-body uk-flex-center card-slim">
+
+  <div>
+    <button onclick="window.location.href='#!stores-search'" class="uk-button uk-button-primary uk-button-small wide-button">Search</button>
+    <button onclick="window.location.href='#!stores-create'" class="uk-button uk-button-primary uk-button-small wide-button">New Store</button>
+    <button onclick="window.location.href='#!stores-update'" class="uk-button uk-button-primary uk-button-small wide-button">Update Store</button>
+  </div>
+
+  <hr class="uk-divider-icon">
+
+  <form ng-submit="ClearStore()">
+
+    <div class="center-div">
+      <div class="uk-margin">
+        <p class="uk-text-muted">Search:</p>
+        <div class="uk-inline">
+          <span class="uk-form-icon uk-icon" uk-icon="icon: search"></span>
+          <input id="search-box" class="uk-input input-field short-text-box" ng-model="searchStoreData.search" placeholder="Search" type="text">
+          <button type="submit" class="uk-button uk-button-primary uk-button-small">Clear</button>
+        </div>
+      </div>
+    </div>
+
+  </form>
+
+
+
+  <table id="search-table" class="uk-table uk-table-striped uk-table-small uk-table-middle table-scrollable">
+    <thead>
+      <tr>
+        <th class="uk-width-small arrow-fix">
+          <a href="" ng-click="sortType = 'storeID'; sortReverse = !sortReverse">
+              ID
+              <span ng-show="sortType == 'storeID' && !sortReverse" uk-icon="icon: triangle-down"></span> <!-- Only display if this column is being sorted, and it is in the normal order. -->
+              <span ng-show="sortType == 'storeID' && sortReverse" uk-icon="icon: triangle-up"></span> <!-- Only display if this column is being sorted, and it is in a reversed order. -->
+            </a>
+        </th>
+        <th class="uk-width-medium column-minimum-size">
+          <a href="" ng-click="sortType = 'name'; sortReverse = !sortReverse">
+              Name
+              <span ng-show="sortType == 'name' && !sortReverse" uk-icon="icon: triangle-down"></span> <!-- Only display if this column is being sorted, and it is in the normal order. -->
+              <span ng-show="sortType == 'name' && sortReverse" uk-icon="icon: triangle-up"></span> <!-- Only display if this column is being sorted, and it is in a reversed order. -->
+            </a>
+        </th>
+        <th class="uk-table-expand arrow-fix">
+          <a href="" ng-click="sortType = 'address'; sortReverse = !sortReverse">
+              Address
+              <span ng-show="sortType == 'address' && !sortReverse" uk-icon="icon: triangle-down"></span> <!-- Only display if this column is being sorted, and it is in the normal order. -->
+              <span ng-show="sortType == 'address' && sortReverse" uk-icon="icon: triangle-up"></span> <!-- Only display if this column is being sorted, and it is in a reversed order. -->
+            </a>
+        </th>
+        <th class="uk-table-shrink column-minimum-size">
+          <a href="" ng-click="sortType = 'phoneNumber'; sortReverse = !sortReverse">
+              phoneNumber
+              <span ng-show="sortType == 'phoneNumber' && !sortReverse" uk-icon="icon: triangle-down"></span> <!-- Only display if this column is being sorted, and it is in the normal order. -->
+              <span ng-show="sortType == 'phoneNumber' && sortReverse" uk-icon="icon: triangle-up"></span> <!-- Only display if this column is being sorted, and it is in a reversed order. -->
+            </a>
+        </th>
+        <th class="uk-table-shrink"><a href="">Edit</a></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="store in stores">
+        <td>{{ store.storeID }}</td>
+        <td class="uk-text-truncate">{{ store.name }}</td>
+        <td class="uk-text-truncate">{{ store.address }}</td>
+        <td>{{ store.phoneNumber }}</td>
+        <td><button ng-click="EditStore(store)" type="submit" class="uk-button uk-button-primary uk-button-small">Edit</button></td>
+        <!-- Add an edit button for each row, this uses an ng-click directive to call the Search. -->
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="uk-inline">
+    <button class="uk-button uk-button-primary uk-button-small" ng-click="PreviousPage()">Previous</button>
+    <button class="uk-button uk-button-primary uk-button-small" ng-click="NextPage()">Next</button>
+    <label class="uk-text-muted"> Page: {{sortPage + 1}} of {{numberOfPages + 1 | number : 0}} </label> <!-- Get the total number of pages. -->
+    <label class="uk-text-muted">  -  Stores Per Page:  </label>
+    <input class="uk-input input-field short-text-box thin-text-box" ng-model="storesPerPage" placeholder="0" type="number" min="5" step="5" onkeydown="return false"> <!-- Allow a minimum of 5 stores per page, do not allow the user to edit the box, and increment in 5. -->
+  </div>
+
+  <p ng-model="info">{{info}}{{results}}</p>
+
+</div>

@@ -1,0 +1,30 @@
+<div id="background-card" class="uk-card uk-card-default uk-card-body uk-flex-center card-slim">
+
+  <div>
+    <button onclick="window.location.href='#!stores-search'" class="uk-button uk-button-primary uk-button-small wide-button">Search</button>
+    <button onclick="window.location.href='#!stores-create'" class="uk-button uk-button-primary uk-button-small wide-button">New Store</button>
+    <button onclick="window.location.href='#!stores-update'" class="uk-button uk-button-primary uk-button-small wide-button">Update Store</button>
+  </div>
+
+  <hr class="uk-divider-icon">
+
+  <form ng-submit="UpdateStore()">
+
+    <div class="center-div">
+      <div class="uk-margin">
+        <p class="uk-text-muted">Update an existing store:</p>
+        <input class="uk-input input-field short-text-box bottom-margin" ng-model="updateStoreData.storeID" placeholder="ID" type="text"><br />
+        <div class="uk-inline bottom-margin">
+          <input class="uk-input input-field short-text-box" ng-model="updateStoreData.name" placeholder="Name" type="text">
+          <input class="uk-input input-field short-text-box" ng-model="updateStoreData.address" placeholder="Address" type="text">
+          <input class="uk-input input-field short-text-box" ng-model="updateStoreData.phoneNumber" placeholder="Phone Number" type="text">
+        </div>
+        <br />
+        <button type="submit" class="uk-button uk-button-primary uk-button-small wide-button">Update</button>
+        <p ng-model="info">{{info}}{{results}}</p>
+      </div>
+    </div>
+
+  </form>
+
+</div>
