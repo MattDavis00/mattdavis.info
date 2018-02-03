@@ -50,7 +50,7 @@
     <ul class="uk-nav uk-nav-default authenticated-nav-elements-administrator">
       <li id="side-nav-icon-top" class="side-nav-icon"><a id="credentialsIcon" href="#!credentials-search" class="fa fa-users fa-fw fa-2x nav-link" aria-hidden="true"></a></li>
       <li class="side-nav-icon"><a id="inventoryIcon" href="#!inventory-search" class="fa fa-database fa-fw fa-2x nav-link" aria-hidden="true"></a></li>
-      <li class="side-nav-icon"><a id="storesIcon" href="#!stores" class="fa fa-building-o fa-fw fa-2x nav-link" aria-hidden="true"></a></li>
+      <li class="side-nav-icon"><a id="storesIcon" href="#!stores-search" class="fa fa-building-o fa-fw fa-2x nav-link" aria-hidden="true"></a></li>
       <li class="side-nav-icon"><a id="devicesIcon" href="#!devices" class="fa fa-desktop fa-fw fa-2x nav-link" aria-hidden="true"></a></li>
     </ul>
   </div>
@@ -62,19 +62,32 @@
 </body>
 
 <!-- Controllers -->
+
+<!-- Login -->
 <script src="app/components/login/loginController.js"></script>
+<!-- Register -->
 <script src="app/components/register/registerController.js"></script>
+<!-- Key -->
 <script src="app/components/key/keyController.js"></script>
+<!-- Logout -->
 <script src="app/components/logout/logoutController.js"></script>
+<!-- Query -->
 <script src="app/components/query/queryController.js"></script>
+<!-- Credentials -->
 <script src="app/components/credentials/create/createUserController.js"></script>
 <script src="app/components/credentials/search/searchUserController.js"></script>
 <script src="app/components/credentials/update/updateUserController.js"></script>
+<!-- Inventory -->
 <script src="app/components/inventory/create/createItemController.js"></script>
 <script src="app/components/inventory/search/searchItemController.js"></script>
 <script src="app/components/inventory/update/updateItemController.js"></script>
-<script src="app/components/stores/storesController.js"></script>
+<!-- Stores -->
+<script src="app/components/stores/create/createStoreController.js"></script>
+<script src="app/components/stores/search/searchStoreController.js"></script>
+<script src="app/components/stores/update/updateStoreController.js"></script>
+<!-- Devices -->
 <script src="app/components/devices/devicesController.js"></script>
+<!-- Organisation -->
 <script src="app/components/organisation/organisationController.js"></script>
 
 </html>

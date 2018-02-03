@@ -66,10 +66,22 @@ app.config(function($routeProvider) {
       controller: "updateItemCtrl"
     })
 
-    .when("/stores", {
-      templateUrl: "app/components/stores/storesView.html",
-      controller: "storesCtrl"
+    // Stores //
+    .when("/stores-create", {
+      templateUrl: "app/components/stores/create/createStoreView.html",
+      controller: "createStoreCtrl"
     })
+    .when("/stores-search", {
+      templateUrl: "app/components/stores/search/searchStoreView.html",
+      controller: "searchStoreCtrl"
+    })
+    .when("/stores-update", {
+      templateUrl: "app/components/stores/update/updateStoreView.html",
+      controller: "updateStoreCtrl"
+    })
+
+
+
     .when("/devices", {
       templateUrl: "app/components/devices/devicesView.html",
       controller: "devicesCtrl"

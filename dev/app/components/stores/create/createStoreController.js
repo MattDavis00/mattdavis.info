@@ -1,4 +1,4 @@
-angular.module("my-app").controller("storesCtrl", ["$scope", "$http", "authCheck", function($scope, $http, authCheck) {
+angular.module("my-app").controller("createStoreCtrl", ["$scope", "$http", "authCheck", function($scope, $http, authCheck) {
 
   authCheck.Admin();
   authCheck.Init();
@@ -9,7 +9,7 @@ angular.module("my-app").controller("storesCtrl", ["$scope", "$http", "authCheck
 
     var request = $http({
       method: "post",
-      url: "app/components/stores/createStore.php",
+      url: "app/components/stores/create/createStore.php",
       data: {
         name: $scope.storesData.name,
         address: $scope.storesData.address,
