@@ -17,10 +17,12 @@ angular.module("my-app").controller("keyCtrl", ["$scope", "$http", "authCheck", 
     });
 
     request.then(function(response) {
-      $scope.results = response.data;
       var returnData = angular.fromJson(response.data);
-
-      $scope.info = " - UseKey() function ran!";
+      if (returnData.insertSuccess == true) {
+        $scope.info = "Device is now authenticated. Store ID: " + returnData.storeID;
+      } else {
+        $scope.info = "Device is either already authenticated, or key is invalid.";
+      }
     });
   }
   $(".authenticated-nav-elements").hide();

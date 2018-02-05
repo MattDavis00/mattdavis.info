@@ -39,6 +39,7 @@ if ($serverExpiryUNIX > $serverUNIX) { // If the Expiry_UNIX is in the future. T
   // Check Query
   if ($insertReturn) {
       $outputArray["insertSuccess"] = true; // If the insert was successful, return true.
+      $outputArray["storeID"] = $serverStoreID;
   } else {
       $outputArray["insertSuccess"] = false; // If the insert failed, return false.
   }
