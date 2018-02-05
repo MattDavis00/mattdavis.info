@@ -7,9 +7,7 @@ include($_SERVER["DOCUMENT_ROOT"]."/dev/app/shared/include/connection.php");
 $clientID = $request->id;
 $clientPass = $request->password;
 
-$verified = authenicateLogin($clientID, $clientPass, $conn); // Calls the authenticateLogin function
-
-if ($verified == true) {
+if (authenicateLogin($clientID, $clientPass, $conn, $outputArray)) { // Calls the authenticateLogin function
     $outputArray["userID"] = $_SESSION["userID"];
     $outputArray["storeID"] = $_SESSION["storeID"];
     $outputArray["orgID"] = $_SESSION["orgID"];
@@ -20,12 +18,51 @@ if ($verified == true) {
     $_SESSION["loggedIn"] = false;
 }
 
-echo json_encode($outputArray);
+$outputArray["test"] = "test";
+$outputArray["clientIDType"] = is_numeric($clientID);
 
 function authenicateLogin($clientID, $clientPass, $conn)
 {
-    if (gettype($clientID) == "integer") { // The user is not an administrator
-        $sql = "SELECT * FROM user WHERE ID = '" .$clientID. "'";
+    if (is_numeric($clientID)) { // The user is not an administrator
+
+        // Query database for users.
+        $userSelect = $conn->prepare("SELECT `Store_ID`, `Hashed_Pass`, `Salt` FROM `user` WHERE `User_ID` = ? LIMIT 1");
+        $userSelect->bind_param("i", $clientID);
+
+        // Execute Query And Bind Results
+        $userSelect->execute();
+        $userSelect->store_result();
+        $userSelect->bind_result($serverStoreID, $serverHashedPass, $serverSalt);
+        $userSelect->fetch();
+
+        // Close Statement
+        $userSelect->close();
+
+        // Query database for users.
+        $authSelect = $conn->prepare("SELECT `Store_ID` FROM `authentication` WHERE `Device_ID` = ? LIMIT 1");
+        $authSelect->bind_param("s", $_SESSION["deviceID"]);
+
+        // Execute Query And Bind Results
+        $authSelect->execute();
+        $authSelect->store_result();
+        $authSelect->bind_result($serverAuthenticationStoreID);
+        $authSelect->fetch();
+
+        // Close Statement
+        $authSelect->close();
+
+        $hashInput = $clientPass . $serverSalt;
+
+        if ((password_verify($hashInput, $serverHashedPass)) && ($_SESSION["deviceAuth"] == true) && ($serverAuthenticationStoreID == $serverStoreID)){ // User is authenticated.
+          $_SESSION["userID"] = $clientID;
+          $_SESSION["storeID"] = $serverAuthenticationStoreID;
+          $_SESSION["orgID"] = null;
+          $_SESSION["administrator"] = false;
+          $_SESSION["loggedIn"] = true;
+          return true;
+        } else {
+          return false;
+        }
     } else if (gettype($clientID) == "string") { // The user is an administrator
         // SQL Query
         $sql = "SELECT * FROM administrator WHERE Email = '" .$clientID. "'";
@@ -48,14 +85,15 @@ function authenicateLogin($clientID, $clientPass, $conn)
                 return false;
             }
         } else {
-            echo " - Error: " . $sql . $conn->error;
             return false;
         }
     } else {
-        echo " - Data Type for ID is Invalid";
         return false;
     }
 }
+
+// Output
+echo json_encode($outputArray);
 
 // Close Connection
 $conn->close();
