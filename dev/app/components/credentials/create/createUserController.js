@@ -21,7 +21,6 @@ angular.module("my-app").controller("createUserCtrl", ["$scope", "$http", "authC
     });
 
     request.then(function(response) {
-      $scope.results = response.data;
       if (response.data.insertSuccess) {
         $scope.info = "User ID: " + response.data.userID;
         $scope.info += "  Password: " + response.data.password;

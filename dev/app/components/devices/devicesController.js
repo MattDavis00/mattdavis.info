@@ -19,7 +19,6 @@ angular.module("my-app").controller("devicesCtrl", ["$scope", "$http", "authChec
     });
 
     request.then(function(response) {
-      $scope.results = response.data;
       if (response.data.insertSuccess) {
         $scope.info = "Key: " + response.data.key;
       } else {
