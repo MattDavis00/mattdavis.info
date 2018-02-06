@@ -18,8 +18,7 @@ if (authenicateLogin($clientID, $clientPass, $conn, $outputArray)) { // Calls th
     $_SESSION["loggedIn"] = false;
 }
 
-$outputArray["test"] = "test";
-$outputArray["clientIDType"] = is_numeric($clientID);
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function authenicateLogin($clientID, $clientPass, $conn)
 {
@@ -38,7 +37,9 @@ function authenicateLogin($clientID, $clientPass, $conn)
         // Close Statement
         $userSelect->close();
 
-        // Query database for users.
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        // Query database for authentication records.
         $authSelect = $conn->prepare("SELECT `Store_ID` FROM `authentication` WHERE `Device_ID` = ? LIMIT 1");
         $authSelect->bind_param("s", $_SESSION["deviceID"]);
 
@@ -51,8 +52,9 @@ function authenicateLogin($clientID, $clientPass, $conn)
         // Close Statement
         $authSelect->close();
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        // Query database for any existing devices with this ID
+        // Query database for the organisation that the store is a part of.
         $storeSelect = $conn->prepare("SELECT `Org_ID` FROM `store` WHERE `Store_ID` = ?");
         $storeSelect->bind_param("i", $serverStoreID);
 
@@ -65,7 +67,7 @@ function authenicateLogin($clientID, $clientPass, $conn)
         // Close Statement
         $storeSelect->close();
 
-
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         $hashInput = $clientPass . $serverSalt;
 
@@ -79,7 +81,26 @@ function authenicateLogin($clientID, $clientPass, $conn)
         } else {
           return false;
         }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     } else if (gettype($clientID) == "string") { // The user is an administrator
+
+
+      // Query database for the organisation that the administrator is a part of.
+      $administratorSelect = $conn->prepare("SELECT `Email`, `Org_ID`, `Hashed_Pass`, `Salt` FROM `administrator` WHERE `Email` = ? LIMIT 1");
+      $administratorSelect->bind_param("i", $clientID);
+
+      // Execute Query And Bind Results
+      $administratorSelectSuccess = $administratorSelect->execute();
+      $administratorSelect->store_result();
+      $administratorSelect->bind_result($serverEmail, $serverOrgID, $serverHashedPass, $serverSalt);
+      $administratorSelect->fetch();
+
+      // Close Statement
+      $administratorSelect->close();
+
+
         // SQL Query
         $sql = "SELECT * FROM administrator WHERE Email = '" .$clientID. "'";
 
@@ -87,20 +108,18 @@ function authenicateLogin($clientID, $clientPass, $conn)
         $result = $conn->query($sql);
 
         // Output
-        if ($result->num_rows == 1) {
-            while ($row = $result->fetch_assoc()) {
-                $hashInput = $clientPass . $row["Salt"];
-                if (password_verify($hashInput, $row["Hashed_Pass"]) && ($_SESSION["deviceAuth"] == true)) { // If the password matches and the device has been authenticated.
-                    $_SESSION["userID"] = $row["Email"]; // Set userID session variable to the administrators email.
-                    $_SESSION["storeID"] = null;
-                    $_SESSION["orgID"] = $row["Org_ID"]; // Administrators do not need to be on an organisations device, therefore don't check if there is an entry in the authenication table, just set the session value.
-                    $_SESSION["administrator"] = true; // Set administrator session variable to true.
-                    $_SESSION["loggedIn"] = true; // Sets the loggedIn session variable to true.
-                    return true;
-                }
-                return false;
+        if ($administratorSelectSuccess) {
+            $hashInput = $clientPass . $serverSalt;
+            if (password_verify($hashInput, $serverHashedPass) && ($_SESSION["deviceAuth"] == true)) { // If the password matches and the device has been authenticated.
+                $_SESSION["userID"] = $serverEmail; // Set userID session variable to the administrators email.
+                $_SESSION["storeID"] = null;
+                $_SESSION["orgID"] = $serverOrgID; // Administrators do not need to be on an organisations device, therefore don't check if there is an entry in the authenication table, just set the session value.
+                $_SESSION["administrator"] = true; // Set administrator session variable to true.
+                $_SESSION["loggedIn"] = true; // Sets the loggedIn session variable to true.
+                return true;
             }
-        } else {
+                return false;
+            } else {
             return false;
         }
     } else {
