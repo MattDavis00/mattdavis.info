@@ -51,12 +51,28 @@ function authenicateLogin($clientID, $clientPass, $conn)
         // Close Statement
         $authSelect->close();
 
+
+        // Query database for any existing devices with this ID
+        $storeSelect = $conn->prepare("SELECT `Org_ID` FROM `store` WHERE `Store_ID` = ?");
+        $storeSelect->bind_param("i", $serverStoreID);
+
+        // Execute Query And Bind Results
+        $storeSelect->execute();
+        $storeSelect->store_result();
+        $storeSelect->bind_result($serverOrgID);
+        $storeSelect->fetch();
+
+        // Close Statement
+        $storeSelect->close();
+
+
+
         $hashInput = $clientPass . $serverSalt;
 
         if ((password_verify($hashInput, $serverHashedPass)) && ($_SESSION["deviceAuth"] == true) && ($serverAuthenticationStoreID == $serverStoreID)){ // User is authenticated.
           $_SESSION["userID"] = $clientID;
           $_SESSION["storeID"] = $serverAuthenticationStoreID;
-          $_SESSION["orgID"] = null;
+          $_SESSION["orgID"] = $serverOrgID;
           $_SESSION["administrator"] = false;
           $_SESSION["loggedIn"] = true;
           return true;
