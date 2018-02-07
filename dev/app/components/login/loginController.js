@@ -47,7 +47,7 @@ angular.module("my-app").controller("loginCtrl", ["$scope", "$http", "authCheck"
             window.location.href = '#!credentials-search'; // Upon successful admin login, user is redirected to the query page.
           }
         } else {
-          window.location.href = '#!query'; // Upon successful user login, user is redirected to the query page.
+          window.location.href = '#!query-search'; // Upon successful user login, user is redirected to the query page.
         }
       }
       $scope.info = " - processLogin() function ran!";
