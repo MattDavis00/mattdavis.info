@@ -10,7 +10,7 @@ angular.module("my-app").controller("queryCtrl", ["$scope", "$http", "authCheck"
 
     var request = $http({
       method: "post",
-      url: "app/components/query/query.php",
+      url: "app/components/query/search/query.php",
       data: {
         id: $scope.queryData.id
       },

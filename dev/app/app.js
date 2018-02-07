@@ -2,7 +2,8 @@ var app = angular.module("my-app", ["ngRoute"]);
 
 app.config(function($routeProvider) {
   $routeProvider
-    // General
+    ///////////////////////// General ////////////////////////////
+
     .when("/", {
       templateUrl: "app/components/login/loginView.html",
       controller: "loginCtrl"
@@ -19,20 +20,34 @@ app.config(function($routeProvider) {
       template: "<p>Logout Placeholder</p>",
       controller: "logoutCtrl"
     })
-    // Normal User
-    .when("/query", {
-      templateUrl: "app/components/query/queryView.html",
+
+
+    ///////////////////////// Normal User ////////////////////////////
+
+    // Query //
+    .when("/query-search", {
+      templateUrl: "app/components/query/search/queryView.html",
       controller: "queryCtrl"
     })
+    .when("/query-update", {
+      templateUrl: "app/components/query/update/updateQuantity.html",
+      controller: "updateQuantityCtrl"
+    })
+
+    // POS //
     .when("/pos", {
       template: "<p>Point of Sale Placeholder</p>"
     })
+
+    // Analytics //
     .when("/analytics", {
       template: "<p>Analytics Placeholder</p>"
     })
 
 
-    ///////////////////////// Administrator////////////////////////////
+    ///////////////////////// Administrator ////////////////////////////
+
+    // Organisation //
     .when("/organisation", {
       templateUrl: "app/components/organisation/organisationView.html",
       controller: "organisationCtrl"
@@ -80,15 +95,14 @@ app.config(function($routeProvider) {
       controller: "updateStoreCtrl"
     })
 
-
-
+    // Devices //
     .when("/devices", {
       templateUrl: "app/components/devices/devicesView.html",
       controller: "devicesCtrl"
     })
 
 
-    // Otherwise redirect to login
+    ///////////////////////// Otherwise, Redirect To Login ////////////////////////////
     .otherwise({
       redirectTo: "/"
     })
@@ -122,11 +136,18 @@ app.service('authCheck', function() {
     $("#storesIcon").removeClass("active-icon");
     $("#devicesIcon").removeClass("active-icon");
 
-    if (view == "#!/query") {
+    // Query
+    if (view == "#!/query-search") {
       $("#queryIcon").addClass("active-icon");
-    } else if (view == "#!/pos") {
+    } else if (view == "#!/query-update") {
+      $("#queryIcon").addClass("active-icon");
+    }
+    // POS
+    else if (view == "#!/pos") {
       $("#posIcon").addClass("active-icon");
-    } else if (view == "#!/analytics") {
+    }
+    // Analytics
+    else if (view == "#!/analytics") {
       $("#analyticsIcon").addClass("active-icon");
     }
     // Credentials
