@@ -72,6 +72,7 @@ $deviceSelect->fetch();
 // Check User Isn't Brute Forcing DeviceID's
 if ($serverInitial_UNIX == $_SESSION["deviceInitialUNIX"]) {
     $_SESSION["deviceAuth"] = true;
+    echo " - deviceAuth = " .$_SESSION["deviceAuth"];
 }
 
 // Close Statement

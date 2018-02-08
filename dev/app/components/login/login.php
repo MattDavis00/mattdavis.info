@@ -22,7 +22,6 @@ if (authenicateLogin($clientID, $clientPass, $conn)) { // Calls the authenticate
 
 function authenicateLogin($clientID, $clientPass, $conn)
 {
-  echo " Got here 3 ";
     if (is_numeric($clientID)) { // The user is not an administrator
 
         // Query database for users.
@@ -85,8 +84,7 @@ function authenicateLogin($clientID, $clientPass, $conn)
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    } else { // The user is an administrator
-
+    } else if (gettype($clientID) == "string") { // The user is an administrator
 
       // Query database for the organisation that the administrator is a part of.
       $administratorSelect = $conn->prepare("SELECT `Email`, `Org_ID`, `Hashed_Pass`, `Salt` FROM `administrator` WHERE `Email` = ? LIMIT 1");
@@ -98,17 +96,12 @@ function authenicateLogin($clientID, $clientPass, $conn)
       $administratorSelect->bind_result($serverEmail, $serverOrgID, $serverHashedPass, $serverSalt);
       $administratorSelect->fetch();
 
-      echo " Got here 2 ";
-
       // Close Statement
       $administratorSelect->close();
 
       // Output
       if ($administratorSelectSuccess) {
           $hashInput = $clientPass . $serverSalt;
-          echo " Got here 1 ";
-          echo "passwordVerify: " . password_verify($hashInput, $serverHashedPass);
-          echo "deviceAuth: " . ($_SESSION["deviceAuth"] == true);
 
           if (password_verify($hashInput, $serverHashedPass) && ($_SESSION["deviceAuth"] == true)) { // If the password matches and the device has been authenticated.
               $_SESSION["userID"] = $serverEmail; // Set userID session variable to the administrators email.
@@ -116,13 +109,14 @@ function authenicateLogin($clientID, $clientPass, $conn)
               $_SESSION["orgID"] = $serverOrgID; // Administrators do not need to be on an organisations device, therefore don't check if there is an entry in the authenication table, just set the session value.
               $_SESSION["administrator"] = true; // Set administrator session variable to true.
               $_SESSION["loggedIn"] = true; // Sets the loggedIn session variable to true.
-              echo " Got here 5 ";
               return true;
           }
               return false;
           } else {
           return false;
         }
+    } else {
+      return false;
     }
 }
 
