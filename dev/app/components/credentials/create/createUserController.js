@@ -24,6 +24,9 @@ angular.module("my-app").controller("createUserCtrl", ["$scope", "$http", "authC
       if (response.data.insertSuccess) {
         $scope.info = "User ID: " + response.data.userID;
         $scope.info += "  Password: " + response.data.password;
+        $scope.credentialsData.storeID = "";
+        $scope.credentialsData.firstName = "";
+        $scope.credentialsData.lastName = "";
       } else {
         $scope.info = " - Could not create key.";
       }
