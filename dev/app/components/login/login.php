@@ -7,7 +7,7 @@ include($_SERVER["DOCUMENT_ROOT"]."/dev/app/shared/include/connection.php");
 $clientID = $request->id;
 $clientPass = $request->password;
 
-if (authenicateLogin($clientID, $clientPass, $conn, $outputArray)) { // Calls the authenticateLogin function
+if (authenicateLogin($clientID, $clientPass, $conn)) { // Calls the authenticateLogin function
     $outputArray["userID"] = $_SESSION["userID"];
     $outputArray["storeID"] = $_SESSION["storeID"];
     $outputArray["orgID"] = $_SESSION["orgID"];
@@ -84,7 +84,7 @@ function authenicateLogin($clientID, $clientPass, $conn)
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    } else if (gettype($clientID) == "string") { // The user is an administrator
+    } else { // The user is an administrator
 
 
       // Query database for the organisation that the administrator is a part of.
@@ -115,8 +115,6 @@ function authenicateLogin($clientID, $clientPass, $conn)
           } else {
           return false;
         }
-    } else {
-        return false;
     }
 }
 
