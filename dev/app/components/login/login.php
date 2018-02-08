@@ -68,8 +68,6 @@ function authenicateLogin($clientID, $clientPass, $conn)
         // Close Statement
         $storeSelect->close();
 
-        echo " Got here 1 ";
-
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         $hashInput = $clientPass . $serverSalt;
@@ -80,7 +78,6 @@ function authenicateLogin($clientID, $clientPass, $conn)
           $_SESSION["orgID"] = $serverOrgID;
           $_SESSION["administrator"] = false;
           $_SESSION["loggedIn"] = true;
-          echo " Got here 2 ";
           return true;
         } else {
           return false;
@@ -101,18 +98,22 @@ function authenicateLogin($clientID, $clientPass, $conn)
       $administratorSelect->bind_result($serverEmail, $serverOrgID, $serverHashedPass, $serverSalt);
       $administratorSelect->fetch();
 
+      echo " Got here 2 ";
+
       // Close Statement
       $administratorSelect->close();
 
       // Output
       if ($administratorSelectSuccess) {
           $hashInput = $clientPass . $serverSalt;
+          echo " Got here 1 ";
           if (password_verify($hashInput, $serverHashedPass) && ($_SESSION["deviceAuth"] == true)) { // If the password matches and the device has been authenticated.
               $_SESSION["userID"] = $serverEmail; // Set userID session variable to the administrators email.
               $_SESSION["storeID"] = null;
               $_SESSION["orgID"] = $serverOrgID; // Administrators do not need to be on an organisations device, therefore don't check if there is an entry in the authenication table, just set the session value.
               $_SESSION["administrator"] = true; // Set administrator session variable to true.
               $_SESSION["loggedIn"] = true; // Sets the loggedIn session variable to true.
+              echo " Got here 5 ";
               return true;
           }
               return false;
