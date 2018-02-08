@@ -1,4 +1,4 @@
-angular.module("my-app").controller("queryCtrl", ["$scope", "$http", "authCheck", function($scope, $http, authCheck) {
+angular.module("my-app").controller("queryCtrl", ["$scope", "$http", "authCheck", "$filter", function($scope, $http, authCheck, $filter) {
 
   authCheck.User();
   authCheck.Init();

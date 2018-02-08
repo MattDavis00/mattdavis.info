@@ -11,79 +11,42 @@ $insertReturn = false;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-$itemIDS = array();
 $orgItemData = array();
-$itemAdmissionData = array();
+$itemData = array();
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Query database for any items that belong to the organisation.
-$itemAdmissionSelect = $conn->prepare("SELECT `Item_Admission_ID`,`Item_ID`,`Item_Location`,`Quantity` FROM `item_admission` WHERE `Store_ID` = ?");
-$itemAdmissionSelect->bind_param("i", $_SESSION["storeID"]);
+$itemSelect = $conn->prepare("SELECT `item_admission`.`Item_Admission_ID`,`item`.`Item_ID`,`item_admission`.`Item_Location`,`item_admission`.`Quantity`,`item`.`Name`,`item`.`Price`,`item`.`Description`,`item`.`Barcode`
+FROM `item`
+LEFT OUTER JOIN `item_admission` ON `item_admission`.`Item_ID` = `item`.`Item_ID` AND `item_admission`.`Store_ID` = ?
+WHERE `item`.`Org_ID` = ?
+");
+$itemSelect->bind_param("ii", $_SESSION["storeID"], $_SESSION["orgID"]);
 
 // Execute Query And Bind Results
-$itemAdmissionSelect->execute();
-$itemAdmissionSelect->store_result();
-$itemAdmissionSelect->bind_result($serverItemAdmissionID,$serverItemID,$serverItemLocation,$serverQuantity);
+$itemSelect->execute();
+$itemSelect->store_result();
+$itemSelect->bind_result($serverItemAdmissionID,$serverItemID,$serverItemLocation,$serverItemQuantity,$serverItemName,$serverItemPrice,$serverItemDescription,$serverItemBarcode);
 
-while ($itemAdmissionSelect->fetch()) {
+while ($itemSelect->fetch()) {
   $tempData["itemAdmissionID"] = $serverItemAdmissionID;
   $tempData["itemID"] = $serverItemID;
   $tempData["location"] = $serverItemLocation;
   $tempData["quantity"] = $serverItemQuantity;
-  echo $serverItemID;
-  $itemIDS[] = $serverItemID;
-  $itemAdmissionData[$serverItemID] = $tempData;
+  $tempData["name"] = $serverItemName;
+  $tempData["price"] = $serverItemPrice;
+  $tempData["description"] = $serverItemDescription;
+  $tempData["barcode"] = $serverItemBarcode;
+  $itemData[] = $tempData;
 }
 
 // Close Statement
-$itemAdmissionSelect->close();
+$itemSelect->close();
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// $userSelect = $conn->prepare("SELECT `User_ID`,`Store_ID`,`First_Name`,`Last_Name`,`Last_Login_UNIX` FROM `user`
-// WHERE `Store_ID` IN (".implode(", ", $stores).")");
-
-// Query database for any items that belong to the organisation.
-$storeSelect = $conn->prepare("SELECT `Item_ID`,`Name`,`Price`,`Description`,`Barcode` FROM `item` WHERE `Item_ID` IN (".implode(", ", $itemIDS).")");
-// $storeSelect->bind_param("is", $_SESSION["orgID"], $test);
-
-// Execute Query And Bind Results
-$storeSelect->execute();
-$storeSelect->store_result();
-$storeSelect->bind_result($serverItemID,$serverName,$serverPrice,$serverDescription,$serverBarcode);
-
-while ($storeSelect->fetch()) {
-  $tempData["itemID"] = $serverItemID;
-  $tempData["name"] = $serverName;
-  $tempData["price"] = $serverPrice;
-  $tempData["description"] = $serverDescription;
-  $tempData["barcode"] = $serverBarcode;
-
-  $itemAdmissionData[$serverItemID] .= $tempData;
-}
-
-// Close Statement
-$storeSelect->close();
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-// for ($i=0; $i < sizeof($itemAdmissionData); $i++)
-// {
-//   $itemAdmission = $itemAdmissionData[$i];
-//   for ($x=0; $x < sizeof($orgItemData); $x++)
-//   {
-//     $orgItem = $orgItemData[$x];
-//     if ($itemAdmission["itemID"] == $orgItem["itemID"])
-//     {
-//
-//     }
-//   }
-// }
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-$outputArray["selectData"] = $itemAdmissionData; // Return the data.
+$outputArray["selectData"] = $itemData; // Return the data.
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

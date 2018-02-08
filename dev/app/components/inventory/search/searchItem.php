@@ -15,16 +15,16 @@ $data = array();
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// Query database for any existing devices with this ID
-$storeSelect = $conn->prepare("SELECT `Item_ID`,`Name`,`Price`,`Description`,`Barcode` FROM `item` WHERE `Org_ID` = ?");
-$storeSelect->bind_param("i", $_SESSION["orgID"]);
+// Query database for items that are part of the administrator's organisation.
+$itemSelect = $conn->prepare("SELECT `Item_ID`,`Name`,`Price`,`Description`,`Barcode` FROM `item` WHERE `Org_ID` = ?");
+$itemSelect->bind_param("i", $_SESSION["orgID"]);
 
 // Execute Query And Bind Results
-$storeSelect->execute();
-$storeSelect->store_result();
-$storeSelect->bind_result($serverItemID,$serverName,$serverPrice,$serverDescription,$serverBarcode);
+$itemSelect->execute();
+$itemSelect->store_result();
+$itemSelect->bind_result($serverItemID,$serverName,$serverPrice,$serverDescription,$serverBarcode);
 
-while ($storeSelect->fetch()) {
+while ($itemSelect->fetch()) {
   $tempData["itemID"] = $serverItemID;
   $tempData["name"] = $serverName;
   $tempData["price"] = $serverPrice;
@@ -35,7 +35,7 @@ while ($storeSelect->fetch()) {
 }
 
 // Close Statement
-$storeSelect->close();
+$itemSelect->close();
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
