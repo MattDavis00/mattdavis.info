@@ -107,6 +107,9 @@ function authenicateLogin($clientID, $clientPass, $conn)
       if ($administratorSelectSuccess) {
           $hashInput = $clientPass . $serverSalt;
           echo " Got here 1 ";
+          echo "passwordVerify: " . password_verify($hashInput, $serverHashedPass);
+          echo "deviceAuth: " . ($_SESSION["deviceAuth"] == true);
+
           if (password_verify($hashInput, $serverHashedPass) && ($_SESSION["deviceAuth"] == true)) { // If the password matches and the device has been authenticated.
               $_SESSION["userID"] = $serverEmail; // Set userID session variable to the administrators email.
               $_SESSION["storeID"] = null;
