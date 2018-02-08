@@ -22,6 +22,7 @@ if (authenicateLogin($clientID, $clientPass, $conn)) { // Calls the authenticate
 
 function authenicateLogin($clientID, $clientPass, $conn)
 {
+  echo " Got here 3 ";
     if (is_numeric($clientID)) { // The user is not an administrator
 
         // Query database for users.
@@ -67,6 +68,8 @@ function authenicateLogin($clientID, $clientPass, $conn)
         // Close Statement
         $storeSelect->close();
 
+        echo " Got here 1 ";
+
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         $hashInput = $clientPass . $serverSalt;
@@ -77,6 +80,7 @@ function authenicateLogin($clientID, $clientPass, $conn)
           $_SESSION["orgID"] = $serverOrgID;
           $_SESSION["administrator"] = false;
           $_SESSION["loggedIn"] = true;
+          echo " Got here 2 ";
           return true;
         } else {
           return false;
