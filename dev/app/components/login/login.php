@@ -100,27 +100,20 @@ function authenicateLogin($clientID, $clientPass, $conn)
       // Close Statement
       $administratorSelect->close();
 
-
-        // SQL Query
-        $sql = "SELECT * FROM administrator WHERE Email = '" .$clientID. "'";
-
-        // Execute Query
-        $result = $conn->query($sql);
-
-        // Output
-        if ($administratorSelectSuccess) {
-            $hashInput = $clientPass . $serverSalt;
-            if (password_verify($hashInput, $serverHashedPass) && ($_SESSION["deviceAuth"] == true)) { // If the password matches and the device has been authenticated.
-                $_SESSION["userID"] = $serverEmail; // Set userID session variable to the administrators email.
-                $_SESSION["storeID"] = null;
-                $_SESSION["orgID"] = $serverOrgID; // Administrators do not need to be on an organisations device, therefore don't check if there is an entry in the authenication table, just set the session value.
-                $_SESSION["administrator"] = true; // Set administrator session variable to true.
-                $_SESSION["loggedIn"] = true; // Sets the loggedIn session variable to true.
-                return true;
-            }
-                return false;
-            } else {
-            return false;
+      // Output
+      if ($administratorSelectSuccess) {
+          $hashInput = $clientPass . $serverSalt;
+          if (password_verify($hashInput, $serverHashedPass) && ($_SESSION["deviceAuth"] == true)) { // If the password matches and the device has been authenticated.
+              $_SESSION["userID"] = $serverEmail; // Set userID session variable to the administrators email.
+              $_SESSION["storeID"] = null;
+              $_SESSION["orgID"] = $serverOrgID; // Administrators do not need to be on an organisations device, therefore don't check if there is an entry in the authenication table, just set the session value.
+              $_SESSION["administrator"] = true; // Set administrator session variable to true.
+              $_SESSION["loggedIn"] = true; // Sets the loggedIn session variable to true.
+              return true;
+          }
+              return false;
+          } else {
+          return false;
         }
     } else {
         return false;
