@@ -36,11 +36,14 @@ angular.module("my-app").controller("queryCtrl", ["$scope", "$http", "authCheck"
   $scope.EditItem = function(item) {
 
     // Save the object locally on the user's machine using session storage.
+    sessionStorage.editDataItemItemAdmissionID = item.itemAdmissionID;
     sessionStorage.editDataItemItemID = item.itemID;
     sessionStorage.editDataItemName = item.name;
     sessionStorage.editDataItemPrice = item.price;
     sessionStorage.editDataItemBarcode = item.barcode;
     sessionStorage.editDataItemDescription = item.description;
+    sessionStorage.editDataItemLocation = item.location;
+    sessionStorage.editDataItemQuantity = item.quantity;
     sessionStorage.editDataRequest = "true"; // State that a request is being made.
     window.location.href = '#!inventory-update'; // Redirect the user to the update item view.
 

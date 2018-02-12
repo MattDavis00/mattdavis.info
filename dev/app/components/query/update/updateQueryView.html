@@ -1,0 +1,32 @@
+<div id="background-card" class="uk-card uk-card-default uk-card-body uk-flex-center card-slim">
+
+  <div>
+    <button onclick="window.location.href='#!query-search'" class="uk-button uk-button-primary uk-button-small wide-button">Search</button>
+    <button onclick="window.location.href='#!query-update'" class="uk-button uk-button-primary uk-button-small wide-button">Update Item</button>
+  </div>
+
+  <hr class="uk-divider-icon">
+
+  <form ng-submit="UpdateQuery()">
+
+    <div class="center-div">
+      <div class="uk-margin">
+        <p class="uk-text-muted">Update an existing item:</p>
+        <input class="uk-input input-field short-text-box bottom-margin" ng-model="updateQueryData.itemID" placeholder="ID" type="text"><br />
+        <div class="uk-inline bottom-margin">
+          <input class="uk-input input-field short-text-box" ng-model="updateQueryData.name" placeholder="Name" type="text">
+          <input class="uk-input input-field short-text-box" ng-model="updateQueryData.price" placeholder="Price" type="text">
+          <input class="uk-input input-field short-text-box" ng-model="updateQueryData.barcode" placeholder="Barcode" type="text">
+        </div>
+        <textarea class="uk-textarea bottom-margin" ng-model="updateQueryData.description" rows="5" placeholder="Description"></textarea>
+        <button type="submit" class="uk-button uk-button-primary uk-button-small wide-button">Update</button>
+        <p ng-model="info">{{info}}{{results}}</p>
+      </div>
+    </div>
+
+  </form>
+
+</div>
+
+
+</div>

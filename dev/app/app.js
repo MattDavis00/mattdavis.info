@@ -30,8 +30,8 @@ app.config(function($routeProvider) {
       controller: "queryCtrl"
     })
     .when("/query-update", {
-      templateUrl: "app/components/query/update/updateQuantity.html",
-      controller: "updateQuantityCtrl"
+      templateUrl: "app/components/query/update/updateQueryView.html",
+      controller: "updateQueryCtrl"
     })
 
     // POS //
