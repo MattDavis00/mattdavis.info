@@ -45,7 +45,7 @@ angular.module("my-app").controller("queryCtrl", ["$scope", "$http", "authCheck"
     sessionStorage.editDataItemLocation = item.location;
     sessionStorage.editDataItemQuantity = item.quantity;
     sessionStorage.editDataRequest = "true"; // State that a request is being made.
-    window.location.href = '#!inventory-update'; // Redirect the user to the update item view.
+    window.location.href = '#!query-update'; // Redirect the user to the update item view.
 
   }
 

@@ -15,8 +15,14 @@ angular.module("my-app").controller("updateQueryCtrl", ["$scope", "$http", "auth
       $scope.updateQueryData.price = sessionStorage.editDataItemPrice;
       $scope.updateQueryData.barcode = sessionStorage.editDataItemBarcode;
       $scope.updateQueryData.description = sessionStorage.editDataItemDescription;
-      $scope.updateQueryData.location = sessionStorage.editDataItemLocation;
-      $scope.updateQueryData.quantity = sessionStorage.editDataItemQuantity;
+
+      if (sessionStorage.editDataItemLocation == "null" || sessionStorage.editDataItemQuantity == "null") { // If there is not a record, then set the location and quantity to default values.
+        $scope.updateQueryData.location = "";
+        $scope.updateQueryData.quantity = 0;
+      } else {
+        $scope.updateQueryData.location = sessionStorage.editDataItemLocation;
+        $scope.updateQueryData.quantity = sessionStorage.editDataItemQuantity;
+      }
 
     }
   }
@@ -25,9 +31,10 @@ angular.module("my-app").controller("updateQueryCtrl", ["$scope", "$http", "auth
 
     var request = $http({
       method: "post",
-      url: "app/components/inventory/update/updateQuery.php",
+      url: "app/components/query/update/updateQuery.php",
       data: {
         itemAdmissionID: $scope.updateQueryData.itemAdmissionID,
+        itemID: $scope.updateQueryData.itemID,
         location: $scope.updateQueryData.location,
         quantity: $scope.updateQueryData.quantity
       },
@@ -38,19 +45,14 @@ angular.module("my-app").controller("updateQueryCtrl", ["$scope", "$http", "auth
 
     request.then(function(response) {
       if (response.data.updateSuccess) {
-        $scope.info = "An existing item has been updated. Item ID: " + response.data.itemID;
-        $scope.updateQueryData.itemID = "";
-        $scope.updateQueryData.name = "";
-        $scope.updateQueryData.price = "";
-        $scope.updateQueryData.barcode = "";
-        $scope.updateQueryData.description = "";
+        window.location.href = '#!query-search'; // Upon successful update/insert the user is redirected back to the search/query view.
       } else {
         $scope.info = " - Could not update item.";
       }
     });
   }
-  $(".authenticated-nav-elements").hide(); // Ensure that normal user icons are hidden.
-  $(".authenticated-nav-elements-administrator").show(); // Show the top-nav and side-nav administrator icons
+  $(".authenticated-nav-elements-administrator").hide(); // Ensure that administrator icons are hidden.
+  $(".authenticated-nav-elements").show(); // Show the top-nav and side-nav icons
 
   $scope.CheckEdit(); // Call the CheckEdit function to see if there is an item that has been editted.
 
