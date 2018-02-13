@@ -35,8 +35,9 @@ app.config(function($routeProvider) {
     })
 
     // POS //
-    .when("/pos", {
-      template: "<p>Point of Sale Placeholder</p>"
+    .when("/pos-checkout", {
+      templateUrl: "app/components/pos/checkout/checkoutView.html",
+      controller: "checkoutCtrl"
     })
 
     // Analytics //
@@ -143,7 +144,7 @@ app.service('authCheck', function() {
       $("#queryIcon").addClass("active-icon");
     }
     // POS
-    else if (view == "#!/pos") {
+    else if (view == "#!/pos-checkout") {
       $("#posIcon").addClass("active-icon");
     }
     // Analytics
