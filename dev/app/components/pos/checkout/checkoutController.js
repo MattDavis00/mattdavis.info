@@ -14,7 +14,7 @@ angular.module("my-app").controller("checkoutCtrl", ["$scope", "$http", "authChe
   $scope.amountOfItems = 1;
 
   $scope.ClearItem = function() {
-    $scope.checkoutData.search = "";
+    $scope.checkoutData.id = "";
   }
 
   $scope.SearchItem = function() {
@@ -31,6 +31,22 @@ angular.module("my-app").controller("checkoutCtrl", ["$scope", "$http", "authChe
       $scope.permItems = $scope.items;
       $scope.amountOfItems = $scope.items.length;
     });
+  }
+
+  $scope.buttonPress = function(button) {
+    if ($scope.checkoutData.id == null) {
+      if (button != "-1") {
+        $scope.checkoutData.id = button;
+      } else {
+        $scope.checkoutData.id = ".";
+      }
+    } else {
+      if (button != "-1") {
+        $scope.checkoutData.id += button;
+      } else {
+        $scope.checkoutData.id += ".";
+      }
+    }
   }
 
   $scope.EditItem = function(item) {

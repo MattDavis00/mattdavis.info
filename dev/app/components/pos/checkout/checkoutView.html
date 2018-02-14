@@ -12,30 +12,30 @@
       <div class="uk-margin">
         <div class="uk-inline">
           <span class="uk-form-icon uk-icon" uk-icon="icon: pencil"></span>
-          <input id="checkout-textbox" class="uk-input input-field short-text-box" ng-model="checkoutData.ID" placeholder="ID / Barcode" type="text">
+          <input id="checkout-textbox" class="uk-input input-field short-text-box" ng-model="checkoutData.id" placeholder="ID / Barcode" type="text">
         </div>
       </div>
     </div>
 
     <div class="uk-inline bottom-margin">
-      <button type="submit" class="uk-button uk-button-primary uk-button-small numpad-button">7</button>
-      <button type="submit" class="uk-button uk-button-primary uk-button-small numpad-button">8</button>
-      <button type="submit" class="uk-button uk-button-primary uk-button-small numpad-button">9</button>
+      <button type="button" ng-click="buttonPress('7')" class="uk-button uk-button-primary uk-button-small numpad-button">7</button>
+      <button type="button" ng-click="buttonPress('8')" class="uk-button uk-button-primary uk-button-small numpad-button">8</button>
+      <button type="button" ng-click="buttonPress('9')" class="uk-button uk-button-primary uk-button-small numpad-button">9</button>
     </div><br />
     <div class="uk-inline bottom-margin">
-      <button type="submit" class="uk-button uk-button-primary uk-button-small numpad-button">4</button>
-      <button type="submit" class="uk-button uk-button-primary uk-button-small numpad-button">5</button>
-      <button type="submit" class="uk-button uk-button-primary uk-button-small numpad-button">6</button>
+      <button type="button" ng-click="buttonPress('4')" class="uk-button uk-button-primary uk-button-small numpad-button">4</button>
+      <button type="button" ng-click="buttonPress('5')" class="uk-button uk-button-primary uk-button-small numpad-button">5</button>
+      <button type="button" ng-click="buttonPress('6')" class="uk-button uk-button-primary uk-button-small numpad-button">6</button>
     </div><br />
     <div class="uk-inline bottom-margin">
-      <button type="submit" class="uk-button uk-button-primary uk-button-small numpad-button">1</button>
-      <button type="submit" class="uk-button uk-button-primary uk-button-small numpad-button">2</button>
-      <button type="submit" class="uk-button uk-button-primary uk-button-small numpad-button">3</button>
+      <button type="button" ng-click="buttonPress('1')" class="uk-button uk-button-primary uk-button-small numpad-button">1</button>
+      <button type="button" ng-click="buttonPress('2')" class="uk-button uk-button-primary uk-button-small numpad-button">2</button>
+      <button type="button" ng-click="buttonPress('3')" class="uk-button uk-button-primary uk-button-small numpad-button">3</button>
     </div><br />
     <div class="uk-inline">
-      <button type="submit" class="uk-button uk-button-primary uk-button-small numpad-button">.</button>
-      <button type="submit" class="uk-button uk-button-primary uk-button-small numpad-button">0</button>
-      <button type="submit" class="uk-button uk-button-primary uk-button-small numpad-button red-background">C</button>
+      <button type="button" ng-click="buttonPress('-1')" class="uk-button uk-button-primary uk-button-small numpad-button">.</button>
+      <button type="button" ng-click="buttonPress('0')" class="uk-button uk-button-primary uk-button-small numpad-button">0</button>
+      <button type="button" ng-click="ClearItem()" class="uk-button uk-button-primary uk-button-small numpad-button red-background">C</button>
     </div>
 
   </form>
