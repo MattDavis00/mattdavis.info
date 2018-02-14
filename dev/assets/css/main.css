@@ -87,7 +87,7 @@ p {
 
 #checkout-textbox {
   height: 40px;
-  width: 450px;
+  width: 475px;
 }
 
 /* Class Selector */
@@ -189,6 +189,9 @@ p {
   width: 150px;
   height: 75px;
   font-size: 20px;
+  margin-right: 3px;
+  margin-left: 3px;
+  margin-bottom: 10px;
 }
 
 .red-background {
@@ -214,6 +217,15 @@ p {
 
 .thin-text-box {
   width: 70px;
+}
+
+.enter-button {
+  width: 470px;
+}
+
+.receipt {
+  max-height: 70%;
+  overflow-y: auto;
 }
 
 /* Colour Palette*/

@@ -6,39 +6,62 @@
 
   <hr class="uk-divider-icon">
 
-  <form ng-submit="ClearItem()" class="uk-position-center">
+  <div class="uk-inline uk-position-center">
 
-    <div class="center-div">
-      <div class="uk-margin">
-        <div class="uk-inline">
-          <span class="uk-form-icon uk-icon" uk-icon="icon: pencil"></span>
-          <input id="checkout-textbox" class="uk-input input-field short-text-box" ng-model="checkoutData.id" placeholder="ID / Barcode" type="text">
+    <form ng-submit="addItem()" class="">
+
+      <div class="center-div">
+        <div class="uk-margin">
+          <div class="uk-inline">
+            <span class="uk-form-icon uk-icon" uk-icon="icon: pencil"></span>
+            <input id="checkout-textbox" autocomplete="off" class="uk-input input-field short-text-box" ng-model="checkoutData.id" placeholder="ID / Barcode" type="text">
+            <!-- Autocomplete is off to prevent suggestions covering the numpad. -->
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="uk-inline bottom-margin">
-      <button type="button" ng-click="buttonPress('7')" class="uk-button uk-button-primary uk-button-small numpad-button">7</button>
-      <button type="button" ng-click="buttonPress('8')" class="uk-button uk-button-primary uk-button-small numpad-button">8</button>
-      <button type="button" ng-click="buttonPress('9')" class="uk-button uk-button-primary uk-button-small numpad-button">9</button>
-    </div><br />
-    <div class="uk-inline bottom-margin">
-      <button type="button" ng-click="buttonPress('4')" class="uk-button uk-button-primary uk-button-small numpad-button">4</button>
-      <button type="button" ng-click="buttonPress('5')" class="uk-button uk-button-primary uk-button-small numpad-button">5</button>
-      <button type="button" ng-click="buttonPress('6')" class="uk-button uk-button-primary uk-button-small numpad-button">6</button>
-    </div><br />
-    <div class="uk-inline bottom-margin">
-      <button type="button" ng-click="buttonPress('1')" class="uk-button uk-button-primary uk-button-small numpad-button">1</button>
-      <button type="button" ng-click="buttonPress('2')" class="uk-button uk-button-primary uk-button-small numpad-button">2</button>
-      <button type="button" ng-click="buttonPress('3')" class="uk-button uk-button-primary uk-button-small numpad-button">3</button>
-    </div><br />
-    <div class="uk-inline">
-      <button type="button" ng-click="buttonPress('-1')" class="uk-button uk-button-primary uk-button-small numpad-button">.</button>
-      <button type="button" ng-click="buttonPress('0')" class="uk-button uk-button-primary uk-button-small numpad-button">0</button>
-      <button type="button" ng-click="ClearItem()" class="uk-button uk-button-primary uk-button-small numpad-button red-background">C</button>
-    </div>
+      <div class="uk-inline">
+        <button type="button" ng-click="buttonPress('7')" class="uk-button uk-button-primary uk-button-small numpad-button">7</button>
+        <button type="button" ng-click="buttonPress('8')" class="uk-button uk-button-primary uk-button-small numpad-button">8</button>
+        <button type="button" ng-click="buttonPress('9')" class="uk-button uk-button-primary uk-button-small numpad-button">9</button>
+      </div><br />
+      <div class="uk-inline">
+        <button type="button" ng-click="buttonPress('4')" class="uk-button uk-button-primary uk-button-small numpad-button">4</button>
+        <button type="button" ng-click="buttonPress('5')" class="uk-button uk-button-primary uk-button-small numpad-button">5</button>
+        <button type="button" ng-click="buttonPress('6')" class="uk-button uk-button-primary uk-button-small numpad-button">6</button>
+      </div><br />
+      <div class="uk-inline">
+        <button type="button" ng-click="buttonPress('1')" class="uk-button uk-button-primary uk-button-small numpad-button">1</button>
+        <button type="button" ng-click="buttonPress('2')" class="uk-button uk-button-primary uk-button-small numpad-button">2</button>
+        <button type="button" ng-click="buttonPress('3')" class="uk-button uk-button-primary uk-button-small numpad-button">3</button>
+      </div><br />
+      <div class="uk-inline">
+        <button type="button" ng-click="buttonPress('-1')" class="uk-button uk-button-primary uk-button-small numpad-button">.</button>
+        <button type="button" ng-click="buttonPress('0')" class="uk-button uk-button-primary uk-button-small numpad-button">0</button>
+        <button type="button" ng-click="ClearItem()" class="uk-button uk-button-primary uk-button-small numpad-button red-background">C</button>
+      </div><br />
+      <div class="uk-inline center-div">
+        <button type="submit" class="uk-button uk-button-primary uk-button-small numpad-button enter-button">Enter</button>
+      </div>
 
-  </form>
+    </form>
+
+  </div>
+
+  <div class="uk-align-right receipt">
+    <div ng-repeat="item in items">
+      <div class="uk-grid-small" uk-grid>
+        <div class="uk-width-medium uk-text-truncate" uk-leader>{{item.name | limitTo: 35}}</div>
+        <div>{{ item.price | currency : "£" : 2}}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="uk-position-medium uk-position-bottom-right">
+    <div class="uk-grid-small" uk-grid>
+      <div><h3>Total: {{ 5.23 | currency : "£" : 2}}</h3></div>
+    </div>
+  </div>
 
   <p ng-model="info">{{info}}{{results}}</p>
 

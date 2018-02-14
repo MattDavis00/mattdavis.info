@@ -94,4 +94,9 @@ angular.module("my-app").controller("checkoutCtrl", ["$scope", "$http", "authChe
     }
   }
 
+  function inputFocus() {
+    document.getElementById("checkout-textbox").focus(); // Set the focused textbox to the checkout-textbox.
+  }
+  window.onkeydown = inputFocus; // When a key is pressed, call inputFocus
+
 }]);
