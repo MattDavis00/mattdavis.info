@@ -224,8 +224,30 @@ p {
 }
 
 .receipt {
-  max-height: 70%;
+  max-height: 600px;
   overflow-y: auto;
+}
+
+.checkout-notification {
+  background-color: #3b3f42;
+  padding-top: 6px;
+  padding-bottom: 10px;
+  margin-right: 0;
+  margin-top: 0;
+}
+
+#checkout-notification-title {
+  margin: 0;
+}
+
+.checkout-notification-text, #checkout-notification-title {
+  color: #a9afb1;
+}
+
+.checkout-function {
+  width: 350px;
+  height: 125px;
+  font-size: 20px;
 }
 
 /* Colour Palette*/

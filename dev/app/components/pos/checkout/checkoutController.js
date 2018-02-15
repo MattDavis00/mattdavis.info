@@ -5,13 +5,8 @@ angular.module("my-app").controller("checkoutCtrl", ["$scope", "$http", "authChe
 
   $scope.checkoutData = {};
   $scope.results = "";
-
-  $scope.sortType = 'itemID'; // Set the default sort type
-  $scope.sortReverse = false; // Set the default sort order
-  $scope.itemsPerPage = 10; // Set the default amount of items per page.
-  $scope.sortPage = 0; // Set the default page number.
-  $scope.numberOfPages = 1; // Sets the default page count
-  $scope.amountOfItems = 1;
+  $scope.checkoutData.receipt = [];
+  $scope.checkoutData.total = 0;
 
   $scope.ClearItem = function() {
     $scope.checkoutData.id = "";
@@ -49,26 +44,33 @@ angular.module("my-app").controller("checkoutCtrl", ["$scope", "$http", "authChe
     }
   }
 
-  $scope.EditItem = function(item) {
-
-    // Save the object locally on the user's machine using session storage.
-    sessionStorage.editDataItemItemAdmissionID = item.itemAdmissionID;
-    sessionStorage.editDataItemItemID = item.itemID;
-    sessionStorage.editDataItemName = item.name;
-    sessionStorage.editDataItemPrice = item.price;
-    sessionStorage.editDataItemBarcode = item.barcode;
-    sessionStorage.editDataItemDescription = item.description;
-    sessionStorage.editDataItemLocation = item.location;
-    sessionStorage.editDataItemQuantity = item.quantity;
-    sessionStorage.editDataRequest = "true"; // State that a request is being made.
-    window.location.href = '#!checkout-update'; // Redirect the user to the update item view.
-
-  }
-
   $(".authenticated-nav-elements-administrator").hide(); // Ensure that administrator icons are hidden.
   $(".authenticated-nav-elements").show(); // Show the top-nav and side-nav icons
 
   $scope.SearchItem();
+
+  $scope.addItem = function() {
+    $scope.itemSearch = $filter('filter')($scope.permItems, $scope.checkoutData.id);
+    $scope.tempItem = [];
+    $scope.itemSearch.forEach(function(arrayItem) {
+      if (arrayItem.itemID == $scope.checkoutData.id || arrayItem.barcode == $scope.checkoutData.id) {
+        $scope.tempItem.push(arrayItem);
+      }
+    });
+    if ($scope.tempItem.length == 1) {
+      $scope.tempItem.forEach(function(arrayItem) {
+        $scope.checkoutData.receipt.push(arrayItem);
+        $scope.checkoutData.total += arrayItem.price;
+        $scope.checkoutData.notification = arrayItem;
+      });
+    } else {
+      $scope.checkoutData.notification = {
+        name: "Item not found!",
+        price: 0
+      };
+    }
+    $scope.ClearItem();
+  }
 
   $scope.$watch('[checkoutData.search, sortType, sortReverse, permItems, itemsPerPage, sortPage]', function() { // Order and filter the items displayed to the user, limit the results to 10 items.
     if ($scope.permItems != null) { // This function is called on load and every time a variable is changed, to prevent this code causing an error whilst waiting for the post request, this stops the code running on load.
@@ -80,19 +82,6 @@ angular.module("my-app").controller("checkoutCtrl", ["$scope", "$http", "authChe
       $scope.items = $scope.temp;
     }
   });
-
-  $scope.NextPage = function() {
-    $scope.numberOfPages = Math.floor(($scope.amountOfItems - 1) / $scope.itemsPerPage);
-    if ($scope.numberOfPages > $scope.sortPage) { // Check if the page is the last page, if not then increment the page number.
-      $scope.sortPage++;
-    }
-  }
-
-  $scope.PreviousPage = function() {
-    if ($scope.sortPage > 0) { // Check if the page is the first page, if not then decrease the page number by 1.
-      $scope.sortPage--;
-    }
-  }
 
   function inputFocus() {
     document.getElementById("checkout-textbox").focus(); // Set the focused textbox to the checkout-textbox.
