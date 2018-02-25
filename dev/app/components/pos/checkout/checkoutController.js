@@ -5,6 +5,7 @@ angular.module("my-app").controller("checkoutCtrl", ["$scope", "$http", "authChe
 
   $scope.checkoutData = {};
   $scope.results = "";
+  $scope.checkoutData.id = "";
   $scope.checkoutData.receipt = [];
   $scope.checkoutData.total = 0;
 
@@ -29,18 +30,10 @@ angular.module("my-app").controller("checkoutCtrl", ["$scope", "$http", "authChe
   }
 
   $scope.buttonPress = function(button) {
-    if ($scope.checkoutData.id == null) {
-      if (button != "-1") {
-        $scope.checkoutData.id = button;
-      } else {
-        $scope.checkoutData.id = ".";
-      }
+    if (button != "-1") {
+      $scope.checkoutData.id += button;
     } else {
-      if (button != "-1") {
-        $scope.checkoutData.id += button;
-      } else {
-        $scope.checkoutData.id += ".";
-      }
+      $scope.checkoutData.id += ".";
     }
   }
 
