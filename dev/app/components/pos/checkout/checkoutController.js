@@ -65,6 +65,36 @@ angular.module("my-app").controller("checkoutCtrl", ["$scope", "$http", "authChe
     $scope.ClearItem();
   }
 
+  $scope.Total = function() {
+    var request = $http({
+      method: "post",
+      url: "app/components/pos/checkout/total.php",
+      data: {
+        items: $scope.checkoutData.receipt,
+        total: $scope.checkoutData.total
+      },
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      }
+    });
+
+    request.then(function(response) {
+      if (response.data.insertSuccess) {
+        $scope.checkoutData.total = 0;
+        $scope.checkoutData.notification = {
+          name: " - Transaction processed.",
+          price: 0
+        };
+        $scope.checkoutData.receipt = [];
+      } else {
+        $scope.checkoutData.notification = {
+          name: " - Transaction failed.",
+          price: 0
+        };
+      }
+    });
+  }
+
   $scope.$watch('[checkoutData.search, sortType, sortReverse, permItems, itemsPerPage, sortPage]', function() { // Order and filter the items displayed to the user, limit the results to 10 items.
     if ($scope.permItems != null) { // This function is called on load and every time a variable is changed, to prevent this code causing an error whilst waiting for the post request, this stops the code running on load.
       $scope.temp = $filter('filter')($scope.permItems, $scope.checkoutData.search); // Filter the search query in the search bar.
