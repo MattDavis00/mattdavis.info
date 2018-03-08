@@ -1,4 +1,4 @@
 AuthType Basic
 AuthName "Restricted Data"
-AuthUserFile /etc/phpmyadmin/.htpasswd
+AuthUserFile /var/www/mattdavis.info/.htpasswd
 Require valid-user
