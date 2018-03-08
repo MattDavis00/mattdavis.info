@@ -1,4 +1,0 @@
-AuthType Basic
-AuthName "Restricted Data"
-AuthUserFile /var/www/mattdavis.info/.htpasswd
-Require valid-user
