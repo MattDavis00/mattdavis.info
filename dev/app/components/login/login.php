@@ -88,7 +88,7 @@ function authenicateLogin($clientID, $clientPass, $conn)
 
       // Query database for the organisation that the administrator is a part of.
       $administratorSelect = $conn->prepare("SELECT `Email`, `Org_ID`, `Hashed_Pass`, `Salt` FROM `administrator` WHERE `Email` = ? LIMIT 1");
-      $administratorSelect->bind_param("i", $clientID);
+      $administratorSelect->bind_param("s", $clientID);
 
       // Execute Query And Bind Results
       $administratorSelectSuccess = $administratorSelect->execute();
