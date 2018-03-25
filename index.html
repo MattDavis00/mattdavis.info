@@ -14,11 +14,16 @@
 
 	<link rel="stylesheet" href="/main.css" />
 	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans">
+
+	<script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+	<script src="http://threejs.org/examples/js/libs/stats.min.js"></script>
+	<script type="text/javascript" src="base.js"></script>
+
 </head>
 
 <body>
 
-	<div class="bg">
+	<div id="background-animation">
 
 		<div class="container">
 			<h1 class="development">Website Under Development</h1>
@@ -43,11 +48,11 @@
 					<form>
 						<div class="form-group">
 							<label for="email" class="col-form-label">Email:</label>
-							<input type="text" class="form-control" id="recipient-name">
+							<input type="text" class="form-control" id="field-email">
 						</div>
 						<div class="form-group">
 							<label for="password" class="col-form-label">Password:</label>
-							<input type="text" class="form-control" id="recipient-name">
+							<input type="password" class="form-control" id="field-password">
 						</div>
 					</form>
 				</div>
