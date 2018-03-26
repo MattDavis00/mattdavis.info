@@ -1,20 +1,20 @@
 {
   "particles": {
     "number": {
-      "value": 10,
+      "value": 1,
       "density": {
         "enable": true,
-        "value_area": 75
+        "value_area": 10
       }
     },
     "color": {
-      "value": "#00ccfa"
+      "value": "#00d1ff"
     },
     "shape": {
       "type": "circle",
       "stroke": {
-        "width": 1,
-        "color": "#00ccfa"
+        "width": 0,
+        "color": "#000000"
       },
       "polygon": {
         "nb_sides": 5
@@ -26,43 +26,43 @@
       }
     },
     "opacity": {
-      "value": 1,
+      "value": 0.6974842464765024,
       "random": true,
       "anim": {
         "enable": false,
-        "speed": 1.3586413586413588,
-        "opacity_min": 0.8,
+        "speed": 1,
+        "opacity_min": 0.08932849335314796,
         "sync": false
       }
     },
     "size": {
-      "value": 2,
+      "value": 3,
       "random": true,
       "anim": {
         "enable": false,
-        "speed": 40,
-        "size_min": 0.1,
+        "speed": 5,
+        "size_min": 1,
         "sync": false
       }
     },
     "line_linked": {
       "enable": true,
-      "distance": 150,
-      "color": "#00acd2",
-      "opacity": 1,
-      "width": 0.9620472365193136
+      "distance": 125,
+      "color": "#008cd9",
+      "opacity": 0.8,
+      "width": 1.25
     },
     "move": {
       "enable": true,
-      "speed": 3.206824121731046,
+      "speed": 2.5,
       "direction": "none",
-      "random": false,
+      "random": true,
       "straight": false,
-      "out_mode": "out",
+      "out_mode": "bounce",
       "bounce": false,
       "attract": {
         "enable": false,
-        "rotateX": 600,
+        "rotateX": 2645.6299004281127,
         "rotateY": 1200
       }
     }
@@ -82,7 +82,7 @@
     },
     "modes": {
       "grab": {
-        "distance": 200,
+        "distance": 250,
         "line_linked": {
           "opacity": 1
         }
