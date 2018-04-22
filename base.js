@@ -1,1 +1,0 @@
-particlesJS.load('background-animation', 'particles.json');

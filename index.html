@@ -16,7 +16,7 @@
 	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans">
 
 	<script src="/landing/particles.min.js"></script>
-	<script type="text/javascript" src="base.js"></script>
+	<script type="text/javascript" src="/landing/base.js"></script>
 
 </head>
 
@@ -30,13 +30,13 @@
 
 
 		<div id="footer" class="fixed-bottom text-center">
-			<button type="button" class="login-button btn btn-link" data-toggle="modal" data-target="#exampleModal" data-whatever="">Login</button><br />
+			<button type="button" class="login-button btn btn-link" data-toggle="modal" data-target="#loginModal" data-whatever="">Login</button><br />
 			<span class="copyright font-weight-light text-center">Copyright © mattdavis.info 2018<br />contact@mattdavis.info</span>
 		</div>
 
 	</div>
 
-	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -58,6 +58,49 @@
 					</form>
 				</div>
 				<div class="modal-footer">
+					<button type="button" class="login-button btn btn-link" data-toggle="modal" onclick="SwitchLoginRegister()">Don't have an account? Register!</button><br />
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary">Login</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Register</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+				</div>
+				<div class="modal-body">
+					<form>
+						<div class="form-group">
+							<label for="email" class="col-form-label">Email:</label>
+							<input type="text" class="form-control" id="field-email">
+						</div>
+						<div class="form-group">
+							<label for="text" class="col-form-label">First Name:</label>
+							<input type="text" class="form-control" id="field-firstName">
+						</div>
+						<div class="form-group">
+							<label for="text" class="col-form-label">Last Name:</label>
+							<input type="text" class="form-control" id="field-lastName">
+						</div>
+						<div class="form-group">
+							<label for="password" class="col-form-label">Password:</label>
+							<input type="password" class="form-control" id="field-password">
+						</div>
+						<div class="form-group">
+							<label for="password" class="col-form-label">Repeat Password:</label>
+							<input type="password" class="form-control" id="field-repeatPassword">
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="login-button btn btn-link" data-toggle="modal" onclick="SwitchLoginRegister()">Already have an account? Login!</button><br />
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 					<button type="button" class="btn btn-primary">Login</button>
 				</div>
