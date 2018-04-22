@@ -40,7 +40,7 @@
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Login</h5>
+					<h5 class="modal-title">Login</h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -49,16 +49,16 @@
 					<form>
 						<div class="form-group">
 							<label for="email" class="col-form-label">Email:</label>
-							<input type="text" class="form-control" id="field-email">
+							<input type="text" class="form-control" id="login-email">
 						</div>
 						<div class="form-group">
 							<label for="password" class="col-form-label">Password:</label>
-							<input type="password" class="form-control" id="field-password">
+							<input type="password" class="form-control" id="login-password">
 						</div>
 					</form>
+					<button type="button" class="login-button btn btn-link modal-link-text" data-toggle="modal" onclick="SwitchLoginRegister()">Don't have an account? Register!</button><br />
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="login-button btn btn-link" data-toggle="modal" onclick="SwitchLoginRegister()">Don't have an account? Register!</button><br />
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 					<button type="button" class="btn btn-primary">Login</button>
 				</div>
@@ -70,7 +70,7 @@
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Register</h5>
+					<h5 class="modal-title">Register</h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -79,28 +79,28 @@
 					<form>
 						<div class="form-group">
 							<label for="email" class="col-form-label">Email:</label>
-							<input type="text" class="form-control" id="field-email">
+							<input type="text" class="form-control" id="register-email">
 						</div>
 						<div class="form-group">
 							<label for="text" class="col-form-label">First Name:</label>
-							<input type="text" class="form-control" id="field-firstName">
+							<input type="text" class="form-control" id="register-firstName">
 						</div>
 						<div class="form-group">
 							<label for="text" class="col-form-label">Last Name:</label>
-							<input type="text" class="form-control" id="field-lastName">
+							<input type="text" class="form-control" id="register-lastName">
 						</div>
 						<div class="form-group">
 							<label for="password" class="col-form-label">Password:</label>
-							<input type="password" class="form-control" id="field-password">
+							<input type="password" class="form-control" id="register-password">
 						</div>
 						<div class="form-group">
 							<label for="password" class="col-form-label">Repeat Password:</label>
-							<input type="password" class="form-control" id="field-repeatPassword">
+							<input type="password" class="form-control" id="register-repeatPassword">
 						</div>
 					</form>
+					<button type="button" class="login-button btn btn-link modal-link-text" data-toggle="modal" onclick="SwitchLoginRegister()">Already have an account? Login!</button><br />
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="login-button btn btn-link" data-toggle="modal" onclick="SwitchLoginRegister()">Already have an account? Login!</button><br />
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 					<button type="button" class="btn btn-primary">Login</button>
 				</div>

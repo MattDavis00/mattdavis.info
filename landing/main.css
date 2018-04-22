@@ -36,6 +36,14 @@ body, html {
   color: white;
 }
 
+.modal {
+  overflow-y: auto;
+}
+
+.modal-link-text {
+  padding-left: 0;
+}
+
 #background-animation {
   width: 100%;
   height: 100%;
