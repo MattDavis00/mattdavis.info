@@ -1,5 +1,5 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
 	<title>Matt Davis</title>
@@ -12,102 +12,29 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
+	<!-- AngularJS -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular-route.js"></script>
+	<script src="project/app.js"></script>
+
+	<!-- Style -->
 	<link rel="stylesheet" href="/landing/main.css" />
 	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans">
 
-	<script src="/landing/particles.min.js"></script>
-	<script type="text/javascript" src="/landing/base.js"></script>
+	<!-- Particles -->
+	<script src="landing/particles.min.js"></script>
 
 </head>
 
-<body>
+<body ng-app="project-app">
 
-	<div id="background-animation" class="text-center">
+	<div ng-view>
 
-		<div class="container">
-			<h1 class="development">Website Under Development</h1>
-		</div>
-
-
-		<div id="footer" class="fixed-bottom text-center">
-			<button type="button" class="login-button btn btn-link" data-toggle="modal" data-target="#loginModal" data-whatever="">Login</button><br />
-			<span class="copyright font-weight-light text-center">Copyright © mattdavis.info 2018<br />contact@mattdavis.info</span>
-		</div>
-
-	</div>
-
-	<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title">Login</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-				</div>
-				<div class="modal-body">
-					<form>
-						<div class="form-group">
-							<label for="email" class="col-form-label">Email:</label>
-							<input type="text" class="form-control" id="login-email">
-						</div>
-						<div class="form-group">
-							<label for="password" class="col-form-label">Password:</label>
-							<input type="password" class="form-control" id="login-password">
-						</div>
-					</form>
-					<button type="button" class="login-button btn btn-link modal-link-text" data-toggle="modal" onclick="SwitchLoginRegister()">Don't have an account? Register!</button><br />
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary">Login</button>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title">Register</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-				</div>
-				<div class="modal-body">
-					<form>
-						<div class="form-group">
-							<label for="email" class="col-form-label">Email:</label>
-							<input type="text" class="form-control" id="register-email">
-						</div>
-						<div class="form-group">
-							<label for="text" class="col-form-label">First Name:</label>
-							<input type="text" class="form-control" id="register-firstName">
-						</div>
-						<div class="form-group">
-							<label for="text" class="col-form-label">Last Name:</label>
-							<input type="text" class="form-control" id="register-lastName">
-						</div>
-						<div class="form-group">
-							<label for="password" class="col-form-label">Password:</label>
-							<input type="password" class="form-control" id="register-password">
-						</div>
-						<div class="form-group">
-							<label for="password" class="col-form-label">Repeat Password:</label>
-							<input type="password" class="form-control" id="register-repeatPassword">
-						</div>
-					</form>
-					<button type="button" class="login-button btn btn-link modal-link-text" data-toggle="modal" onclick="SwitchLoginRegister()">Already have an account? Login!</button><br />
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary">Login</button>
-				</div>
-			</div>
-		</div>
 	</div>
 
 </body>
+
+<!-- Controllers -->
+<script src="project/components/landing/landingController.js"></script>
 
 </html>
