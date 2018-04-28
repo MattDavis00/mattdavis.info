@@ -1,6 +1,8 @@
 angular.module("project-app").controller("landingCtrl", ["$scope", "$http", "sharedFunctions", "$filter", function($scope, $http, sharedFunctions, $filter) {
 
+  $scope.loginData = {};
   $scope.registerData = {};
+  $scope.Modal = {};
   $scope.results = "";
 
   $scope.RegisterUser = function() {
@@ -72,9 +74,29 @@ angular.module("project-app").controller("landingCtrl", ["$scope", "$http", "sha
 
   particlesJS.load('background-animation', 'particles.json');
 
-  $scope.SwitchLoginRegister = function() {
-    $('#loginModal').modal('toggle');
-    $('#registerModal').modal('toggle');
+  $scope.Modal.LoginShow = function() {
+    $('#registerModal').modal('hide');
+    $('#loginModal').modal('show');
+    $scope.loginData = {};
+    sharedFunctions.Validation.RemoveErrorTooltip('#login-email');
+    sharedFunctions.Validation.RemoveErrorTooltip('#login-password');
+  }
+
+  $scope.Modal.RegisterShow = function() {
+    $('#loginModal').modal('hide');
+    $('#registerModal').modal('show');
+    $scope.registerData = {};
+    sharedFunctions.Validation.RemoveErrorTooltip('#register-email');
+    sharedFunctions.Validation.RemoveErrorTooltip('#register-firstName');
+    sharedFunctions.Validation.RemoveErrorTooltip('#register-lastName');
+    sharedFunctions.Validation.RemoveErrorTooltip('#register-password');
+    sharedFunctions.Validation.RemoveErrorTooltip('#register-passwordRepeat');
+  }
+
+  $scope.ClearForms = function() {
+    $scope.loginData = {};
+    $scope.registerData = {};
+    sharedFunctions.Validation.RemoveErrorTooltip();
   }
 
 }]);
