@@ -6,7 +6,7 @@
 
 
   <div id="footer" class="fixed-bottom text-center">
-    <button type="button" class="login-button btn btn-link" ng-click="Modal.LoginShow()">Login</button><br />
+    <button type="button" class="login-button btn btn-link" data-toggle="modal" data-target="#loginModal">Login</button><br />
     <span class="copyright font-weight-light text-center">Copyright © mattdavis.info 2018<br />contact@mattdavis.info</span>
   </div>
 
@@ -32,7 +32,7 @@
             <input type="password" class="form-control" ng-model="loginData.password" id="login-password">
           </div>
         </form>
-        <button type="button" class="login-button btn btn-link modal-link-text" ng-click="Modal.RegisterShow()">Don't have an account? Register!</button><br />
+        <button type="button" class="login-button btn btn-link modal-link-text" ng-click="Modal.SwitchLoginRegister()">Don't have an account? Register!</button><br />
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -74,7 +74,7 @@
             <input type="password" class="form-control" ng-model="registerData.passwordRepeat" id="register-passwordRepeat">
           </div>
         </form>
-        <button type="button" class="login-button btn btn-link modal-link-text" ng-click="Modal.LoginShow()">Already have an account? Login!</button><br />
+        <button type="button" class="login-button btn btn-link modal-link-text" ng-click="Modal.SwitchLoginRegister()">Already have an account? Login!</button><br />
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
