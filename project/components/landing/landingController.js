@@ -32,11 +32,26 @@ angular.module("project-app").controller("landingCtrl", ["$scope", "$http", "sha
         method: "post",
         url: "project/components/landing/register.php",
         data: {
-          email: [$scope.registerData.email, "#register-email"],
-          firstName: [$scope.registerData.firstName, "#register-firstName"],
-          lastName: [$scope.registerData.lastName, "#register-lastName"],
-          password: [$scope.registerData.password, "#register-password"],
-          passwordRepeat: [$scope.registerData.passwordRepeat, "#register-passwordRepeat"]
+          email: {
+            data: $scope.registerData.email,
+            field: "#register-email"
+          },
+          firstName: {
+            data: $scope.registerData.firstName,
+            field: "#register-firstName"
+          },
+          lastName: {
+            data: $scope.registerData.lastName,
+            field: "#register-lastName"
+          },
+          password: {
+            data: $scope.registerData.password,
+            field: "#register-password"
+          },
+          passwordRepeat: {
+            data: $scope.registerData.passwordRepeat,
+            field: "#register-passwordRepeat"
+          }
         },
         headers: {
           "Content-Type": "application/x-www-form-urlencoded"
