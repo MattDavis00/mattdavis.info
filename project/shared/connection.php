@@ -27,7 +27,10 @@ $postData = file_get_contents("php://input");
 $request = json_decode($postData);
 
 // Output Array
-$outputArray = array();
+$outputData = new StdClass();
+$outputData->errorFlag = false;
+$outputData->errorReport = array();
+
 
 // UNIX time
 $serverUNIX = time();

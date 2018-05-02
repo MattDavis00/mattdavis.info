@@ -17,23 +17,61 @@ $clientPasswordRepeat = $request->passwordRepeat;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// Validations
+///// Validations /////
 
-$errorFlag = false;
-
-// First Name
-
-$emailValidation = $validate->Name($clientFirstName->data);
-if ($emailValidation->errorFlag)
+// Email
+$emailValidation = $validate->Email($clientEmail->data); // Run validation
+if ($emailValidation->errorFlag) // If there was en error with the email.
 {
-  $errorFlag = true;
-  echo $emailValidation->errorMessage . " - " . $clientFirstName->data . " - " . $clientFirstName->field;
+  $outputData->errorFlag = true;
+
+  $errorEntry = new StdClass();
+  $errorEntry->field = $clientEmail->field;
+  $errorEntry->errorMessage = $emailValidation->errorMessage;
+
+  $outputData->errorReport[] = $errorEntry;
+}
+// First Name
+$firstNameValidation = $validate->Name($clientFirstName->data); // Run validation
+if ($firstNameValidation->errorFlag) // If there was en error with the first name.
+{
+  $outputData->errorFlag = true;
+
+  $errorEntry = new StdClass();
+  $errorEntry->field = $clientFirstName->field;
+  $errorEntry->errorMessage = $firstNameValidation->errorMessage;
+
+  $outputData->errorReport[] = $errorEntry;
+}
+// Last Name
+$lastNameValidation = $validate->Name($clientLastName->data); // Run validation
+if ($lastNameValidation->errorFlag) // If there was en error with the last name.
+{
+  $outputData->errorFlag = true;
+
+  $errorEntry = new StdClass();
+  $errorEntry->field = $clientLastName->field;
+  $errorEntry->errorMessage = $lastNameValidation->errorMessage;
+
+  $outputData->errorReport[] = $errorEntry;
+}
+// Password
+$passwordValidation = $validate->Password($clientPassword->data, $clientPasswordRepeat->data); // Run validation
+if ($passwordValidation->errorFlag) // If there was en error with the password.
+{
+  $outputData->errorFlag = true;
+
+  $errorEntry = new StdClass();
+  $errorEntry->field = $clientPassword->field;
+  $errorEntry->errorMessage = $passwordValidation->errorMessage;
+  
+  $outputData->errorReport[] = $errorEntry;
 }
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-if (!$errorFlag)
+if (!$outputData->errorFlag)
 {
 
   // // Generate Hash
@@ -65,7 +103,7 @@ if (!$errorFlag)
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Output
-echo json_encode($outputArray);
+echo json_encode($outputData);
 
 // Close Connection
 $conn = null;

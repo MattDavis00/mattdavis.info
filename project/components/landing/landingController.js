@@ -38,7 +38,7 @@ angular.module("project-app").controller("landingCtrl", ["$scope", "$http", "sha
           },
           firstName: {
             data: $scope.registerData.firstName,
-            field: "#register-firstName"
+            field: "#register-email"
           },
           lastName: {
             data: $scope.registerData.lastName,
@@ -60,6 +60,24 @@ angular.module("project-app").controller("landingCtrl", ["$scope", "$http", "sha
 
       request.then(function(response) {
         var serverResponse = angular.fromJson(response.data);
+
+        if (serverResponse.errorFlag) // There were errors found
+        {
+          var fields = ["#register-email", "#register-email", "#register-lastName", "#register-password", "#register-passwordRepeat"];
+          for (var i = 0; i < fields.length; i++) {
+            sharedFunctions.Validation.RemoveErrorTooltip(fields[i]);
+          }
+
+          for (var i = 0; i < serverResponse.errorReport.length; i++) {
+            sharedFunctions.Validation.ErrorTooltip(serverResponse.errorReport[i].field, serverResponse.errorReport[i].errorMessage);
+
+            if (serverResponse.errorReport[i].field === "#register-password") {
+              $("#register-passwordRepeat").addClass("error-border");
+            }
+          }
+        } else {
+          $scope.Modal.SwitchLoginRegister();
+        }
 
         // sessionStorage.userID = returnData.userID;
         // sessionStorage.storeID = returnData.storeID;

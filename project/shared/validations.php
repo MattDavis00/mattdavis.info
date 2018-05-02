@@ -68,10 +68,10 @@ class Validation
     }
     else
     {
-      if (strlen($password) > 50)
+      if (strlen($password) < 8)
       {
         $returnData->errorFlag = true;
-        $returnData->errorMessage .= "Name exceeds 50 characters. ";
+        $returnData->errorMessage .= "Your password must be atleast 8 characters long. ";
       }
       if ($password !== $passwordRepeat)
       {
