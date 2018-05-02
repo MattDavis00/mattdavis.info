@@ -18,6 +18,20 @@ app.config(function($routeProvider) {
 
 app.service('sharedFunctions', function() {
 
+  $('#alert-prompt').collapse({
+    toggle: false
+  })
+
+  this.SuccessPrompt = function(value) {
+    $("#success-prompt-data").text(value);
+    $('#success-prompt').collapse('show');
+
+    setTimeout(function() {
+      $("#success-prompt-data").text("");
+      $('#success-prompt').collapse('hide');
+    }, 5000);
+  }
+
   this.Validation = {};
 
   this.Validation.Email = function(element, email) {

@@ -77,27 +77,8 @@ angular.module("project-app").controller("landingCtrl", ["$scope", "$http", "sha
           }
         } else {
           $scope.Modal.SwitchLoginRegister();
+          sharedFunctions.SuccessPrompt("You registered successfully!");
         }
-
-        // sessionStorage.userID = returnData.userID;
-        // sessionStorage.storeID = returnData.storeID;
-        // sessionStorage.orgID = returnData.orgID;
-        // sessionStorage.administrator = returnData.administrator;
-        // sessionStorage.loggedIn = returnData.loggedIn;
-
-        // if (returnData.verification) {
-        //   if (returnData.administrator) {
-        //     sessionStorage.storeID = "Administrator";
-        //     if (returnData.orgID === null) {
-        //       window.location.href = '#!organisation'; // If the administrator is not part of an organisation, take them to the organisation view.
-        //     } else {
-        //       window.location.href = '#!credentials-search'; // Upon successful admin login, user is redirected to the query page.
-        //     }
-        //   } else {
-        //     window.location.href = '#!query-search'; // Upon successful user login, user is redirected to the query page.
-        //   }
-        // }
-        // $scope.info = " - processLogin() function ran!";
 
       });
 
