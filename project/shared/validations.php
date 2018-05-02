@@ -5,9 +5,31 @@ $validate = new Validation;
 class Validation
 {
 
-  function Email()
+  function Email($email)
   {
+    $returnData = new StdClass();
+    $returnData->errorFlag = false;
+    $returnData->errorMessage = "";
 
+    if ($this->Empty($email)->errorFlag)
+    {
+      $returnData->errorFlag = true;
+      $returnData->errorMessage .= "Please enter your email. ";
+    }
+    else {
+      if (strlen($email) > 100)
+      {
+        $returnData->errorFlag = true;
+        $returnData->errorMessage .= "Email exceeds 100 characters. ";
+      }
+      if (!preg_match('/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,})+$/', $email))
+      {
+        $returnData->errorFlag = true;
+        $returnData->errorMessage .= "Email is not valid. ";
+      }
+    }
+
+    return $returnData;
   }
 
   function Name($name)
@@ -21,10 +43,13 @@ class Validation
       $returnData->errorFlag = true;
       $returnData->errorMessage .= "Please enter your name. ";
     }
-    if (strlen($name) > 50)
+    else
     {
-      $returnData->errorFlag = true;
-      $returnData->errorMessage .= "Name exceeds 50 characters. ";
+      if (strlen($name) > 50)
+      {
+        $returnData->errorFlag = true;
+        $returnData->errorMessage .= "Name exceeds 50 characters. ";
+      }
     }
 
     return $returnData;
@@ -32,13 +57,30 @@ class Validation
 
   function Password($password, $passwordRepeat)
   {
-    // $returnData = new StdClass();
-    // $returnData->errorFlag = false;
-    // $returnData->errorMessage = "";
-    //
-    // if ()
-    //
-    // return $returnData;
+    $returnData = new StdClass();
+    $returnData->errorFlag = false;
+    $returnData->errorMessage = "";
+
+    if ($this->Empty($password)->errorFlag)
+    {
+      $returnData->errorFlag = true;
+      $returnData->errorMessage .= "Please enter a password. ";
+    }
+    else
+    {
+      if (strlen($password) > 50)
+      {
+        $returnData->errorFlag = true;
+        $returnData->errorMessage .= "Name exceeds 50 characters. ";
+      }
+      if ($password !== $passwordRepeat)
+      {
+        $returnData->errorFlag = true;
+        $returnData->errorMessage .= "Passwords do not match. ";
+      }
+    }
+
+    return $returnData;
   }
 
   function Empty($value)
