@@ -30,7 +30,9 @@ $request = json_decode($postData);
 $outputData = new StdClass();
 $outputData->errorFlag = false;
 $outputData->errorReport = array();
+$outputData->executionErrorFlag = false;
+$outputData->executionError = "";
 
 
 // UNIX time
-$serverUNIX = time();
+$serverDateTime = date("Y-m-d H:i:s");

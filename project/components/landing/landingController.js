@@ -75,9 +75,11 @@ angular.module("project-app").controller("landingCtrl", ["$scope", "$http", "sha
               $("#register-passwordRepeat").addClass("error-border");
             }
           }
+        } else if (serverResponse.executionErrorFlag) { // Server could not insert
+          sharedFunctions.Prompt("error", serverResponse.executionError);
         } else {
           $scope.Modal.SwitchLoginRegister();
-          sharedFunctions.SuccessPrompt("You registered successfully!");
+          sharedFunctions.Prompt("success", "You registered successfully!");
         }
 
       });

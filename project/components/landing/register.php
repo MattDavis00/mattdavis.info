@@ -64,7 +64,7 @@ if ($passwordValidation->errorFlag) // If there was en error with the password.
   $errorEntry = new StdClass();
   $errorEntry->field = $clientPassword->field;
   $errorEntry->errorMessage = $passwordValidation->errorMessage;
-  
+
   $outputData->errorReport[] = $errorEntry;
 }
 
@@ -74,29 +74,51 @@ if ($passwordValidation->errorFlag) // If there was en error with the password.
 if (!$outputData->errorFlag)
 {
 
-  // // Generate Hash
-  // $clientPasswordHash = password_hash($clientPassword, PASSWORD_BCRYPT);
-  //
-  // // SQL Query
-  // $stmt = $conn->prepare("INSERT INTO administrator (Email, Org_ID, Hashed_Pass, Salt, First_Name, Last_Name, Last_Login_UNIX, Creation_UNIX)
-  // VALUES (?, NULL, ?, ?, ?, ?, NULL, ?)");
-  // $stmt->bind_param("sssssi", $clientEmail, $clientPasswordHash, $clientSalt, $clientFirstName, $clientLastName, $serverUNIX);
-  //
-  // // Execute Query
-  // $registerReturn = $stmt->execute();
-  //
-  // // Close Statement
-  // $stmt->close();
-  //
-  // // Check Query
-  // if ($registerReturn)
-  // {
-  //   $outputArray["registerSuccess"] = true; // If the insert was successful, return true.
-  // }
-  // else
-  // {
-  //   $outputArray["registerSuccess"] = false; // If the insert failed, return false.
-  // }
+  // SQL Query
+  $selectUser = $conn->prepare("SELECT `Email` FROM `user` WHERE `Email` = :email");
+  $selectUser->bindParam(':email', $clientEmail->data);
+
+  // Execute Query
+  $selectUserReturn = $selectUser->execute();
+
+  $result = $selectUser->fetchAll(\PDO::FETCH_ASSOC);
+
+  // Close Statement
+  $selectUser = null;
+
+  if (count($result) === 0)
+  {
+    try
+    {
+      // Generate Hash
+      $clientPasswordHash = password_hash($clientPassword->data, PASSWORD_BCRYPT);
+
+      // SQL Query
+      $registerUser = $conn->prepare("INSERT INTO `user` (`Email`, `First_Name`, `Last_Name`, `Password_Hash`, `Last_Login_Time`, `Creation_Time`)
+      VALUES (:email, :firstName, :lastName, :passwordHash, NULL, :creationTime)");
+      $registerUser->bindParam(':email', $clientEmail->data);
+      $registerUser->bindParam(':firstName', $clientFirstName->data);
+      $registerUser->bindParam(':lastName', $clientLastName->data);
+      $registerUser->bindParam(':passwordHash', $clientPasswordHash);
+      $registerUser->bindParam(':creationTime', $serverDateTime);
+
+      // Execute Query
+      $registerReturn = $registerUser->execute();
+    }
+    catch(PDOException $e)
+    {
+      $outputData->executionErrorFlag = true;
+      $outputData->executionError = "Registration failed. Please try again. ";
+    }
+  }
+  else
+  {
+    $outputData->executionErrorFlag = true;
+    $outputData->executionError = "Email is already in use. ";
+  }
+
+  // Close Statement
+  $registerUser = null;
 
 }
 

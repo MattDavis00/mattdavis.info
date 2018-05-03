@@ -22,14 +22,32 @@ app.service('sharedFunctions', function() {
     toggle: false
   })
 
-  this.SuccessPrompt = function(value) {
-    $("#success-prompt-data").text(value);
-    $('#success-prompt').collapse('show');
+  this.Prompt = function(type, value) {
+
+    var alertClass = "";
+
+    if (type === "success") {
+      alertClass = "alert-success";
+    } else if (type === "error") {
+      alertClass = "alert-danger";
+    } else if (type === "warning") {
+      alertClass = "alert-warning";
+    } else if (type === "info") {
+      alertClass = "alert-primary";
+    } else {
+      alertClass = "alert-primary";
+    }
+
+    $("#alert-prompt-data").addClass(alertClass);
+    $("#alert-prompt-data").text(value);
+    $('#alert-prompt').collapse('show');
 
     setTimeout(function() {
-      $("#success-prompt-data").text("");
-      $('#success-prompt').collapse('hide');
+      $('#alert-prompt').collapse('hide');
+      $("#alert-prompt-data").text("");
+      $("#alert-prompt-data").removeClass(alertClass);
     }, 5000);
+
   }
 
   this.Validation = {};
