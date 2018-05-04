@@ -5,6 +5,57 @@ angular.module("project-app").controller("landingCtrl", ["$scope", "$http", "sha
   $scope.Modal = {};
   $scope.results = "";
 
+  $scope.Login = function() {
+
+    //////////////Login Request//////////////
+
+    var request = $http({
+      method: "post",
+      url: "project/components/landing/login.php",
+      data: {
+        email: {
+          data: $scope.loginData.email,
+          field: "#login-email"
+        },
+        password: {
+          data: $scope.loginData.password,
+          field: "#login-password"
+        }
+      },
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      }
+    });
+
+    request.then(function(response) {
+      var serverResponse = angular.fromJson(response.data);
+
+      if (serverResponse.errorFlag) // There were errors found
+      {
+
+        var fields = ["#login-email", "#login-password"];
+        $scope.loginData.password = "";
+        for (var i = 0; i < fields.length; i++) {
+          $(fields[i]).addClass("error-border");
+        }
+        sharedFunctions.Prompt("error", "Email or password is incorrect.");
+
+      } else if (serverResponse.executionErrorFlag) { // Server could not insert
+        sharedFunctions.Prompt("error", serverResponse.executionError);
+      } else if (serverResponse.loginSuccess) {
+        $('#loginModal').modal('hide');
+        sharedFunctions.Prompt("success", "Login successful!");
+        $('#myModal').on('hidden.bs.modal', function(e) {
+          window.location.href = '#!dashboard';
+        })
+      } else {
+        sharedFunctions.Prompt("warning", "Unexpected response.");
+      }
+
+    });
+
+  }
+
   $scope.RegisterUser = function() {
 
     //////////////Validation Checks//////////////
@@ -63,7 +114,7 @@ angular.module("project-app").controller("landingCtrl", ["$scope", "$http", "sha
 
         if (serverResponse.errorFlag) // There were errors found
         {
-          var fields = ["#register-email", "#register-email", "#register-lastName", "#register-password", "#register-passwordRepeat"];
+          var fields = ["#register-email", "#register-firstName", "#register-lastName", "#register-password", "#register-passwordRepeat"];
           for (var i = 0; i < fields.length; i++) {
             sharedFunctions.Validation.RemoveErrorTooltip(fields[i]);
           }
