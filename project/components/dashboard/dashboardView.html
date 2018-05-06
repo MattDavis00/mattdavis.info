@@ -1,125 +1,149 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+<nav class="navbar navbar-expand-md navbar-dark bg-personal">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <a class="navbar-brand" href="#">Navbar</a>
+  <a class="navbar-brand" href="#!dashboard">Project Dashboard</a>
 
-  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+  <div class="collapse navbar-collapse" id="top-nav">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="">Active Project</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
+        <a class="nav-link" href="">Task Manager</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
+        <a class="nav-link disabled" href="">Personal Pastebin</a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
-    </form>
+    <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+      <div class="btn-group">
+        <a class="nav-item active nav-link dropdown-toggle mr-md-2" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="material-icons" style="font-size: 20px; transform: translateY(4px);">settings</i></a>
+        <div class="dropdown-menu dropdown-menu-right">
+          <a class="dropdown-item" href="#"> Settings</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Sign Out <i class="material-icons" style="font-size: 20px; transform: translateY(5px);">exit_to_app</i></a>
+        </div>
+      </div>
+    </ul>
   </div>
 </nav>
 
 <div class="row" id="project-card-block">
 
   <div class="col-auto">
-    <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="/project/components/dashboard/website.jpg" alt="Card image cap">
+    <div class="card" href="#!" style="width: 18rem;">
+      <img class="card-img-top" src="/project/components/dashboard/taskManager.png" alt="Card image cap">
       <div class="card-body">
         <h5 class="card-title">Task Manager <span class="badge badge-warning">New</span></h5>
         <p class="card-text">Create checklists with different descriptions and status.</p>
-        <a href="#" class="btn btn-primary">Open</a>
+      </div>
+      <div class="card-footer">
+        <a href="#" role="button" class="btn btn-primary btn-sm">Launch</a> <small class="text-muted"></small>
       </div>
     </div>
   </div>
 
   <div class="col-auto">
     <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="/project/components/dashboard/website.jpg" alt="Card image cap">
+      <img class="card-img-top" src="/project/components/dashboard/personalPastebin.png" alt="Card image cap">
       <div class="card-body">
         <h5 class="card-title">Personal Pastebin <span class="badge badge-secondary">Soon</span></h5>
         <p class="card-text">Paste your code, save it and even share it!</p>
-        <a href="#" class="btn btn-primary">Open</a>
+      </div>
+      <div class="card-footer">
+        <a href="#" role="button" class="btn btn-primary btn-sm disabled" aria-disabled="true">Launch</a> <small class="text-muted">Coming Soon.</small>
       </div>
     </div>
   </div>
 
   <div class="col-auto">
     <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="/project/components/dashboard/website.jpg" alt="Card image cap">
+      <img class="card-img-top" src="/project/components/dashboard/placeholder.png" alt="Card image cap">
       <div class="card-body">
         <h5 class="card-title">Another Project <span class="badge badge-secondary">Soon</span></h5>
         <p class="card-text">Wow, aren't these descriptions getting generic nowadays.</p>
-        <a href="#" class="btn btn-primary">Open</a>
+      </div>
+      <div class="card-footer">
+        <a href="#" role="button" class="btn btn-primary btn-sm disabled" aria-disabled="true">Launch</a> <small class="text-muted">Coming Soon.</small>
       </div>
     </div>
   </div>
 
   <div class="col-auto">
     <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="/project/components/dashboard/website.jpg" alt="Card image cap">
+      <img class="card-img-top" src="/project/components/dashboard/placeholder.png" alt="Card image cap">
       <div class="card-body">
         <h5 class="card-title">Another Project <span class="badge badge-secondary">Soon</span></h5>
         <p class="card-text">Wow, aren't these descriptions getting generic nowadays.</p>
-        <a href="#" class="btn btn-primary">Open</a>
+      </div>
+      <div class="card-footer">
+        <a href="#" role="button" class="btn btn-primary btn-sm disabled" aria-disabled="true">Launch</a> <small class="text-muted">Coming Soon.</small>
       </div>
     </div>
   </div>
 
   <div class="col-auto">
     <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="/project/components/dashboard/website.jpg" alt="Card image cap">
+      <img class="card-img-top" src="/project/components/dashboard/placeholder.png" alt="Card image cap">
       <div class="card-body">
         <h5 class="card-title">Another Project <span class="badge badge-secondary">Soon</span></h5>
         <p class="card-text">Wow, aren't these descriptions getting generic nowadays.</p>
-        <a href="#" class="btn btn-primary">Open</a>
+      </div>
+      <div class="card-footer">
+        <a href="#" role="button" class="btn btn-primary btn-sm disabled" aria-disabled="true">Launch</a> <small class="text-muted">Coming Soon.</small>
       </div>
     </div>
   </div>
 
   <div class="col-auto">
     <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="/project/components/dashboard/website.jpg" alt="Card image cap">
+      <img class="card-img-top" src="/project/components/dashboard/placeholder.png" alt="Card image cap">
       <div class="card-body">
         <h5 class="card-title">Another Project <span class="badge badge-secondary">Soon</span></h5>
         <p class="card-text">Wow, aren't these descriptions getting generic nowadays.</p>
-        <a href="#" class="btn btn-primary">Open</a>
+      </div>
+      <div class="card-footer">
+        <a href="#" role="button" class="btn btn-primary btn-sm disabled" aria-disabled="true">Launch</a> <small class="text-muted">Coming Soon.</small>
       </div>
     </div>
   </div>
 
   <div class="col-auto">
     <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="/project/components/dashboard/website.jpg" alt="Card image cap">
+      <img class="card-img-top" src="/project/components/dashboard/placeholder.png" alt="Card image cap">
       <div class="card-body">
         <h5 class="card-title">Another Project <span class="badge badge-secondary">Soon</span></h5>
         <p class="card-text">Wow, aren't these descriptions getting generic nowadays.</p>
-        <a href="#" class="btn btn-primary">Open</a>
+      </div>
+      <div class="card-footer">
+        <a href="#" role="button" class="btn btn-primary btn-sm disabled" aria-disabled="true">Launch</a> <small class="text-muted">Coming Soon.</small>
       </div>
     </div>
   </div>
 
   <div class="col-auto">
     <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="/project/components/dashboard/website.jpg" alt="Card image cap">
+      <img class="card-img-top" src="/project/components/dashboard/placeholder.png" alt="Card image cap">
       <div class="card-body">
         <h5 class="card-title">Another Project <span class="badge badge-secondary">Soon</span></h5>
         <p class="card-text">Wow, aren't these descriptions getting generic nowadays.</p>
-        <a href="#" class="btn btn-primary">Open</a>
+      </div>
+      <div class="card-footer">
+        <a href="#" role="button" class="btn btn-primary btn-sm disabled" aria-disabled="true">Launch</a> <small class="text-muted">Coming Soon.</small>
       </div>
     </div>
   </div>
 
   <div class="col-auto">
     <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="/project/components/dashboard/website.jpg" alt="Card image cap">
+      <img class="card-img-top" src="/project/components/dashboard/placeholder.png" alt="Card image cap">
       <div class="card-body">
         <h5 class="card-title">Another Project <span class="badge badge-secondary">Soon</span></h5>
         <p class="card-text">Wow, aren't these descriptions getting generic nowadays.</p>
-        <a href="#" class="btn btn-primary">Open</a>
+      </div>
+      <div class="card-footer">
+        <a href="#" role="button" class="btn btn-primary btn-sm disabled" aria-disabled="true">Launch</a> <small class="text-muted">Coming Soon.</small>
       </div>
     </div>
   </div>

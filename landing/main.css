@@ -1,6 +1,11 @@
 body, html {
   height: 100%;
   margin: 0;
+  font-family: 'Poppins', sans-serif !important;
+}
+
+body {
+  background-color: #e6e6e6;
 }
 
 .bg {
@@ -22,14 +27,6 @@ body, html {
   transform: translate(-50%, -50%);
 }
 
-/* .login-button {
-  margin: auto;
-  position: absolute;
-  top: 94%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-} */
-
 .copyright {
   font-family: 'Open Sans';
   font-size: 12px;
@@ -47,6 +44,10 @@ body, html {
 .error-border {
   outline: 0;
   border-color: #f0506e;
+}
+
+.navbar-brand {
+  padding-top: 3px;
 }
 
 #alert-prompt {
@@ -70,19 +71,25 @@ body, html {
   bottom: 15px;
 }
 
-.card {
-  margin-top: 30px;
+.bg-personal {
+  background-color: #0277BD;
 }
 
-#project-card-block {
-  margin-left: 20px;
+.col-auto {
+  padding: 20px;
+}
+
+.row {
+  left: 0;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 /* ---- reset ---- */
 
 body {
   margin: 0;
-  font: normal 75% Arial, Helvetica, sans-serif;
+  font: normal 75% sans-serif;
 }
 
 canvas {
