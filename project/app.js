@@ -8,6 +8,10 @@ app.config(function($routeProvider) {
       templateUrl: "project/components/landing/landingView.html",
       controller: "landingCtrl"
     })
+    .when("/dashboard", {
+      templateUrl: "project/components/dashboard/dashboardView.html",
+      controller: "dashboardCtrl"
+    })
 
     ///////////////////////// Otherwise, Redirect To Login ////////////////////////////
     .otherwise({

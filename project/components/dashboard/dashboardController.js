@@ -1,4 +1,4 @@
-angular.module("project-app").controller("landingCtrl", ["$scope", "$http", "sharedFunctions", "$filter", function($scope, $http, sharedFunctions, $filter) {
+angular.module("project-app").controller("dashboardCtrl", ["$scope", "$http", "sharedFunctions", "$filter", function($scope, $http, sharedFunctions, $filter) {
 
   $scope.loginData = {};
   $scope.registerData = {};
@@ -138,8 +138,6 @@ angular.module("project-app").controller("landingCtrl", ["$scope", "$http", "sha
     }
 
   }
-
-  particlesJS.load('background-animation', '/landing/particles.json');
 
   $scope.Modal.SwitchLoginRegister = function() {
     $('#loginModal').modal('toggle');
