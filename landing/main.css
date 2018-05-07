@@ -52,7 +52,7 @@ body {
 
 #alert-prompt {
   z-index: 10000000;
-  position: absolute;
+  position: fixed;
   bottom: 40px;
   left: 50%;
   transform: translateX(-50%);
