@@ -1,11 +1,16 @@
+<!-- Navbar -->
 <nav class="navbar navbar-expand-md navbar-dark bg-personal">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#top-nav" aria-controls="top-nav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <a class="navbar-brand" href="#!dashboard">Project Dashboard</a>
 
+  <!-- Navbar Links -->
   <div class="collapse navbar-collapse" id="top-nav">
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+
+    <!-- Left-Hand Side -->
+    <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
         <a class="nav-link" href="">Active Project</a>
       </li>
@@ -16,17 +21,19 @@
         <a class="nav-link disabled" href="">Personal Pastebin</a>
       </li>
     </ul>
-    <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
-      <div class="btn-group">
-        <a class="nav-item active nav-link dropdown-toggle mr-md-2" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="material-icons" style="font-size: 20px; transform: translateY(4px);">settings</i></a>
-        <div class="dropdown-menu dropdown-menu-right">
-          <a class="dropdown-item" href="#"> Settings</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Sign Out <i class="material-icons" style="font-size: 20px; transform: translateY(5px);">exit_to_app</i></a>
-        </div>
-      </div>
+
+    <!-- Right-Hand Side -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="">Settings</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="">Log Out</a>
+      </li>
     </ul>
+
   </div>
+
 </nav>
 
 <div class="row" id="project-card-block">
