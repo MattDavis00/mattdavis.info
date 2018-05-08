@@ -28,11 +28,13 @@ $request = json_decode($postData);
 
 // Output Array
 $outputData = new StdClass();
+$outputData->data = new StdClass();
 $outputData->errorFlag = false;
 $outputData->errorReport = array();
 $outputData->executionErrorFlag = false;
 $outputData->executionError = "";
 
 
-// UNIX time
+// Datetime
+date_default_timezone_set('Europe/London');
 $serverDateTime = date("Y-m-d H:i:s");
