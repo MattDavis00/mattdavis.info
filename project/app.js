@@ -20,7 +20,7 @@ app.config(function($routeProvider) {
 
 });
 
-app.service('sharedFunctions', function() {
+app.service('sharedFunctions', ['$http', function($http) {
 
   $('#alert-prompt').collapse({
     toggle: false
@@ -56,7 +56,7 @@ app.service('sharedFunctions', function() {
 
   this.AuthenticateUser = function() {
 
-    if (!sessionStorage.loggedIn) {
+    if (sessionStorage.loggedIn !== "true") {
       $("#alert-prompt-data").addClass("alert-danger");
       $("#alert-prompt-data").text("You are not logged in! Returning to landing page in 5 seconds...");
       $('#alert-prompt').collapse('show');
@@ -68,6 +68,42 @@ app.service('sharedFunctions', function() {
         window.location.href = '#!';
       }, 5000);
     }
+
+  }
+
+  this.LogOut = function() {
+
+    //////////////Log Out Request//////////////
+
+    var request = $http({
+      method: "post",
+      url: "project/shared/logOut.php",
+      data: {},
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      }
+    });
+
+    request.then(function(response) {
+      var serverResponse = angular.fromJson(response.data);
+
+      if (serverResponse.logOutSuccess) {
+
+        // Set Local Session Variables //
+        sessionStorage.userID = serverResponse.data.userID;
+        sessionStorage.email = serverResponse.data.email;
+        sessionStorage.firstName = serverResponse.data.firstName;
+        sessionStorage.lastName = serverResponse.data.lastName;
+        sessionStorage.loggedIn = serverResponse.data.loggedIn;
+
+        self.Prompt("success", "Log out successful!");
+        window.location.href = '#!';
+
+      } else {
+        self.Prompt("warning", "Log out unsuccessful!");
+      }
+
+    });
 
   }
 
@@ -213,7 +249,7 @@ app.service('sharedFunctions', function() {
 
   var self = this;
 
-});
+}]);
 
 
 ///// Local Variables /////

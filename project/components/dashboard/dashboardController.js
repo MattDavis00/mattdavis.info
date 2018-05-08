@@ -29,6 +29,6 @@ angular.module("project-app").controller("dashboardCtrl", ["$scope", "$http", "s
     sharedFunctions.Validation.RemoveErrorTooltip();
   }
 
-  sharedFunctions.AuthenticateUser();
+  $scope.sharedFunctions = sharedFunctions;
 
 }]);
