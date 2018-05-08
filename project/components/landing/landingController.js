@@ -1,4 +1,4 @@
-angular.module("project-app").controller("landingCtrl", ["$scope", "$http", "sharedFunctions", "$filter", function($scope, $http, sharedFunctions, $filter) {
+angular.module("project-app").controller("landingCtrl", ["$scope", "$http", "sharedFunctions", "$filter", "localVariables", function($scope, $http, sharedFunctions, $filter, localVariables) {
 
   $scope.loginData = {};
   $scope.registerData = {};
@@ -44,6 +44,14 @@ angular.module("project-app").controller("landingCtrl", ["$scope", "$http", "sha
         sharedFunctions.Prompt("error", serverResponse.executionError);
       } else if (serverResponse.loginSuccess) {
         $('#loginModal').modal('hide');
+
+        // Set Local Session Variables //
+        sessionStorage.userID = serverResponse.data.userID;
+        sessionStorage.email = serverResponse.data.email;
+        sessionStorage.firstName = serverResponse.data.firstName;
+        sessionStorage.lastName = serverResponse.data.lastName;
+        sessionStorage.loggedIn = serverResponse.data.loggedIn;
+
         sharedFunctions.Prompt("success", "Login successful!");
         $('#loginModal').on('hidden.bs.modal', function(e) {
           window.location.href = '#!dashboard';

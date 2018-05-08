@@ -1,4 +1,4 @@
-var app = angular.module("project-app", ["ngRoute"]);
+app = angular.module("project-app", ["ngRoute"]);
 
 app.config(function($routeProvider) {
   $routeProvider
@@ -51,6 +51,23 @@ app.service('sharedFunctions', function() {
       $("#alert-prompt-data").text("");
       $("#alert-prompt-data").removeClass(alertClass);
     }, 5000);
+
+  }
+
+  this.AuthenticateUser = function() {
+
+    if (!sessionStorage.loggedIn) {
+      $("#alert-prompt-data").addClass("alert-danger");
+      $("#alert-prompt-data").text("You are not logged in! Returning to landing page in 5 seconds...");
+      $('#alert-prompt').collapse('show');
+
+      setTimeout(function() {
+        $('#alert-prompt').collapse('hide');
+        $("#alert-prompt-data").text("");
+        $("#alert-prompt-data").removeClass("alert-danger");
+        window.location.href = '#!';
+      }, 5000);
+    }
 
   }
 
@@ -196,4 +213,21 @@ app.service('sharedFunctions', function() {
 
   var self = this;
 
+});
+
+
+///// Local Variables /////
+
+app.service('localVariables', function() {
+
+  var storage = {};
+
+  return {
+    get_storage: function() {
+      return storage;
+    },
+    set_storage: function(value) {
+      userID = value;
+    }
+  };
 });

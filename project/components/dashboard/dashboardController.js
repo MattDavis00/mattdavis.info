@@ -1,143 +1,7 @@
-angular.module("project-app").controller("dashboardCtrl", ["$scope", "$http", "sharedFunctions", "$filter", function($scope, $http, sharedFunctions, $filter) {
+angular.module("project-app").controller("dashboardCtrl", ["$scope", "$http", "sharedFunctions", "$filter", "localVariables", function($scope, $http, sharedFunctions, $filter, localVariables) {
 
-  $scope.loginData = {};
-  $scope.registerData = {};
   $scope.Modal = {};
   $scope.results = "";
-
-  $scope.Login = function() {
-
-    //////////////Login Request//////////////
-
-    var request = $http({
-      method: "post",
-      url: "project/components/landing/login.php",
-      data: {
-        email: {
-          data: $scope.loginData.email,
-          field: "#login-email"
-        },
-        password: {
-          data: $scope.loginData.password,
-          field: "#login-password"
-        }
-      },
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      }
-    });
-
-    request.then(function(response) {
-      var serverResponse = angular.fromJson(response.data);
-
-      if (serverResponse.errorFlag) // There were errors found
-      {
-
-        var fields = ["#login-email", "#login-password"];
-        $scope.loginData.password = "";
-        for (var i = 0; i < fields.length; i++) {
-          $(fields[i]).addClass("error-border");
-        }
-        sharedFunctions.Prompt("error", "Email or password is incorrect.");
-
-      } else if (serverResponse.executionErrorFlag) { // Server could not insert
-        sharedFunctions.Prompt("error", serverResponse.executionError);
-      } else if (serverResponse.loginSuccess) {
-        $('#loginModal').modal('hide');
-        sharedFunctions.Prompt("success", "Login successful!");
-        $('#loginModal').on('hidden.bs.modal', function(e) {
-          window.location.href = '#!dashboard';
-        })
-      } else {
-        sharedFunctions.Prompt("warning", "Unexpected response.");
-      }
-
-    });
-
-  }
-
-  $scope.RegisterUser = function() {
-
-    //////////////Validation Checks//////////////
-
-    var errorWithInput = false;
-
-    if (sharedFunctions.Validation.Email("#register-email", $scope.registerData.email)) {
-      errorWithInput = true;
-    }
-    if (sharedFunctions.Validation.Name("#register-firstName", $scope.registerData.firstName)) {
-      errorWithInput = true;
-    }
-    if (sharedFunctions.Validation.Name("#register-lastName", $scope.registerData.lastName)) {
-      errorWithInput = true;
-    }
-    if (sharedFunctions.Validation.Password("#register-password", "#register-passwordRepeat", $scope.registerData.password, $scope.registerData.passwordRepeat)) {
-      errorWithInput = true;
-    }
-
-    //////////////Register Request//////////////
-
-    if (!errorWithInput) {
-
-      var request = $http({
-        method: "post",
-        url: "project/components/landing/register.php",
-        data: {
-          email: {
-            data: $scope.registerData.email,
-            field: "#register-email"
-          },
-          firstName: {
-            data: $scope.registerData.firstName,
-            field: "#register-email"
-          },
-          lastName: {
-            data: $scope.registerData.lastName,
-            field: "#register-lastName"
-          },
-          password: {
-            data: $scope.registerData.password,
-            field: "#register-password"
-          },
-          passwordRepeat: {
-            data: $scope.registerData.passwordRepeat,
-            field: "#register-passwordRepeat"
-          }
-        },
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded"
-        }
-      });
-
-      request.then(function(response) {
-        var serverResponse = angular.fromJson(response.data);
-
-        if (serverResponse.errorFlag) // There were errors found
-        {
-          var fields = ["#register-email", "#register-firstName", "#register-lastName", "#register-password", "#register-passwordRepeat"];
-          for (var i = 0; i < fields.length; i++) {
-            sharedFunctions.Validation.RemoveErrorTooltip(fields[i]);
-          }
-
-          for (var i = 0; i < serverResponse.errorReport.length; i++) {
-            sharedFunctions.Validation.ErrorTooltip(serverResponse.errorReport[i].field, serverResponse.errorReport[i].errorMessage);
-
-            if (serverResponse.errorReport[i].field === "#register-password") {
-              $("#register-passwordRepeat").addClass("error-border");
-            }
-          }
-        } else if (serverResponse.executionErrorFlag) { // Server could not insert
-          sharedFunctions.Prompt("error", serverResponse.executionError);
-        } else {
-          $scope.Modal.SwitchLoginRegister();
-          sharedFunctions.Prompt("success", "You registered successfully!");
-        }
-
-      });
-
-    }
-
-  }
 
   $scope.Modal.SwitchLoginRegister = function() {
     $('#loginModal').modal('toggle');
@@ -164,5 +28,7 @@ angular.module("project-app").controller("dashboardCtrl", ["$scope", "$http", "s
     $scope.registerData = {};
     sharedFunctions.Validation.RemoveErrorTooltip();
   }
+
+  sharedFunctions.AuthenticateUser();
 
 }]);
