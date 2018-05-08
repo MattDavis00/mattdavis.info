@@ -8,15 +8,6 @@ body {
   background-color: #e6e6e6;
 }
 
-.bg {
-  background-image: url("/img/gradient.jpg");
-  width: 100%;
-  height: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
 .development {
   font-family: 'Open Sans';
   color: white;
@@ -44,10 +35,6 @@ body {
 .error-border {
   outline: 0;
   border-color: #f0506e;
-}
-
-.navbar-brand {
-  padding-top: 3px;
 }
 
 #alert-prompt {
