@@ -12,6 +12,10 @@ app.config(function($routeProvider) {
       templateUrl: "project/components/dashboard/dashboardView.html",
       controller: "dashboardCtrl"
     })
+    .when("/pastebin", {
+      templateUrl: "project/components/pastebin/pastebinView.html",
+      controller: "pastebinCtrl"
+    })
 
     ///////////////////////// Otherwise, Redirect To Login ////////////////////////////
     .otherwise({
