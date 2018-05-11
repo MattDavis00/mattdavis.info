@@ -23,10 +23,50 @@ angular.module("project-app").controller("pastebinCtrl", ["$scope", "$http", "sh
     sharedFunctions.Validation.RemoveErrorTooltip('#register-passwordRepeat');
   })
 
-  $scope.ClearForms = function() {
-    $scope.loginData = {};
-    $scope.registerData = {};
-    sharedFunctions.Validation.RemoveErrorTooltip();
+  $scope.SharePaste = function() {
+
+    var errorWithInput = false;
+
+    if (sharedFunctions.Validation.Empty("#pastebin-code", $scope.pastebinData.code)) {
+      errorWithInput = true;
+    }
+
+
+    //////////////Share Request//////////////
+
+    if (!errorWithInput) {
+
+      var request = $http({
+        method: "post",
+        url: "project/components/pastebin/share.php",
+        data: {
+          code: {
+            data: $scope.pastebinData.code,
+            field: "#pastebin-code"
+          }
+        },
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        }
+      });
+
+      request.then(function(response) {
+        var serverResponse = angular.fromJson(response.data);
+
+        if (serverResponse.executionErrorFlag) { // Server could not insert
+          sharedFunctions.Prompt("error", serverResponse.executionError);
+        } else if (serverResponse.shareSuccess) {
+
+          sharedFunctions.Prompt("success", "Share successful! mattdavis.info/p/" + serverResponse.shareCharID);
+
+        } else {
+          sharedFunctions.Prompt("warning", "Unexpected response.");
+        }
+
+      });
+
+    }
+
   }
 
   $scope.sharedFunctions = sharedFunctions;
