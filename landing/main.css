@@ -97,6 +97,26 @@ body {
   left: 0px;
   right: 0px;
   z-index: 0;
+  white-space: nowrap;
+}
+
+.white-link {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.white-link:hover {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+#alert-pastebin-menu {
+  top: 65px;
+  right: 10px;
+  position: fixed;
+  z-index: 1;
+  /* background-color: #0277bd61; */
+  background-color: #305467;
+  padding: 10px;
+  padding-bottom: 7px;
 }
 
 /* ---- reset ---- */
