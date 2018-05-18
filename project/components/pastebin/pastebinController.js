@@ -1,7 +1,12 @@
 angular.module("project-app").controller("pastebinCtrl", ["$scope", "$http", "sharedFunctions", "$filter", "localVariables", function($scope, $http, sharedFunctions, $filter, localVariables) {
 
   $scope.Modal = {};
+  $scope.pastebinData = {};
   $scope.results = "";
+  $scope.pastebinData.code = '<html class="test"><div>Testing</div></html><html><div>Testing</div></html><html><div>Testing</div></html><html><div>Testing</div></html><br><html></html>';
+
+
+  // $('#pastebin-code').hide();
 
   $scope.Modal.SwitchLoginRegister = function() {
     $('#loginModal').modal('toggle');
@@ -70,5 +75,31 @@ angular.module("project-app").controller("pastebinCtrl", ["$scope", "$http", "sh
   }
 
   $scope.sharedFunctions = sharedFunctions;
+
+  $(function() {
+    $("textarea").keydown(function(e) {
+      if (e.keyCode === 9) {
+        e.preventDefault();
+        var t = "  ";
+        if (document.selection) {
+          this.focus();
+          var n = document.selection.createRange();
+          n.text = t,
+            this.focus()
+        } else if (this.selectionStart || this.selectionStart == "0") {
+          var r = this.selectionStart,
+            i = this.selectionEnd,
+            s = this.scrollTop;
+          this.value = this.value.substring(0, r) + t + this.value.substring(i, this.value.length),
+            this.focus(),
+            this.selectionStart = r + t.length,
+            this.selectionEnd = r + t.length,
+            this.scrollTop = s
+        } else
+          this.value += t,
+          this.focus()
+      }
+    })
+  })
 
 }]);

@@ -20,7 +20,7 @@ app.config(function($routeProvider) {
     ///////////////////////// Otherwise, Redirect To Login ////////////////////////////
     .otherwise({
       redirectTo: "/"
-    })
+    });
 
 });
 

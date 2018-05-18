@@ -36,6 +36,8 @@
 
 </nav>
 
-<div class="alert text-center" role="alert" id="alert-pastebin-menu"><a class="white-link" href="" ng-click="SharePaste()"><i class="material-icons">share</i></a><br /><a class="white-link" href=""><i class="material-icons">history</i></a></div>
+<div class="alert text-center" role="alert" id="alert-pastebin-menu"><a class="white-link" href="" ng-click="NewPaste()"><i class="material-icons">insert_drive_file</i></a><br /><a class="white-link" href="" ng-click="SharePaste()"><i class="material-icons">share</i></a><br /><a class="white-link" href=""><i class="material-icons">history</i></a></div>
 
 <textarea ng-model="pastebinData.code" id="pastebin-code"></textarea>
+
+<pre class="prettyprint linenums" ng-bind="pastebinData.code" id="pastebin-code-view"></pre>

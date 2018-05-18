@@ -86,10 +86,21 @@ body {
 }
 
 #pastebin-code {
-  border-color: #002a41;
-  background-color: #002a41;
   color: #ffffff;
   resize: none;
+  white-space: nowrap;
+  position: fixed;
+  width: 100%;
+  top: 56.4px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  z-index: 1;
+  border-color: #002a41;
+  background-color: #002a41;
+}
+
+#pastebin-code-view {
   position: fixed;
   width: 100%;
   top: 56.4px;
@@ -97,7 +108,18 @@ body {
   left: 0px;
   right: 0px;
   z-index: 0;
-  white-space: nowrap;
+}
+
+li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+  list-style-type: decimal !important;
+}
+
+pre.prettyprint {
+  white-space: pre;
+  overflow: auto;
+  background-color: #002a41;
+  border-radius: 0px;
+  margin: 0px;
 }
 
 .white-link {
@@ -112,9 +134,8 @@ body {
   top: 65px;
   right: 10px;
   position: fixed;
-  z-index: 1;
-  /* background-color: #0277bd61; */
-  background-color: #305467;
+  z-index: 5;
+  background-color: #1c4a63;
   padding: 10px;
   padding-bottom: 7px;
 }
