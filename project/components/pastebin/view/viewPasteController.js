@@ -50,4 +50,54 @@ angular.module("project-app").controller("viewPasteCtrl", ["$scope", "$http", "s
 
   $scope.ViewPaste();
 
+  $scope.ShowPasteHistory = function() {
+
+    if (sessionStorage.loggedIn === "true") {
+      $('#pasteHistoryModal').modal('show');
+
+      var request = $http({
+        method: "post",
+        url: "project/components/pastebin/history.php",
+        data: {},
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        }
+      });
+
+      request.then(function(response) {
+        var serverResponse = angular.fromJson(response.data);
+
+        if (serverResponse.executionErrorFlag) { // Server could not insert
+          sharedFunctions.Prompt("error", serverResponse.executionError);
+        } else if (serverResponse.fetchSuccess) {
+
+          $scope.temp = $filter('orderBy')(serverResponse.data.history, 'creationTime', true); // Filter by column.
+          $scope.pastebinData.history = $scope.temp;
+
+        } else {
+          sharedFunctions.Prompt("warning", "Unexpected response.");
+        }
+
+      });
+    } else {
+      sharedFunctions.Prompt("error", "You are not logged in. Please log in to view paste history. ");
+    }
+
+  }
+
+  $scope.ViewHistoricalPaste = function(charID) {
+    $('#pasteHistoryModal').modal('hide');
+    $('#pasteHistoryModal').on('hidden.bs.modal', function(e) {
+      window.location.href = '#!/p/' + charID;
+    })
+  }
+
+  $scope.NewPaste = function() {
+    if (sessionStorage.loggedIn === "true") {
+      window.location.href = '#!pastebin';
+    } else {
+      sharedFunctions.Prompt("error", "You are not logged in. Please log in to create a new paste. ");
+    }
+  }
+
 }]);

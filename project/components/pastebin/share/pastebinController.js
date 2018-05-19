@@ -57,7 +57,7 @@ angular.module("project-app").controller("pastebinCtrl", ["$scope", "$http", "sh
         if (serverResponse.executionErrorFlag) { // Server could not insert
           sharedFunctions.Prompt("error", serverResponse.executionError);
         } else if (serverResponse.shareSuccess) {
-          sharedFunctions.Prompt("success", "Share successful! mattdavis.info/p/" + serverResponse.shareCharID);
+          sharedFunctions.Prompt("success", "Share successful! mattdavis.info/#!/p/" + serverResponse.shareCharID);
           window.location.href = '#!/p/' + serverResponse.shareCharID;
         } else {
           sharedFunctions.Prompt("warning", "Unexpected response.");
@@ -99,6 +99,43 @@ angular.module("project-app").controller("pastebinCtrl", ["$scope", "$http", "sh
 
   $scope.NewPaste = function() {
     $scope.pastebinData.code = "";
+  }
+
+  $scope.ShowPasteHistory = function() {
+    $('#pasteHistoryModal').modal('show');
+
+    var request = $http({
+      method: "post",
+      url: "project/components/pastebin/history.php",
+      data: {},
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      }
+    });
+
+    request.then(function(response) {
+      var serverResponse = angular.fromJson(response.data);
+
+      if (serverResponse.executionErrorFlag) { // Server could not insert
+        sharedFunctions.Prompt("error", serverResponse.executionError);
+      } else if (serverResponse.fetchSuccess) {
+
+        $scope.temp = $filter('orderBy')(serverResponse.data.history, 'creationTime', true); // Filter by column.
+        $scope.pastebinData.history = $scope.temp;
+
+      } else {
+        sharedFunctions.Prompt("warning", "Unexpected response.");
+      }
+
+    });
+
+  }
+
+  $scope.ViewPaste = function(charID) {
+    $('#pasteHistoryModal').modal('hide');
+    $('#pasteHistoryModal').on('hidden.bs.modal', function(e) {
+      window.location.href = '#!/p/' + charID;
+    })
   }
 
 }]);
