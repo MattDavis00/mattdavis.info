@@ -122,6 +122,10 @@ pre.prettyprint {
   margin: 0px;
 }
 
+.linenums {
+  padding-left: 30px;
+}
+
 .white-link {
   color: rgba(255, 255, 255, 0.75);
 }

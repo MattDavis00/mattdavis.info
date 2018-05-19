@@ -3,10 +3,6 @@ angular.module("project-app").controller("pastebinCtrl", ["$scope", "$http", "sh
   $scope.Modal = {};
   $scope.pastebinData = {};
   $scope.results = "";
-  $scope.pastebinData.code = '<html class="test"><div>Testing</div></html><html><div>Testing</div></html><html><div>Testing</div></html><html><div>Testing</div></html><br><html></html>';
-
-
-  // $('#pastebin-code').hide();
 
   $scope.Modal.SwitchLoginRegister = function() {
     $('#loginModal').modal('toggle');
@@ -61,9 +57,8 @@ angular.module("project-app").controller("pastebinCtrl", ["$scope", "$http", "sh
         if (serverResponse.executionErrorFlag) { // Server could not insert
           sharedFunctions.Prompt("error", serverResponse.executionError);
         } else if (serverResponse.shareSuccess) {
-
           sharedFunctions.Prompt("success", "Share successful! mattdavis.info/p/" + serverResponse.shareCharID);
-
+          window.location.href = '#!/p/' + serverResponse.shareCharID;
         } else {
           sharedFunctions.Prompt("warning", "Unexpected response.");
         }
@@ -101,5 +96,9 @@ angular.module("project-app").controller("pastebinCtrl", ["$scope", "$http", "sh
       }
     })
   })
+
+  $scope.NewPaste = function() {
+    $scope.pastebinData.code = "";
+  }
 
 }]);

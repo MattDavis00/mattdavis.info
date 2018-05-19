@@ -16,6 +16,12 @@ app.config(function($routeProvider) {
       templateUrl: "project/components/pastebin/share/pastebinView.html",
       controller: "pastebinCtrl"
     })
+    .when('/p/:sharingURI*', {
+      cache: false,
+      templateUrl: "project/components/pastebin/view/viewPasteView.html",
+      controller: 'viewPasteCtrl'
+    })
+
 
     ///////////////////////// Otherwise, Redirect To Login ////////////////////////////
     .otherwise({
