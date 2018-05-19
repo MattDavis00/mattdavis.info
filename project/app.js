@@ -13,7 +13,7 @@ app.config(function($routeProvider) {
       controller: "dashboardCtrl"
     })
     .when("/pastebin", {
-      templateUrl: "project/components/pastebin/pastebinView.html",
+      templateUrl: "project/components/pastebin/share/pastebinView.html",
       controller: "pastebinCtrl"
     })
 

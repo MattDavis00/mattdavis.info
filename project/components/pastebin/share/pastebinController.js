@@ -43,7 +43,7 @@ angular.module("project-app").controller("pastebinCtrl", ["$scope", "$http", "sh
 
       var request = $http({
         method: "post",
-        url: "project/components/pastebin/share.php",
+        url: "project/components/pastebin/share/share.php",
         data: {
           code: {
             data: $scope.pastebinData.code,
