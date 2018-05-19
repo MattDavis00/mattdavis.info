@@ -144,6 +144,25 @@ pre.prettyprint {
   padding-bottom: 7px;
 }
 
+#pastebin-code-view::-webkit-scrollbar, #pastebin-code::-webkit-scrollbar {
+  width: 0.5em;
+  height: 0.5em;
+}
+
+#pastebin-code-view::-webkit-scrollbar-track, #pastebin-code::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+#pastebin-code-view::-webkit-scrollbar-thumb, #pastebin-code::-webkit-scrollbar-thumb {
+  background-color: #466d82;
+  outline: 1px solid #466d82;
+}
+
+#pastebin-code-view::-webkit-scrollbar-corner, #pastebin-code::-webkit-scrollbar-corner {
+  background-color: #466d82;
+  outline: 1px solid #466d82;
+}
+
 /* ---- reset ---- */
 
 body {
