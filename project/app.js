@@ -17,7 +17,6 @@ app.config(function($routeProvider) {
       controller: "pastebinCtrl"
     })
     .when('/p/:sharingURI*', {
-      cache: false,
       templateUrl: "project/components/pastebin/view/viewPasteView.html",
       controller: 'viewPasteCtrl'
     })
@@ -30,7 +29,7 @@ app.config(function($routeProvider) {
 
 });
 
-app.service('sharedFunctions', ['$http', function($http) {
+app.service('sharedFunctions', ['$http', "$location", function($http, $location) {
 
   $('#alert-prompt').collapse({
     toggle: false
@@ -255,6 +254,25 @@ app.service('sharedFunctions', ['$http', function($http) {
   this.Validation.RemoveErrorTooltip = function(element) {
     $(element).removeClass("error-border");
     $(element).tooltip('dispose');
+  }
+
+  this.NavbarInit = function() {
+
+    var view = location.hash;
+    var pasteView = $location.path().substring(0, 3);
+
+    $("#personal-pastebin-nav").removeClass("active");
+    $("#task-manager-nav").removeClass("active");
+
+    // Pastebin
+    if (view === "#!/pastebin" || pasteView === "/p/") {
+      $("#personal-pastebin-nav").addClass("active");
+    }
+    // Task Manager
+    else if (view === "#!/task-manager") {
+      $("#task-manager-nav").addClass("active");
+    }
+
   }
 
   var self = this;
