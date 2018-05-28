@@ -163,6 +163,14 @@ pre.prettyprint {
   outline: 1px solid #466d82;
 }
 
+.nav-secondary {
+  padding-bottom: 20px;
+}
+
+#task-manager-container {
+  padding: 20px;
+}
+
 /* ---- reset ---- */
 
 body {

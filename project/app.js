@@ -20,9 +20,13 @@ app.config(function($routeProvider) {
       templateUrl: "project/components/pastebin/view/viewPasteView.html",
       controller: 'viewPasteCtrl'
     })
+    .when('/task-manager', {
+      templateUrl: "project/components/taskManager/taskManagerView.html",
+      controller: 'taskManagerCtrl'
+    })
 
 
-    ///////////////////////// Otherwise, Redirect To Login ////////////////////////////
+    ///////////////////////// Otherwise, Redirect To Landing Page ////////////////////////////
     .otherwise({
       redirectTo: "/"
     });
