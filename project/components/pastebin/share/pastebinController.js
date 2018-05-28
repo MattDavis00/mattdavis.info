@@ -69,8 +69,6 @@ angular.module("project-app").controller("pastebinCtrl", ["$scope", "$http", "sh
 
   }
 
-  $scope.sharedFunctions = sharedFunctions;
-
   $(function() {
     $("textarea").keydown(function(e) {
       if (e.keyCode === 9) {
@@ -137,5 +135,7 @@ angular.module("project-app").controller("pastebinCtrl", ["$scope", "$http", "sh
       window.location.href = '#!/p/' + charID;
     })
   }
+
+  $scope.sharedFunctions = sharedFunctions;
 
 }]);
