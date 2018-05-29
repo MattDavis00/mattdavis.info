@@ -4,9 +4,19 @@ angular.module("project-app").controller("taskManagerCtrl", ["$scope", "$http", 
   $scope.pastebinData = {};
   $scope.results = "";
 
-  var el = document.getElementById('items');
-  var sortable = new Sortable(el, {
-    animation: 150 // ms, animation speed moving items when sorting, `0` — without animation
+  // var el = document.getElementById('items');
+  // var sortable = new Sortable(el, {
+  //   animation: 150 // ms, animation speed moving items when sorting, `0` — without animation
+  // });
+
+  $(function() {
+    $("#items").sortable({
+      revert: 200,
+      opacity: 0.5,
+      containment: "parent",
+      tolerance: "pointer"
+    });
+    $("#items").disableSelection();
   });
 
   $scope.sharedFunctions = sharedFunctions;
