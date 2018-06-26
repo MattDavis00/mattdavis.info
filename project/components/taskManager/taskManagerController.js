@@ -14,7 +14,8 @@ angular.module("project-app").controller("taskManagerCtrl", ["$scope", "$http", 
       revert: 200,
       opacity: 0.5,
       containment: "parent",
-      tolerance: "pointer"
+      tolerance: "pointer",
+      handle: ".item-handle"
     });
     $("#items").disableSelection();
   });

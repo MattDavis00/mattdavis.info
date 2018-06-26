@@ -171,6 +171,13 @@ pre.prettyprint {
   padding: 20px;
 }
 
+.item-handle {
+  position: relative;
+  left: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
 /* ---- reset ---- */
 
 body {
