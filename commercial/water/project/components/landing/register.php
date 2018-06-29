@@ -93,6 +93,9 @@ if (!$outputData->errorFlag)
       // Generate Hash
       $clientPasswordHash = password_hash($clientPassword->data, PASSWORD_BCRYPT);
 
+      // Generate Email Verification Code
+      $serverActivationCode = bin2hex(random_bytes(16));
+
       // SQL Query
       $registerUser = $conn->prepare("INSERT INTO `user` (`Email`, `First_Name`, `Last_Name`, `Password_Hash`, `Last_Login_Time`, `Creation_Time`)
       VALUES (:email, :firstName, :lastName, :passwordHash, NULL, :creationTime)");
@@ -104,6 +107,30 @@ if (!$outputData->errorFlag)
 
       // Execute Query
       $registerReturn = $registerUser->execute();
+
+      if ($registerReturn)
+      {
+
+        $to      = $clientEmail->data; // Send email to our user
+        $subject = 'mattdavis.info | Email Verification'; // Give the email a subject
+        $message = '
+
+        Thanks for signing up!
+        Your account has been created, you can login with your chosen credentials after you have activated your account by clicking the url below.
+
+        Please click this link to activate your account:
+
+        -------------------
+        https://www.mattdavis.info/commercial/water/project/shared/verify.php?email='.$clientEmail->data.'&code='.$serverActivationCode.'
+        -------------------
+
+        '; // Our message above including the link
+
+        $headers = 'From:noreply@mattdavis.info' . "\r\n"; // Set from headers
+        mail($to, $subject, $message, $headers); // Send our email
+
+      }
+
     }
     catch(PDOException $e)
     {
