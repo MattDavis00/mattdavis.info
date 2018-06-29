@@ -261,16 +261,16 @@ app.service('sharedFunctions', ['$http', "$location", function($http, $location)
     var view = location.hash;
     var pasteView = $location.path().substring(0, 3);
 
-    $("#personal-pastebin-nav").removeClass("active");
-    $("#task-manager-nav").removeClass("active");
+    $("#dashboard-nav").removeClass("active");
+    $("#new-site-nav").removeClass("active");
 
     // Pastebin
-    if (view === "#!/pastebin" || pasteView === "/p/") {
-      $("#personal-pastebin-nav").addClass("active");
+    if (view === "#!/dashboard") {
+      $("#dashboard-nav").addClass("active");
     }
     // Task Manager
-    else if (view === "#!/task-manager") {
-      $("#task-manager-nav").addClass("active");
+    else if (view === "#!/new-site") {
+      $("#new-site-nav").addClass("active");
     }
 
   }
