@@ -5,9 +5,9 @@ session_start();
 
 // Credentials
 $servername = "localhost";
-$username = "main_db_access";
-$password = "mEk47MvJmQXjX2PVe@t3";
-$dbname = "main_db";
+$username = "water_db_access";
+$password = "PcH2QP7!ygWzq#EnB*4T";
+$dbname = "water_db";
 
 // Database Connection
 try
