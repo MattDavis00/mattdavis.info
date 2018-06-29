@@ -1,0 +1,30 @@
+<div ng-include="'project/shared/projectNavbar.html'"></div>
+
+<div class="row" id="project-card-block">
+
+  <div class="col-auto">
+    <div class="card grid-card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Search </h5>
+        <input type="text" class="form-control" ng-model="siteDashboard.searchData">
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">Search through the list of sites.</small>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-auto" ng-repeat="site in siteDashboard.displayedSites">
+    <div class="card grid-card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">{{ site.name | limitTo: 20 }}{{site.name.length > 20 ? '...' : ''}} <span ng-if="site.tag == 'new'" class="badge badge-warning">New</span><span ng-if="site.tag == 'alert'" class="badge badge-danger">Alert</span></h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{ site.address | limitTo: 40 }}{{site.address.length > 40 ? '...' : ''}}</h6>
+        <p class="card-text">{{ site.description | limitTo: 40 }}{{site.description.length > 40 ? '...' : ''}}</p>
+      </div>
+      <div class="card-footer">
+        <a href="#!site/372632" ng-click="Launch(site)" role="button" class="btn btn-primary btn-sm">Launch</a> <small class="text-muted"></small>
+      </div>
+    </div>
+  </div>
+
+</div>
