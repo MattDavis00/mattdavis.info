@@ -36,7 +36,7 @@ angular.module("project-app").controller("dashboardCtrl", ["$scope", "$http", "s
       tag: "normal"
     },
     {
-      name: "And Shard",
+      name: "The Pickle",
       address: "32 London Bridge St, London",
       description: "Some descriptive information!",
       tag: "alert"
@@ -56,6 +56,60 @@ angular.module("project-app").controller("dashboardCtrl", ["$scope", "$http", "s
     {
       name: "Froadgate Tower",
       address: "201 Bishopsgate, London",
+      description: "Some descriptive information!",
+      tag: "normal"
+    },
+    {
+      name: "Beron Tower",
+      address: "110 Bishopsgate, London",
+      description: "Some descriptive information!",
+      tag: "normal"
+    },
+    {
+      name: "Deron Tower",
+      address: "110 Bishopsgate, London",
+      description: "Some descriptive information!",
+      tag: "normal"
+    },
+    {
+      name: "Peron Tower",
+      address: "110 Bishopsgate, London",
+      description: "Some descriptive information!",
+      tag: "normal"
+    },
+    {
+      name: "Teron Tower",
+      address: "110 Bishopsgate, London",
+      description: "Some descriptive information!",
+      tag: "normal"
+    },
+    {
+      name: "The Card",
+      address: "32 London Bridge St, London",
+      description: "Some descriptive information!",
+      tag: "normal"
+    },
+    {
+      name: "The Dard",
+      address: "32 London Bridge St, London",
+      description: "Some descriptive information!",
+      tag: "normal"
+    },
+    {
+      name: "The Flard",
+      address: "32 London Bridge St, London",
+      description: "Some descriptive information!",
+      tag: "normal"
+    },
+    {
+      name: "The Bnard",
+      address: "32 London Bridge St, London",
+      description: "Some descriptive information!",
+      tag: "normal"
+    },
+    {
+      name: "The Lard",
+      address: "32 London Bridge St, London",
       description: "Some descriptive information!",
       tag: "normal"
     }

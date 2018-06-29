@@ -132,7 +132,10 @@ angular.module("project-app").controller("viewPasteCtrl", ["$scope", "$http", "s
       pad: 4
     },
     paper_bgcolor: "#e6e6e6",
-    plot_bgcolor: "#e6e6e6"
+    plot_bgcolor: "#e6e6e6",
+    legend: {
+      "orientation": "h"
+    }
   }
   var data = [trace1, trace2, safety];
   Plotly.newPlot('myDiv', data, layout);
