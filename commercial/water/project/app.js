@@ -16,8 +16,8 @@ app.config(function($routeProvider) {
       templateUrl: "project/components/pastebin/share/pastebinView.html",
       controller: "pastebinCtrl"
     })
-    .when('/p/:sharingURI*', {
-      templateUrl: "project/components/pastebin/view/viewPasteView.html",
+    .when('/site/:sharingURI*', {
+      templateUrl: "project/components/site/view/viewPasteView.html",
       controller: 'viewPasteCtrl'
     })
 

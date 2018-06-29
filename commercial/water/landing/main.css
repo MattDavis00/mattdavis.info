@@ -173,7 +173,9 @@ pre.prettyprint {
   outline: 1px solid #466d82;
 }
 
-#loginCard {}
+.grid-card {
+  height: 100%;
+}
 
 /* ---- reset ---- */
 

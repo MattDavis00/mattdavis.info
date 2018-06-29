@@ -1,120 +1,392 @@
-<div ng-include="'/project/shared/projectNavbar.html'"></div>
+<div ng-include="'project/shared/projectNavbar.html'"></div>
 
 <div class="row" id="project-card-block">
 
   <div class="col-auto">
-    <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="/project/components/dashboard/personalPastebin.png" alt="Card image cap">
+    <div class="card grid-card" style="width: 18rem;">
       <div class="card-body">
-        <h5 class="card-title">Personal Pastebin <span class="badge badge-warning">New</span></h5>
-        <p class="card-text">Paste your code, save it and even share it with others!</p>
+        <h5 class="card-title">Search </h5>
+        <input type="text" class="form-control" ng-model="loginData.email" id="login-email">
       </div>
       <div class="card-footer">
-        <a href="#!pastebin" role="button" class="btn btn-primary btn-sm">Launch</a> <small class="text-muted"></small>
+        <small class="text-muted">Search through the list of sites.</small>
       </div>
     </div>
   </div>
 
   <div class="col-auto">
-    <div class="card" href="#!" style="width: 18rem;">
-      <img class="card-img-top" src="/project/components/dashboard/taskManager.png" alt="Card image cap">
+    <div class="card grid-card" style="width: 18rem;">
       <div class="card-body">
-        <h5 class="card-title">Task Manager <span class="badge badge-secondary">Soon</span></h5>
-        <p class="card-text">Create checklists with different descriptions and status.</p>
+        <h5 class="card-title">The Shard <span class="badge badge-danger">Alert</span></h5>
+        <h6 class="card-subtitle mb-2 text-muted">32 London Bridge St, London</h6>
+        <p class="card-text">Some descriptive information!</p>
       </div>
       <div class="card-footer">
-        <a href="#" role="button" class="btn btn-primary btn-sm disabled" aria-disabled="true">Launch</a> <small class="text-muted">Coming Soon.</small>
+        <a href="#!site/372632" role="button" class="btn btn-primary btn-sm">Launch</a> <small class="text-muted"></small>
       </div>
     </div>
   </div>
 
   <div class="col-auto">
-    <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="/project/components/dashboard/placeholder.png" alt="Card image cap">
+    <div class="card grid-card" style="width: 18rem;">
       <div class="card-body">
-        <h5 class="card-title">Another Project <span class="badge badge-secondary">Soon</span></h5>
-        <p class="card-text">Wow, aren't these descriptions getting generic nowadays.</p>
+        <h5 class="card-title">Heron Tower <span class="badge badge-warning">New</span></h5>
+        <h6 class="card-subtitle mb-2 text-muted">110 Bishopsgate, London</h6>
+        <p class="card-text">Some descriptive information!</p>
       </div>
       <div class="card-footer">
-        <a href="#" role="button" class="btn btn-primary btn-sm disabled" aria-disabled="true">Launch</a> <small class="text-muted">Coming Soon.</small>
+        <a href="#!site/372632" role="button" class="btn btn-primary btn-sm">Launch</a> <small class="text-muted"></small>
       </div>
     </div>
   </div>
 
   <div class="col-auto">
-    <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="/project/components/dashboard/placeholder.png" alt="Card image cap">
+    <div class="card grid-card" style="width: 18rem;">
       <div class="card-body">
-        <h5 class="card-title">Another Project <span class="badge badge-secondary">Soon</span></h5>
-        <p class="card-text">Wow, aren't these descriptions getting generic nowadays.</p>
+        <h5 class="card-title">Heron Tower <span class="badge badge-warning">New</span></h5>
+        <h6 class="card-subtitle mb-2 text-muted">110 Bishopsgate, London</h6>
+        <p class="card-text">Some descriptive information!</p>
       </div>
       <div class="card-footer">
-        <a href="#" role="button" class="btn btn-primary btn-sm disabled" aria-disabled="true">Launch</a> <small class="text-muted">Coming Soon.</small>
+        <a href="#!site/372632" role="button" class="btn btn-primary btn-sm">Launch</a> <small class="text-muted"></small>
       </div>
     </div>
   </div>
 
   <div class="col-auto">
-    <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="/project/components/dashboard/placeholder.png" alt="Card image cap">
+    <div class="card grid-card" style="width: 18rem;">
       <div class="card-body">
-        <h5 class="card-title">Another Project <span class="badge badge-secondary">Soon</span></h5>
-        <p class="card-text">Wow, aren't these descriptions getting generic nowadays.</p>
+        <h5 class="card-title">Broadgate Tower</h5>
+        <h6 class="card-subtitle mb-2 text-muted">201 Bishopsgate, London</h6>
+        <p class="card-text">Some descriptive information!</p>
       </div>
       <div class="card-footer">
-        <a href="#" role="button" class="btn btn-primary btn-sm disabled" aria-disabled="true">Launch</a> <small class="text-muted">Coming Soon.</small>
+        <a href="#!site/372632" role="button" class="btn btn-primary btn-sm">Launch</a> <small class="text-muted"></small>
       </div>
     </div>
   </div>
 
   <div class="col-auto">
-    <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="/project/components/dashboard/placeholder.png" alt="Card image cap">
+    <div class="card grid-card" style="width: 18rem;">
       <div class="card-body">
-        <h5 class="card-title">Another Project <span class="badge badge-secondary">Soon</span></h5>
-        <p class="card-text">Wow, aren't these descriptions getting generic nowadays.</p>
+        <h5 class="card-title">Broadgate Tower</h5>
+        <h6 class="card-subtitle mb-2 text-muted">201 Bishopsgate, London</h6>
+        <p class="card-text">Some descriptive information!</p>
       </div>
       <div class="card-footer">
-        <a href="#" role="button" class="btn btn-primary btn-sm disabled" aria-disabled="true">Launch</a> <small class="text-muted">Coming Soon.</small>
+        <a href="#!site/372632" role="button" class="btn btn-primary btn-sm">Launch</a> <small class="text-muted"></small>
       </div>
     </div>
   </div>
 
   <div class="col-auto">
-    <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="/project/components/dashboard/placeholder.png" alt="Card image cap">
+    <div class="card grid-card" style="width: 18rem;">
       <div class="card-body">
-        <h5 class="card-title">Another Project <span class="badge badge-secondary">Soon</span></h5>
-        <p class="card-text">Wow, aren't these descriptions getting generic nowadays.</p>
+        <h5 class="card-title">Broadgate Tower</h5>
+        <h6 class="card-subtitle mb-2 text-muted">201 Bishopsgate, London</h6>
+        <p class="card-text">Some descriptive information!</p>
       </div>
       <div class="card-footer">
-        <a href="#" role="button" class="btn btn-primary btn-sm disabled" aria-disabled="true">Launch</a> <small class="text-muted">Coming Soon.</small>
+        <a href="#!site/372632" role="button" class="btn btn-primary btn-sm">Launch</a> <small class="text-muted"></small>
       </div>
     </div>
   </div>
 
   <div class="col-auto">
-    <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="/project/components/dashboard/placeholder.png" alt="Card image cap">
+    <div class="card grid-card" style="width: 18rem;">
       <div class="card-body">
-        <h5 class="card-title">Another Project <span class="badge badge-secondary">Soon</span></h5>
-        <p class="card-text">Wow, aren't these descriptions getting generic nowadays.</p>
+        <h5 class="card-title">Broadgate Tower</h5>
+        <h6 class="card-subtitle mb-2 text-muted">201 Bishopsgate, London</h6>
+        <p class="card-text">Some descriptive information!</p>
       </div>
       <div class="card-footer">
-        <a href="#" role="button" class="btn btn-primary btn-sm disabled" aria-disabled="true">Launch</a> <small class="text-muted">Coming Soon.</small>
+        <a href="#!site/372632" role="button" class="btn btn-primary btn-sm">Launch</a> <small class="text-muted"></small>
       </div>
     </div>
   </div>
 
   <div class="col-auto">
-    <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="/project/components/dashboard/placeholder.png" alt="Card image cap">
+    <div class="card grid-card" style="width: 18rem;">
       <div class="card-body">
-        <h5 class="card-title">Another Project <span class="badge badge-secondary">Soon</span></h5>
-        <p class="card-text">Wow, aren't these descriptions getting generic nowadays.</p>
+        <h5 class="card-title">Broadgate Tower</h5>
+        <h6 class="card-subtitle mb-2 text-muted">201 Bishopsgate, London</h6>
+        <p class="card-text">Some descriptive information!</p>
       </div>
       <div class="card-footer">
-        <a href="#" role="button" class="btn btn-primary btn-sm disabled" aria-disabled="true">Launch</a> <small class="text-muted">Coming Soon.</small>
+        <a href="#!site/372632" role="button" class="btn btn-primary btn-sm">Launch</a> <small class="text-muted"></small>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-auto">
+    <div class="card grid-card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Broadgate Tower</h5>
+        <h6 class="card-subtitle mb-2 text-muted">201 Bishopsgate, London</h6>
+        <p class="card-text">Some descriptive information!</p>
+      </div>
+      <div class="card-footer">
+        <a href="#!site/372632" role="button" class="btn btn-primary btn-sm">Launch</a> <small class="text-muted"></small>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-auto">
+    <div class="card grid-card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Broadgate Tower</h5>
+        <h6 class="card-subtitle mb-2 text-muted">201 Bishopsgate, London</h6>
+        <p class="card-text">Some descriptive information!</p>
+      </div>
+      <div class="card-footer">
+        <a href="#!site/372632" role="button" class="btn btn-primary btn-sm">Launch</a> <small class="text-muted"></small>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-auto">
+    <div class="card grid-card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Broadgate Tower</h5>
+        <h6 class="card-subtitle mb-2 text-muted">201 Bishopsgate, London</h6>
+        <p class="card-text">Some descriptive information!</p>
+      </div>
+      <div class="card-footer">
+        <a href="#!site/372632" role="button" class="btn btn-primary btn-sm">Launch</a> <small class="text-muted"></small>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-auto">
+    <div class="card grid-card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Broadgate Tower</h5>
+        <h6 class="card-subtitle mb-2 text-muted">201 Bishopsgate, London</h6>
+        <p class="card-text">Some descriptive information!</p>
+      </div>
+      <div class="card-footer">
+        <a href="#!site/372632" role="button" class="btn btn-primary btn-sm">Launch</a> <small class="text-muted"></small>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-auto">
+    <div class="card grid-card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Broadgate Tower</h5>
+        <h6 class="card-subtitle mb-2 text-muted">201 Bishopsgate, London</h6>
+        <p class="card-text">Some descriptive information!</p>
+      </div>
+      <div class="card-footer">
+        <a href="#!site/372632" role="button" class="btn btn-primary btn-sm">Launch</a> <small class="text-muted"></small>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-auto">
+    <div class="card grid-card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Broadgate Tower</h5>
+        <h6 class="card-subtitle mb-2 text-muted">201 Bishopsgate, London</h6>
+        <p class="card-text">Some descriptive information!</p>
+      </div>
+      <div class="card-footer">
+        <a href="#!site/372632" role="button" class="btn btn-primary btn-sm">Launch</a> <small class="text-muted"></small>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-auto">
+    <div class="card grid-card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Broadgate Tower</h5>
+        <h6 class="card-subtitle mb-2 text-muted">201 Bishopsgate, London</h6>
+        <p class="card-text">Some descriptive information!</p>
+      </div>
+      <div class="card-footer">
+        <a href="#!site/372632" role="button" class="btn btn-primary btn-sm">Launch</a> <small class="text-muted"></small>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-auto">
+    <div class="card grid-card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Broadgate Tower</h5>
+        <h6 class="card-subtitle mb-2 text-muted">201 Bishopsgate, London</h6>
+        <p class="card-text">Some descriptive information!</p>
+      </div>
+      <div class="card-footer">
+        <a href="#!site/372632" role="button" class="btn btn-primary btn-sm">Launch</a> <small class="text-muted"></small>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-auto">
+    <div class="card grid-card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Broadgate Tower</h5>
+        <h6 class="card-subtitle mb-2 text-muted">201 Bishopsgate, London</h6>
+        <p class="card-text">Some descriptive information!</p>
+      </div>
+      <div class="card-footer">
+        <a href="#!site/372632" role="button" class="btn btn-primary btn-sm">Launch</a> <small class="text-muted"></small>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-auto">
+    <div class="card grid-card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Broadgate Tower</h5>
+        <h6 class="card-subtitle mb-2 text-muted">201 Bishopsgate, London</h6>
+        <p class="card-text">Some descriptive information!</p>
+      </div>
+      <div class="card-footer">
+        <a href="#!site/372632" role="button" class="btn btn-primary btn-sm">Launch</a> <small class="text-muted"></small>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-auto">
+    <div class="card grid-card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Broadgate Tower</h5>
+        <h6 class="card-subtitle mb-2 text-muted">201 Bishopsgate, London</h6>
+        <p class="card-text">Some descriptive information!</p>
+      </div>
+      <div class="card-footer">
+        <a href="#!site/372632" role="button" class="btn btn-primary btn-sm">Launch</a> <small class="text-muted"></small>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-auto">
+    <div class="card grid-card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Broadgate Tower</h5>
+        <h6 class="card-subtitle mb-2 text-muted">201 Bishopsgate, London</h6>
+        <p class="card-text">Some descriptive information!</p>
+      </div>
+      <div class="card-footer">
+        <a href="#!site/372632" role="button" class="btn btn-primary btn-sm">Launch</a> <small class="text-muted"></small>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-auto">
+    <div class="card grid-card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Broadgate Tower</h5>
+        <h6 class="card-subtitle mb-2 text-muted">201 Bishopsgate, London</h6>
+        <p class="card-text">Some descriptive information!</p>
+      </div>
+      <div class="card-footer">
+        <a href="#!site/372632" role="button" class="btn btn-primary btn-sm">Launch</a> <small class="text-muted"></small>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-auto">
+    <div class="card grid-card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Broadgate Tower</h5>
+        <h6 class="card-subtitle mb-2 text-muted">201 Bishopsgate, London</h6>
+        <p class="card-text">Some descriptive information!</p>
+      </div>
+      <div class="card-footer">
+        <a href="#!site/372632" role="button" class="btn btn-primary btn-sm">Launch</a> <small class="text-muted"></small>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-auto">
+    <div class="card grid-card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Broadgate Tower</h5>
+        <h6 class="card-subtitle mb-2 text-muted">201 Bishopsgate, London</h6>
+        <p class="card-text">Some descriptive information!</p>
+      </div>
+      <div class="card-footer">
+        <a href="#!site/372632" role="button" class="btn btn-primary btn-sm">Launch</a> <small class="text-muted"></small>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-auto">
+    <div class="card grid-card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Broadgate Tower</h5>
+        <h6 class="card-subtitle mb-2 text-muted">201 Bishopsgate, London</h6>
+        <p class="card-text">Some descriptive information!</p>
+      </div>
+      <div class="card-footer">
+        <a href="#!site/372632" role="button" class="btn btn-primary btn-sm">Launch</a> <small class="text-muted"></small>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-auto">
+    <div class="card grid-card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Broadgate Tower</h5>
+        <h6 class="card-subtitle mb-2 text-muted">201 Bishopsgate, London</h6>
+        <p class="card-text">Some descriptive information!</p>
+      </div>
+      <div class="card-footer">
+        <a href="#!site/372632" role="button" class="btn btn-primary btn-sm">Launch</a> <small class="text-muted"></small>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-auto">
+    <div class="card grid-card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Broadgate Tower</h5>
+        <h6 class="card-subtitle mb-2 text-muted">201 Bishopsgate, London</h6>
+        <p class="card-text">Some descriptive information!</p>
+      </div>
+      <div class="card-footer">
+        <a href="#!site/372632" role="button" class="btn btn-primary btn-sm">Launch</a> <small class="text-muted"></small>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-auto">
+    <div class="card grid-card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Broadgate Tower</h5>
+        <h6 class="card-subtitle mb-2 text-muted">201 Bishopsgate, London</h6>
+        <p class="card-text">Some descriptive information!</p>
+      </div>
+      <div class="card-footer">
+        <a href="#!site/372632" role="button" class="btn btn-primary btn-sm">Launch</a> <small class="text-muted"></small>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-auto">
+    <div class="card grid-card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Broadgate Tower</h5>
+        <h6 class="card-subtitle mb-2 text-muted">201 Bishopsgate, London</h6>
+        <p class="card-text">Some descriptive information!</p>
+      </div>
+      <div class="card-footer">
+        <a href="#!site/372632" role="button" class="btn btn-primary btn-sm">Launch</a> <small class="text-muted"></small>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-auto">
+    <div class="card grid-card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Broadgate Tower</h5>
+        <h6 class="card-subtitle mb-2 text-muted">201 Bishopsgate, London</h6>
+        <p class="card-text">Some descriptive information!</p>
+      </div>
+      <div class="card-footer">
+        <a href="#!site/372632" role="button" class="btn btn-primary btn-sm">Launch</a> <small class="text-muted"></small>
       </div>
     </div>
   </div>
