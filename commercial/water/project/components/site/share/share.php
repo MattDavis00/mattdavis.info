@@ -1,13 +1,13 @@
 <?php
 
 // Database Connection & Post data
-include($_SERVER["DOCUMENT_ROOT"]."/project/shared/connection.php");
+include($_SERVER["DOCUMENT_ROOT"]."/commercial/water/project/shared/connection.php");
 
 // Include Validation Functions
-include($_SERVER["DOCUMENT_ROOT"]."/project/shared/validations.php");
+include($_SERVER["DOCUMENT_ROOT"]."/commercial/water/project/shared/validations.php");
 
 // Ensure That The User Is Logged In
-include($_SERVER["DOCUMENT_ROOT"]."/project/shared/authenticate.php");
+include($_SERVER["DOCUMENT_ROOT"]."/commercial/water/project/shared/authenticate.php");
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

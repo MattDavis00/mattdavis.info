@@ -97,13 +97,14 @@ if (!$outputData->errorFlag)
       $serverActivationCode = bin2hex(random_bytes(16));
 
       // SQL Query
-      $registerUser = $conn->prepare("INSERT INTO `user` (`Email`, `First_Name`, `Last_Name`, `Password_Hash`, `Last_Login_Time`, `Creation_Time`)
-      VALUES (:email, :firstName, :lastName, :passwordHash, NULL, :creationTime)");
+      $registerUser = $conn->prepare("INSERT INTO `user` (`Email`, `First_Name`, `Last_Name`, `Password_Hash`, `Last_Login_Time`, `Creation_Time`, `Activation_Code`, `Verified`)
+      VALUES (:email, :firstName, :lastName, :passwordHash, NULL, :creationTime, :activationCode, false)");
       $registerUser->bindParam(':email', $clientEmail->data);
       $registerUser->bindParam(':firstName', $clientFirstName->data);
       $registerUser->bindParam(':lastName', $clientLastName->data);
       $registerUser->bindParam(':passwordHash', $clientPasswordHash);
       $registerUser->bindParam(':creationTime', $serverDateTime);
+      $registerUser->bindParam(':activationCode', $serverActivationCode);
 
       // Execute Query
       $registerReturn = $registerUser->execute();
@@ -112,7 +113,7 @@ if (!$outputData->errorFlag)
       {
 
         $to      = $clientEmail->data; // Send email to our user
-        $subject = 'mattdavis.info | Email Verification'; // Give the email a subject
+        $subject = 'Email Verification'; // Give the email a subject
         $message = '
 
         Thanks for signing up!
@@ -121,7 +122,7 @@ if (!$outputData->errorFlag)
         Please click this link to activate your account:
 
         -------------------
-        https://www.mattdavis.info/commercial/water/project/shared/verify.php?email='.$clientEmail->data.'&code='.$serverActivationCode.'
+        https://www.mattdavis.info/commercial/water/#!/verify/'.$clientEmail->data.'&'.$serverActivationCode.'
         -------------------
 
         '; // Our message above including the link

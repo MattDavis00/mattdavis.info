@@ -12,13 +12,13 @@ app.config(function($routeProvider) {
       templateUrl: "project/components/dashboard/dashboardView.html",
       controller: "dashboardCtrl"
     })
-    .when("/pastebin", {
-      templateUrl: "project/components/pastebin/share/pastebinView.html",
-      controller: "pastebinCtrl"
-    })
     .when('/site/:sharingURI*', {
       templateUrl: "project/components/site/view/viewPasteView.html",
       controller: 'viewPasteCtrl'
+    })
+    .when('/verify/:verifyURI*', {
+      templateUrl: "project/components/verify/verifyView.html",
+      controller: 'verifyCtrl'
     })
 
 
