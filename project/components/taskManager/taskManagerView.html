@@ -4,37 +4,22 @@
 <div id="task-manager-container">
 
   <div class="nav-secondary">
-    <a href="" role="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#newTaskModal">New Task</a> <small class="text-muted"></small>
+    <a href="" role="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#newTaskModal">New Task</a>
+    <a href="" role="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#tagsModal">Tags</a>
   </div>
 
   <div id="items">
-    <a href="" class="list-group-item list-group-item-action flex-column align-items-start active">
-      <i class="material-icons item-handle">drag_indicator</i>
+
+    <div ng-repeat="task in taskArray" class="list-group-item list-group-item-action flex-column align-items-start">
       <div class="d-flex w-100 justify-content-between">
-        <h5 class="mb-1">Further Maths</h5>
-        <small>1 days ago</small>
-      </div>
-      <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-      <small>Donec id elit non mi porta.</small>
-    </a>
-    <a href="" class="list-group-item list-group-item-action flex-column align-items-start">
-      <i class="material-icons item-handle">drag_indicator</i>
-      <div class="d-flex w-100 justify-content-between">
-        <h5 class="mb-1">List group item heading</h5>
+        <h5 class="mb-1">{{task.title}}</h5>
         <small class="text-muted">2 days ago</small>
       </div>
-      <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+      <h5 class="mb-1"><a ng-repeat="tag in task.tags" ng-click="removePill(pillData, tag)" href="" class="tag badge {{pillData[tag].class}}">{{pillData[tag].text}}</a><a href="" class="badge badge-secondary">+</a></h5>
+      <p class="mb-1">{{task.description}}</p>
       <small class="text-muted">Donec id elit non mi porta.</small>
-    </a>
-    <a href="" class="list-group-item list-group-item-action flex-column align-items-start">
-      <i class="material-icons item-handle">drag_indicator</i>
-      <div class="d-flex w-100 justify-content-between">
-        <h5 class="mb-1">List group item heading</h5>
-        <small class="text-muted">3 days ago</small>
-      </div>
-      <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-      <small class="text-muted">Donec id elit non mi porta.</small>
-    </a>
+    </div>
+
   </div>
 </div>
 
@@ -50,18 +35,43 @@
       <div class="modal-body">
         <form>
           <div class="form-group">
-            <label for="email" class="col-form-label">Title:</label>
+            <label class="col-form-label">Title:</label>
             <input type="text" class="form-control" ng-model="task.title" id="task-title">
           </div>
           <div class="form-group">
-            <label for="password" class="col-form-label">Description:</label>
-            <input type="text" class="form-control" ng-model="task.description" id="task-description">
+            <label class="col-form-label">Description:</label>
+            <textarea class="form-control" ng-model="task.description" id="task-description" rows="5"></textarea>
           </div>
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary" ng-click="">Create</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="tagsModal" tabindex="-1" role="dialog" aria-labelledby="newTaskModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Tag Preferences</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div ng-repeat="pill in tempPillData" class="form-group">
+            <h5 class="mb-1"><a href="" class="badge {{pill.class}}">{{pill.text}}</a></h5>
+            <input type="text" class="form-control" ng-model="pill.text" id="pill-text">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" ng-click="">Save</button>
       </div>
     </div>
   </div>

@@ -178,6 +178,10 @@ pre.prettyprint {
   transform: translateY(-50%);
 }
 
+.tag {
+  margin-right: 5px;
+}
+
 /* ---- reset ---- */
 
 body {
