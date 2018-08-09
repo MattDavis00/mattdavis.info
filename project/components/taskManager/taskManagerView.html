@@ -15,7 +15,12 @@
         <h5 class="mb-1">{{task.title}}</h5>
         <small class="text-muted">2 days ago</small>
       </div>
-      <h5 class="mb-1"><a ng-repeat="tag in task.tags" ng-click="removePill(pillData, tag)" href="" class="tag badge {{pillData[tag].class}}">{{pillData[tag].text}}</a><a href="" class="badge badge-secondary">+</a></h5>
+      <h5 class="mb-1">
+        <a ng-repeat="tag in task.tags" ng-click="RemovePill(task.tags, tag)" href="" class="tag badge {{pillData[tag].class}}">{{pillData[tag].text}}</a><a href="" class="tag badge badge-secondary" data-toggle="dropdown">+</a>
+          <div id="tagDropdown" class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a ng-repeat="pill in pillData track by $index" ng-click="AddPill(task, $index)" href="" class="tag dropdown-item dropdown-item-tag badge {{pill.class}}">{{pill.text}}</a>
+          </div>
+      </h5>
       <p class="mb-1">{{task.description}}</p>
       <small class="text-muted">Donec id elit non mi porta.</small>
     </div>

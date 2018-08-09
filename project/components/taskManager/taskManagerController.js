@@ -6,35 +6,35 @@ angular.module("project-app").controller("taskManagerCtrl", ["$scope", "$http", 
 
   $scope.pillData = [{
       class: "badge-primary",
-      text: "New"
-    },
-    {
-      class: "badge-secondary",
-      text: "Uni"
+      text: "Tag 1"
     },
     {
       class: "badge-success",
-      text: "Work"
+      text: "Tag 2"
     },
     {
       class: "badge-danger",
-      text: "ASAP"
+      text: "Tag 3"
     },
     {
       class: "badge-warning",
-      text: "Important"
+      text: "Tag 4"
     },
     {
       class: "badge-info",
-      text: "Taxes"
+      text: "Tag 5"
     },
     {
       class: "badge-light",
-      text: "Today"
+      text: "Tag 6"
+    },
+    {
+      class: "badge-secondary",
+      text: "Tag 7"
     },
     {
       class: "badge-dark",
-      text: "Comp Sci"
+      text: "Tag 8"
     }
   ];
 
@@ -56,6 +56,22 @@ angular.module("project-app").controller("taskManagerCtrl", ["$scope", "$http", 
       tags: [3, 6, 7]
     }
   ];
+
+  $scope.AddPill = function(task, index) {
+    if ($.inArray(index, task.tags) === -1) {
+      task.tags.push(index);
+    }
+  }
+
+  $scope.RemovePill = function(task, tagID) {
+
+    var index = task.indexOf(tagID);
+
+    if (index > -1) {
+      task.splice(index, 1);
+    }
+
+  }
 
   $scope.sharedFunctions = sharedFunctions;
 

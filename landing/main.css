@@ -182,6 +182,15 @@ pre.prettyprint {
   margin-right: 5px;
 }
 
+#tagDropdown {
+  padding: 8px;
+}
+
+.dropdown-item-tag {
+  width: auto;
+  margin-bottom: 3px;
+}
+
 /* ---- reset ---- */
 
 body {
