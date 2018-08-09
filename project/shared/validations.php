@@ -99,6 +99,46 @@ class Validation
     return $returnData;
   }
 
+  function LengthAndEmpty($stringData, $length)
+  {
+    $returnData = new StdClass();
+    $returnData->errorFlag = false;
+    $returnData->errorMessage = "";
+
+    if ($this->Empty($stringData)->errorFlag)
+    {
+      $returnData->errorFlag = true;
+      $returnData->errorMessage .= "Please fill in this field. ";
+    }
+    else
+    {
+      if (strlen($stringData) > $length)
+      {
+        $returnData->errorFlag = true;
+        $returnData->errorMessage .= "Exceeds ". $length ." characters. ";
+      }
+    }
+
+    return $returnData;
+  }
+
+  function Length($stringData, $length)
+  {
+    $returnData = new StdClass();
+    $returnData->errorFlag = false;
+    $returnData->errorMessage = "";
+
+
+    if (strlen($stringData) > $length)
+    {
+      $returnData->errorFlag = true;
+      $returnData->errorMessage .= "Exceeds ". $length ." characters. ";
+    }
+
+
+    return $returnData;
+  }
+
 }
 
 class Utility
