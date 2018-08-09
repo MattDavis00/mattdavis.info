@@ -41,23 +41,23 @@
         <form>
           <div class="form-group">
             <label class="col-form-label">Title:</label>
-            <input type="text" class="form-control" ng-model="task.title" id="task-title">
+            <input type="text" class="form-control" ng-model="taskData.title" id="task-title">
           </div>
           <div class="form-group">
             <label class="col-form-label">Description:</label>
-            <textarea class="form-control" ng-model="task.description" id="task-description" rows="5"></textarea>
+            <textarea class="form-control" ng-model="taskData.description" id="task-description" rows="5"></textarea>
           </div>
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" ng-click="">Create</button>
+        <button type="button" class="btn btn-primary" ng-click="NewTask()">Create</button>
       </div>
     </div>
   </div>
 </div>
 
-<div class="modal fade" id="tagsModal" tabindex="-1" role="dialog" aria-labelledby="newTaskModalLabel" aria-hidden="true">
+<div class="modal fade" id="tagsModal" tabindex="-1" role="dialog" aria-labelledby="tagPreferencesLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
