@@ -187,6 +187,59 @@ app.service('sharedFunctions', ['$http', "$location", function($http, $location)
 
   }
 
+  this.Validation.Length = function(element, stringData, length) {
+    var returnData = {};
+    returnData.errorFlag = false;
+    returnData.errors = "";
+
+    self.Validation.RemoveErrorTooltip(element);
+
+    if (stringData) {
+      if (stringData.length > length) {
+        returnData.errorFlag = true;
+        returnData.errors += "Exceeds " + length + " characters. ";
+      }
+    }
+
+    if (returnData.errorFlag) {
+      self.Validation.ErrorTooltip(element, returnData.errors);
+    }
+
+    return returnData.errorFlag;
+
+  }
+
+  this.Validation.LengthAndEmpty = function(element, stringData, length) {
+    var returnData = {};
+    returnData.errorFlag = false;
+    returnData.errors = "";
+
+    self.Validation.RemoveErrorTooltip(element);
+
+
+    if (!(stringData)) {
+      returnData.errorFlag = true;
+      returnData.errors += "Please fill in this field. ";
+    } else {
+      if (!(stringData.length > 0)) {
+        returnData.errorFlag = true;
+        returnData.errors += "Please fill in this field. ";
+      }
+      if (stringData.length > length) {
+        returnData.errorFlag = true;
+        returnData.errors += "Exceeds " + length + " characters. ";
+      }
+    }
+
+
+    if (returnData.errorFlag) {
+      self.Validation.ErrorTooltip(element, returnData.errors);
+    }
+
+    return returnData.errorFlag;
+
+  }
+
   this.Validation.Password = function(element, element2, password, passwordRepeat) {
     var returnData = {};
     returnData.errorFlag = false;
