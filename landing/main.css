@@ -167,6 +167,20 @@ pre.prettyprint {
   height: 100%;
 }
 
+.card-center {
+  margin: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 500px;
+  width: 100%;
+}
+
+#settings-container {
+  display: inline-block;
+}
+
 /* ---- reset ---- */
 
 body {

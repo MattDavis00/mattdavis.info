@@ -12,6 +12,10 @@ app.config(function($routeProvider) {
       templateUrl: "project/components/dashboard/dashboardView.html",
       controller: "dashboardCtrl"
     })
+    .when("/settings", {
+      templateUrl: "project/components/dashboard/settingsView.html",
+      controller: "dashboardCtrl"
+    })
     .when("/pastebin", {
       templateUrl: "project/components/pastebin/share/pastebinView.html",
       controller: "pastebinCtrl"
@@ -272,6 +276,11 @@ app.service('sharedFunctions', ['$http', "$location", function($http, $location)
     else if (view === "#!/task-manager") {
       $("#task-manager-nav").addClass("active");
     }
+    // Settings
+    else if (view === "#!/settings") {
+      $("#settings-nav").addClass("active");
+    }
+
 
   }
 
