@@ -1,6 +1,7 @@
 <html>
 
-<input id="keyInput" placeholder="Key"/>
+<input id="textInput" placeholder="Input" />
+<input id="keyInput" placeholder="Key" />
 <button onclick="encryptStringWithXORtoHex()">Test</button>
 
 <p id="input"></p>
@@ -15,10 +16,17 @@
   var Stringy = "bf9fddd8eecf87dcbf9bdddce6988bd7ec98da8ebfcf888abb958cd7e69cdf8c";
   //var key = ""//not gonna get me hacker!
 
+  //var key = "deadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef";
+
+  //¶ÙÊŸ­—‘À©ÚÉÁ»ÛÛªÏÌ†ªÈŒ±ƒË„ñÈ‘­ÄÚŠ­€ÒŠ»ÉÍÂìÖóÙ×ŒµÈÊœó˜Ùê˜†ØçŸÚ
+  //¿ÝØîÏÜ¿ÝÜæ×ìÚ¿Ï»×æß
+  //BSides Leeds 2019!
+
+
   // I'm so l33t I copied/pasted this off stack-overflow...
   function encryptStringWithXORtoHex() {
 
-    var input = "¶ÙÊŸ­—‘À©ÚÉÁ»ÛÛªÏÌ†ªÈŒ±ƒË„ñÈ‘­ÄÚŠ­€ÒŠ»ÉÍÂìÖóÙ×ŒµÈÊœó˜Ùê˜†ØçŸÚ";
+    var input = document.getElementById("textInput").value;
     var key = document.getElementById("keyInput").value;
 
     var notFound = true;
@@ -27,6 +35,9 @@
     while (key.length < input.length) {
       key += key;
     }
+
+    key = key.substring(0, input.lenth);
+
     for (var i = 0; i < input.length; i++) {
       var value1 = input[i].charCodeAt(0);
       var value2 = key[i].charCodeAt(0);
