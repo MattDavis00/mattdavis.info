@@ -1,6 +1,7 @@
 <?php
 
 // Create session
+session_save_path($_SERVER["DOCUMENT_ROOT"]."/../sessions/water");
 session_start();
 
 // Credentials
