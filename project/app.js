@@ -20,6 +20,10 @@ app.config(function($routeProvider) {
       templateUrl: "project/components/privacy/privacyPolicyView.html",
       controller: "dashboardCtrl"
     })
+    .when("/broken-link", {
+      templateUrl: "project/components/broken-link/brokenLinkView.html",
+      controller: "brokenLinkCtrl"
+    })
     .when("/pastebin", {
       templateUrl: "project/components/pastebin/share/pastebinView.html",
       controller: "pastebinCtrl"
@@ -32,7 +36,7 @@ app.config(function($routeProvider) {
 
     ///////////////////////// Otherwise, Redirect To Login ////////////////////////////
     .otherwise({
-      redirectTo: "/"
+      redirectTo: "/broken-link"
     });
 
 });
