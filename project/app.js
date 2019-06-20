@@ -16,6 +16,10 @@ app.config(function($routeProvider) {
       templateUrl: "project/components/dashboard/settingsView.html",
       controller: "dashboardCtrl"
     })
+    .when("/privacy-policy", {
+      templateUrl: "project/components/privacy/privacyPolicyView.html",
+      controller: "dashboardCtrl"
+    })
     .when("/pastebin", {
       templateUrl: "project/components/pastebin/share/pastebinView.html",
       controller: "pastebinCtrl"
