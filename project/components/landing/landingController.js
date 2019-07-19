@@ -5,6 +5,8 @@ angular.module("project-app").controller("landingCtrl", ["$scope", "$http", "sha
   $scope.Modal = {};
   $scope.results = "";
 
+  $scope.currentDate = new Date();
+
   $scope.Login = function() {
 
     //////////////Login Request//////////////
