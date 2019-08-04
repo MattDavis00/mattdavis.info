@@ -1,14 +1,16 @@
 <?php
 
 // Create session
-session_save_path($_SERVER["DOCUMENT_ROOT"]."/../sessions/project");
+session_save_path($_SERVER["DOCUMENT_ROOT"]."/../sessions/");
 session_start();
 
-// Credentials
-$servername = "localhost";
-$username = "main_db_access";
-$password = "mEk47MvJmQXjX2PVe@t3";
-$dbname = "main_db";
+// Database Credentials
+// In the form of:
+// $servername = database address
+// $username = database username
+// $password = user password
+// $dbname = database name
+include($_SERVER["DOCUMENT_ROOT"]."/../credentials/databaseCredentials.php");
 
 // Database Connection
 try
