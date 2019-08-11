@@ -184,9 +184,10 @@ pre.prettyprint {
   font-weight: 300;
   letter-spacing: 0.2rem;
   margin-bottom: 0;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
   left: 50%;
-  position: absolute;
+  top: 44px;
+  position: fixed;
 }
 
 #navbar-portfolio {
@@ -194,7 +195,10 @@ pre.prettyprint {
   box-shadow: none;
 }
 
-
+#social-icons {
+  display: flex;
+  flex-direction: row;
+}
 
 /* ---- reset ---- */
 
