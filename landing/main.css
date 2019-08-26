@@ -1,6 +1,8 @@
 :root {
   --link: rgba(0,0,0,.35);
   --link-hover: rgba(0,0,0,.5);
+  --white: rgba(255,255,255,.8);
+  --white-sec: rgba(255,255,255,.25);
 }
 
 body, html {
@@ -45,12 +47,12 @@ a:focus, a:hover {
   font-weight: 300;
   font-size: 25px;
   letter-spacing: 0.2rem;
-  margin-bottom: 0;
   transform: translate(-50%, -50%);
   left: 50%;
   top: 40px;
   position: fixed;
   margin: 0;
+  white-space: nowrap;
 }
 
 .social-icons {
@@ -73,38 +75,90 @@ a:focus, a:hover {
 }
 
 .section {
-  max-width: 800px;
+  max-width: 950px;
   position: relative;
   left: 50%;
   transform: translateX(-50%);
-  /* margin: 0 200px 0 200px; */
-  padding: 0 200px 0 200px;
+  padding: 100px 200px 100px 200px;
 }
 
 .education {
-  /* background-color: red; */
+  background-color: #455A64;
+  color: var(--white);
+}
+
+.work-history {
+  background-color: #424242;
+  color: var(--white);
+}
+
+.projects {
+  background-color: #455A64;
+  color: var(--white);
 }
 
 .experience {
   margin-top: 25px;
   display: flex;
   flex-direction: row;
+  padding-bottom: 20px;
 }
 
 .timeline {
   margin-right: 10px;
 }
 
+.timeline * {
+  color: var(--white-sec);
+}
+
 .line {
   position: relative;
   width: 0px;
-  border: 1px solid rgba(0,0,0,.35);
+  border: 1px solid var(--white-sec);
   left: 50%;
-  height: 100%;
+  height: calc(100% + 20px);
   transform: translateX(-50%);
 }
 
-/* Scrollbar */
+.line-horizontal {
+  position: relative;
+  height: 0px;
+  border-top: 1px solid var(--white-sec);
+  left: 50%;
+  width: 100%;
+  transform: translateX(-50%);
+}
+
+.project {
+  margin-top: 25px;
+  padding-bottom: 20px;
+}
+
+.section-title {
+  letter-spacing: 0.2rem;
+  margin-bottom: 50px;
+}
+
+.section-title::after {
+  display: grid;
+  position: relative;
+  top: 10px;
+  content: "";
+  width: 400px;
+  border-bottom: 1px solid var(--white);
+}
+
+.experience-content h4 {
+  letter-spacing: 0.1rem;
+  margin: 20px 0 10px 0;
+}
+
+.experience-content p {
+  margin: 10px 0 10px 0;
+}
+
+/*/////// Custom Scrollbar ////////*/
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -126,12 +180,33 @@ CSS Alterations For Mobile Devices
 Such as reducing/removing margin to maximise content density.
 */
 @media (max-width: 991.98px) {
-  #my-name {
-    left: 25px;
-    transform: translate(0, -50%);
+
+  .my-name {
+    top: 30px;
+  }
+
+  .navbar {
+    height: 100px;
+  }
+
+  .social-icons {
+    left: 50%;
+    transform: translateX(-50%);
+    top: 60px;
+    right: auto;
+  }
+
+  .content {
+    top: 100px;
+    height: calc(100% - 100px);
   }
 
   .section {
-    margin: 0;
+    padding: 50px 25px 50px 25px;
   }
+
+  .section-title::after {
+    width: 200px;
+  }
+
 }
