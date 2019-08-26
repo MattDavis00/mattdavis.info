@@ -213,6 +213,10 @@ a:focus, a:hover {
   transform: translateX(-50%);
 }
 
+.experience-header {
+  line-height: 1.5rem;
+}
+
 /* Pills */
 
 .pills {
