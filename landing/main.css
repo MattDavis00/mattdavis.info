@@ -185,11 +185,11 @@ a:focus, a:hover {
 }
 
 .experience-footer {
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
-.experience-footer .row {
-  padding-top: 10px;
+.experience-footer .a-button {
+  margin-bottom: 10px;
 }
 
 .link, .link:visited, .link:active {
@@ -208,9 +208,10 @@ a:focus, a:hover {
 .copyright {
   color: var(--white-sec);
   position: absolute;
-  margin-top: 60px;
   left: 50%;
   transform: translateX(-50%);
+  bottom: 40px;
+  white-space: nowrap;
 }
 
 .experience-header {
@@ -220,13 +221,13 @@ a:focus, a:hover {
 /* Pills */
 
 .pills {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .pill {
   font-size: 11px;
   padding: 6px;
-  margin: 10px 10px 10px 0;
+  margin: 10px 10px 0 0;
   text-decoration: none;
   color: var(--white-link);
   border: 1px solid var(--white-link);
