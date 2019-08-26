@@ -149,8 +149,6 @@ angular.module("project-app").controller("landingCtrl", ["$scope", "$http", "sha
 
   }
 
-  particlesJS.load('background-animation', '/landing/particles.json');
-
   $scope.Modal.SwitchLoginRegister = function() {
     $('#loginModal').modal('toggle');
     $('#registerModal').modal('toggle');
