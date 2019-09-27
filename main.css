@@ -347,4 +347,12 @@ Such as reducing/removing margin to maximise content density.
     width: 200px;
   }
 
+  .emails {
+    display: flex;
+    flex-direction: column;
+  }
+  .emails span {
+    margin-top: 4px;
+  }
+
 }
