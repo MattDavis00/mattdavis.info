@@ -88,12 +88,12 @@ a:focus, a:hover {
   color: var(--white);
 }
 
-.work-history {
+.projects {
   background-color: #424242;
   color: var(--white);
 }
 
-.projects {
+.work-history {
   background-color: #455A64;
   color: var(--white);
 }
