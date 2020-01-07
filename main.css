@@ -218,6 +218,13 @@ a:focus, a:hover {
   line-height: 1.5rem;
 }
 
+a.disabled {
+  pointer-events: none;
+  cursor: default;
+  color: var(--white-sec);
+  border: 1px solid var(--white-sec);
+}
+
 /* Pills */
 
 .pills {
