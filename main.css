@@ -83,22 +83,12 @@ a:focus, a:hover {
   padding: 100px 200px 100px 200px;
 }
 
-.education {
+.blue-section {
   background-color: #455A64;
   color: var(--white);
 }
 
-.projects {
-  background-color: #424242;
-  color: var(--white);
-}
-
-.work-history {
-  background-color: #455A64;
-  color: var(--white);
-}
-
-.contact {
+.black-section {
   background-color: #424242;
   color: var(--white);
 }
