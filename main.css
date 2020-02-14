@@ -215,6 +215,15 @@ a.disabled {
   border: 1px solid var(--white-sec);
 }
 
+.project-image {
+  width: 500px;
+  height: auto;
+}
+
+.project h4 {
+  margin-bottom: 10px;
+}
+
 /* Pills */
 
 .pills {
@@ -348,8 +357,14 @@ Such as reducing/removing margin to maximise content density.
     display: flex;
     flex-direction: column;
   }
+
   .emails span {
     margin-top: 4px;
+  }
+
+  .project-image {
+    width: 100%;
+    height: auto;
   }
 
 }
