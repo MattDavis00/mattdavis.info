@@ -4,7 +4,24 @@
   --white: rgba(255,255,255,.8);
   --white-sec: rgba(255,255,255,.25);
   --white-link: rgba(255,255,255,.6);
+  --navbar-background-color: #ffffff;
+  --body-background-color: #eeeeee;
+  --shape-border-radius: 8px;
+  --shape-sections-gap: 60px;
 }
+
+/* prefers dark theme media query */
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --link: rgba(0,0,0,.35);
+    --link-hover: rgba(0,0,0,.5);
+    --white: rgba(255,255,255,.8);
+    --white-sec: rgba(255,255,255,.25);
+    --white-link: rgba(255,255,255,.6);
+    --navbar-background-color: #444444;
+    --body-background-color: #333333;
+  }
+} */
 
 body, html {
   height: 100%;
@@ -14,12 +31,11 @@ body, html {
 
 body {
   font-size: 16px;
-  background-color: #eee;
+  background-color: var(--body-background-color);
 }
 
 h1, h2, h3, h4, h5, h6 {
   text-transform: uppercase;
-  /* margin: 0; */
   font-weight: 500;
 }
 
@@ -35,8 +51,10 @@ a:focus, a:hover {
   box-shadow: none;
   position: fixed;
   width: 100%;
-  background-color: white;
+  background-color: var(--navbar-background-color);
   height: 80px;
+  border-bottom-left-radius: var(--shape-border-radius);
+  border-bottom-right-radius: var(--shape-border-radius);
 }
 
 .nav-item {
@@ -80,7 +98,18 @@ a:focus, a:hover {
   position: relative;
   left: 50%;
   transform: translateX(-50%);
-  padding: 100px 200px 100px 200px;
+  padding: 50px 150px 50px 150px;
+  border-radius: var(--shape-border-radius);
+  box-shadow: rgba(69, 69, 75, 0.5) 0px 7px 29px 0px;
+  margin-top: var(--shape-sections-gap);
+}
+
+.section:last-of-type {
+  margin-bottom: var(--shape-sections-gap);
+}
+
+a, img {
+  border-radius: var(--shape-border-radius);
 }
 
 .blue-section {
@@ -313,6 +342,7 @@ a.disabled {
 
 ::-webkit-scrollbar-thumb {
   background: var(--link);
+  border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
