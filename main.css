@@ -37,7 +37,7 @@ body {
   grid-template-areas:
     "navbar"
     "content";
-  height: 100vh;
+  height: 100%;
 }
 
 h1,
@@ -67,30 +67,32 @@ a:hover {
   height: 80px;
   border-bottom-left-radius: var(--shape-border-radius);
   border-bottom-right-radius: var(--shape-border-radius);
-}
-
-.nav-item {
-  top: 40px;
-  transform: translate(0, -50%);
+  display: grid;
+  grid-template-areas: ". name links";
+  grid-template-columns: 1fr max-content 1fr;
+  box-sizing: border-box;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .my-name {
+  position: relative;
   font-weight: 300;
   font-size: 25px;
   letter-spacing: 0.2rem;
-  transform: translate(-50%, -50%);
-  left: 50%;
-  top: 40px;
-  position: fixed;
   margin: 0;
   white-space: nowrap;
+  grid-area: name;
+  justify-self: center;
 }
 
 .social-icons {
-  position: fixed;
+  position: relative;
   display: flex;
   flex-direction: row;
-  right: 20px;
+  grid-area: links;
+  justify-self: right;
 }
 
 .social-icons a {
@@ -110,6 +112,7 @@ a:hover {
   padding-right: 20px;
   box-sizing: border-box;
   scroll-behavior: smooth;
+  overscroll-behavior: contain;
 }
 
 .section {
@@ -432,19 +435,24 @@ Such as reducing/removing margin to maximise content density.
 */
 @media (max-width: 991.98px) {
 
-  .my-name {
-    top: 30px;
-  }
-
   .navbar {
     height: 100px;
   }
 
+  .navbar {
+    display: grid;
+    height: 100px;
+    grid-template-areas:
+      "name"
+      "links";
+    grid-template-columns: auto;
+    grid-template-rows: auto auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
   .social-icons {
-    left: 50%;
-    transform: translateX(-50%);
-    top: 60px;
-    right: auto;
+    justify-self: center;
   }
 
   .section {
