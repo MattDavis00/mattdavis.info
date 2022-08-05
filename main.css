@@ -1,9 +1,9 @@
 :root {
-  --link: rgba(0,0,0,.35);
-  --link-hover: rgba(0,0,0,.5);
-  --white: rgba(255,255,255,.8);
-  --white-sec: rgba(255,255,255,.25);
-  --white-link: rgba(255,255,255,.6);
+  --link: rgba(0, 0, 0, .35);
+  --link-hover: rgba(0, 0, 0, .5);
+  --white: rgba(255, 255, 255, .8);
+  --white-sec: rgba(255, 255, 255, .25);
+  --white-link: rgba(255, 255, 255, .6);
   --navbar-background-color: #ffffff;
   --body-background-color: #eeeeee;
   --shape-border-radius: 8px;
@@ -23,7 +23,8 @@
   }
 } */
 
-body, html {
+body,
+html {
   height: 100%;
   margin: 0;
   font-family: 'Montserrat', sans-serif;
@@ -32,9 +33,19 @@ body, html {
 body {
   font-size: 16px;
   background-color: var(--body-background-color);
+  display: grid;
+  grid-template-areas:
+    "navbar"
+    "content";
+  height: 100vh;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   text-transform: uppercase;
   font-weight: 500;
 }
@@ -43,13 +54,14 @@ a {
   color: var(--link);
 }
 
-a:focus, a:hover {
+a:focus,
+a:hover {
   color: var(--link-hover);
 }
 
 .navbar {
   box-shadow: none;
-  position: fixed;
+  position: relative;
   width: 100%;
   background-color: var(--navbar-background-color);
   height: 80px;
@@ -86,29 +98,37 @@ a:focus, a:hover {
 }
 
 .content {
-  position: absolute;
-  top: 80px;
+  position: relative;
   width: 100%;
-  height: calc(100% - 80px);
   overflow: auto;
+  display: grid;
+  justify-content: center;
+  gap: var(--shape-sections-gap);
+  padding-top: var(--shape-sections-gap);
+  padding-bottom: var(--shape-sections-gap);
+  padding-left: 20px;
+  padding-right: 20px;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 .section {
   max-width: 950px;
   position: relative;
-  left: 50%;
-  transform: translateX(-50%);
+  /* left: 50%;
+  transform: translateX(-50%); */
   padding: 50px 150px 50px 150px;
   border-radius: var(--shape-border-radius);
   box-shadow: rgba(69, 69, 75, 0.5) 0px 7px 29px 0px;
-  margin-top: var(--shape-sections-gap);
+  /* margin-top: var(--shape-sections-gap); */
 }
 
-.section:last-of-type {
+/* .section:last-of-type {
   margin-bottom: var(--shape-sections-gap);
-}
+} */
 
-a, img {
+a,
+img {
   border-radius: var(--shape-border-radius);
 }
 
@@ -189,7 +209,9 @@ a, img {
   flex-flow: wrap;
 }
 
-.a-button, .a-button:visited, .a-button:active  {
+.a-button,
+.a-button:visited,
+.a-button:active {
   padding: 10px;
   margin-right: 10px;
   text-decoration: none;
@@ -211,7 +233,9 @@ a, img {
   margin-bottom: 10px;
 }
 
-.link, .link:visited, .link:active {
+.link,
+.link:visited,
+.link:active {
   color: var(--white-link);
   transition: 0.3s;
 }
@@ -253,6 +277,47 @@ a.disabled {
   margin-bottom: 10px;
 }
 
+.vertical-nav {
+  display: grid;
+  gap: 15px;
+  justify-content: center;
+  justify-items: center;
+  grid-template-columns: min-content;
+}
+
+.vertical-nav-button {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  width: 100%;
+  padding: 0.7rem 1rem 0.7rem 1rem;
+  text-decoration: none;
+  /* #424242 */
+  color: #323232;
+  border: 1px solid #323232;
+  transition: 0.3s;
+  text-align: center;
+  /* background-color: rgba(55, 71, 79, .2); */
+  border-radius: 40px;
+  font-weight: 700;
+  display: grid;
+  grid-template-columns: auto min-content;
+  justify-items: center;
+  box-sizing: border-box;
+  gap: 15px;
+}
+
+.vertical-nav-button i {
+  font-size: 0.9rem;
+}
+
+.vertical-nav-button:hover {
+  /* color: #888;
+  border-color: #888; */
+  color: var(--white);
+  border-color: #455A64;
+  background-color: #455A64;
+}
+
 /* Pills */
 
 .pills {
@@ -267,67 +332,79 @@ a.disabled {
   color: var(--white-link);
   border: 1px solid var(--white-link);
   transition: 0.3s;
-  background-color: rgba(55,71,79,.2);
+  background-color: rgba(55, 71, 79, .2);
 }
 
-.pill-php, .pill-php:visited, .pill-php:active {
+.pill-php,
+.pill-php:visited,
+.pill-php:active {
   color: rgba(149, 117, 205, 0.75);
   border: 1px solid rgba(149, 117, 205, 0.75);
 }
 
-.pill-php:hover{
+.pill-php:hover {
   color: rgba(149, 117, 205, 1);
   border: 1px solid rgba(149, 117, 205, 1);
 }
 
-.pill-js, .pill-js:visited, .pill-js:active {
-  color: rgba(251,140,0,.75);
-  border: 1px solid rgba(251,140,0,.75);
+.pill-js,
+.pill-js:visited,
+.pill-js:active {
+  color: rgba(251, 140, 0, .75);
+  border: 1px solid rgba(251, 140, 0, .75);
 }
 
-.pill-js:hover{
-  color: rgba(251,140,0,.9);
-  border: 1px solid rgba(251,140,0,.9);
+.pill-js:hover {
+  color: rgba(251, 140, 0, .9);
+  border: 1px solid rgba(251, 140, 0, .9);
 }
 
-.pill-html, .pill-html:visited, .pill-html:active {
-  color: rgba(76,175,80,.75);
-  border: 1px solid rgba(76,175,80,.75);
+.pill-html,
+.pill-html:visited,
+.pill-html:active {
+  color: rgba(76, 175, 80, .75);
+  border: 1px solid rgba(76, 175, 80, .75);
 }
 
-.pill-html:hover{
-  color: rgba(76,175,80,1);
-  border: 1px solid rgba(76,175,80,1);
+.pill-html:hover {
+  color: rgba(76, 175, 80, 1);
+  border: 1px solid rgba(76, 175, 80, 1);
 }
 
-.pill-css, .pill-css:visited, .pill-css:active {
-  color: rgba(205,220,57,.75);
-  border: 1px solid rgba(205,220,57,.75);
+.pill-css,
+.pill-css:visited,
+.pill-css:active {
+  color: rgba(205, 220, 57, .75);
+  border: 1px solid rgba(205, 220, 57, .75);
 }
 
-.pill-css:hover{
-  color: rgba(205,220,57,1);
-  border: 1px solid rgba(205,220,57,1);
+.pill-css:hover {
+  color: rgba(205, 220, 57, 1);
+  border: 1px solid rgba(205, 220, 57, 1);
 }
 
-.pill-sql, .pill-sql:visited, .pill-sql:active {
-  color: rgba(244,67,54,.7);
-  border: 1px solid rgba(244,67,54,.7);
+.pill-sql,
+.pill-sql:visited,
+.pill-sql:active {
+  color: rgba(244, 67, 54, .7);
+  border: 1px solid rgba(244, 67, 54, .7);
 }
 
-.pill-sql:hover{
-  color: rgba(244,67,54,.85);
-  border: 1px solid rgba(244,67,54,.85);
+.pill-sql:hover {
+  color: rgba(244, 67, 54, .85);
+  border: 1px solid rgba(244, 67, 54, .85);
 }
 
-.pill-node, .pill-node:visited, .pill-node:active {
-  color: rgba(33,150,243,.8);
-  border: 1px solid rgba(33,150,243,.8);
+.pill-node,
+.pill-node:visited,
+.pill-node:active {
+  color: rgba(33, 150, 243, .8);
+  border: 1px solid rgba(33, 150, 243, .8);
 }
 
-.pill-node:hover{
-  color: rgba(33,150,243,1);
-  border: 1px solid rgba(33,150,243,1);
+.pill-node:hover {
+  color: rgba(33, 150, 243, 1);
+  border: 1px solid rgba(33, 150, 243, 1);
 }
 
 
@@ -368,11 +445,6 @@ Such as reducing/removing margin to maximise content density.
     transform: translateX(-50%);
     top: 60px;
     right: auto;
-  }
-
-  .content {
-    top: 100px;
-    height: calc(100% - 100px);
   }
 
   .section {
